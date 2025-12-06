@@ -5,6 +5,13 @@ import App from './App.jsx'
 import { RouterProvider } from "react-router/dom";
 import { router } from './routes/routes.jsx';
 
+const savedTheme = localStorage.getItem("theme");
+
+if (savedTheme === "dark") {
+  document.documentElement.classList.add("dark");
+} else {
+  document.documentElement.classList.remove("dark");
+}
 
 
 createRoot(document.getElementById('root')).render(

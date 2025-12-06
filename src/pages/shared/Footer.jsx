@@ -9,12 +9,10 @@ const Footer = () => {
   return (
       <footer className="footer footer-horizontal footer-center bg-base-200 text-base-content rounded p-10">
         <ul className="text-xl text-teal-600 flex justify-center items-center gap-6 font-semibold px-1">
-          <li><Link>Services</Link></li>
-          <li><Link>Coberage</Link></li>
-          <li><Link>About US</Link></li>
-          <li><Link>Pricing</Link></li>
-          <li><Link>Blog</Link></li>
-          <li><Link>Contact</Link></li>
+          <li><Link to='/'>Home</Link></li>
+          <li><Link to='/all-contests'>All Contests</Link></li>
+          <li><Link to='/packages'>Packages</Link></li>
+          <li><Link to='/resources'>Resourcess</Link></li>
         </ul>
   <nav>
     <div className="grid grid-flow-col gap-4">

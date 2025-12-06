@@ -9,3 +9,56 @@ body {
   font-optical-sizing: auto;
   font-style: normal;
 }
+
+
+@layer theme {
+  :root {
+    /* Backgrounds */
+    --color-bg: #ffffff;
+    --color-bg-secondary: #f7f7f8;
+    --color-card: #ffffff;
+
+    /* Text */
+    --color-text: #0a0a0a;
+    --color-text-secondary: #4b5563;
+
+    /* Border */
+    --color-border: #e5e7eb;
+
+    /* Brand (Indigo) */
+    --color-brand: #6366f1;
+    --color-brand-hover: #4f46e5;
+
+    /* Accents */
+    --color-success: #16a34a;
+    --color-warning: #f59e0b;
+    --color-danger: #dc2626;
+
+    /* Radius */
+    --radius-card: 16px;
+    --radius-button: 10px;
+  }
+
+  /* DARK THEME */
+  .dark {
+    --color-bg: #0a0a0a;
+    --color-bg-secondary: #18181b;
+    --color-card: #1f1f23;
+
+    --color-text: #fafafa;
+    --color-text-secondary: #9ca3af;
+
+    --color-border: #27272a;
+
+    --color-brand: #818cf8;
+    --color-brand-hover: #a5b4fc;
+
+    --color-success: #22c55e;
+    --color-warning: #fbbf24;
+    --color-danger: #ef4444;
+  }
+}
+
+* {
+  transition: background-color 0.25s, color 0.25s, border-color 0.25s;
+}

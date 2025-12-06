@@ -41,16 +41,16 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
               <li>
-                <Link to="/services">Home</Link>
+                <Link to="/">Home</Link>
               </li>
               <li>
-                <Link to="/coverage">All Contests</Link>
+                <Link to="/all-contests">All Contests</Link>
               </li>
               <li>
-                <Link to="/about-us">Packages</Link>
+                <Link to="/packages">Packages</Link>
               </li>
               <li>
-                <Link to="/pricing">Resources</Link>
+                <Link to="/resources">Resources</Link>
               </li>
             </ul>
           </div>
@@ -60,16 +60,16 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="text-xl text-teal-600 flex justify-center items-center gap-6 font-semibold px-1">
             <li>
-              <Link to="/services">Home</Link>
+              <Link to="/" className="bg-[--color-brand]">Home</Link>
             </li>
             <li>
-              <Link to="/coverage">All Contests</Link>
+              <Link to="/all-contests">All Contests</Link>
             </li>
             <li>
-              <Link to="/about-us">Packages</Link>
+              <Link to="/packages">Packages</Link>
             </li>
             <li>
-              <Link to="/pricing">Resources</Link>
+              <Link to="/recources">Resources</Link>
             </li>
           </ul>
         </div>
