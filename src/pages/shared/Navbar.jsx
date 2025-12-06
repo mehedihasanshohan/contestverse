@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router";
-import logo from "/seller.png";
+import logo from "/trophy.png";
 // import useAuth from "../../../hooks/useAuth";
 
 const Navbar = () => {
@@ -55,7 +55,7 @@ const Navbar = () => {
             </ul>
           </div>
           <img src={logo} className="w-8 h-8" alt="" />
-          <a className="text-amber-500 ml-4 font-bold text-xl">Motiar Store</a>
+          <a className="text-amber-500 ml-4 font-bold text-xl">Contest Verse</a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="text-xl text-teal-600 flex justify-center items-center gap-6 font-semibold px-1">
