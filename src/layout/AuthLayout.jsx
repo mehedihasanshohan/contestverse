@@ -1,6 +1,6 @@
 import React from 'react';
 import { Outlet } from 'react-router';
-import authImage from '/assets/authImage.png';
+import authImage from '/authImage.png';
 
 const AuthLayout = () => {
   return (
