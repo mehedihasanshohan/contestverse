@@ -1,18 +1,18 @@
 import React from "react";
 import { Link } from "react-router";
 import logo from "/trophy.png";
-// import useAuth from "../../../hooks/useAuth";
+import useAuth from "../../hooks/useAuth";
 
 const Navbar = () => {
-  // const { user, logOut } = useAuth();
+  const { user, logOut } = useAuth();
 
-  // const handleLogout = () => {
-  //   logOut()
-  //   .then(res => console.log(res))
-  //   .catch(error => {
-  //     console.log(error);
-  //   })
-  // }
+  const handleLogout = () => {
+    logOut()
+    .then(res => console.log(res))
+    .catch(error => {
+      console.log(error);
+    })
+  }
 
   return (
     <>
@@ -73,15 +73,15 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        {/* <div className="navbar-end">
+        <div className="navbar-end">
           <img src={user?.photoURL} className="w-10 h-10 rounded-full mr-2" alt="" />
           {user ? (
             <a onClick={handleLogout} className="btn btn-accent mr-2">Sign Out</a>
           ) : (
             <Link to='/login' className="btn btn-info ml-4">Login</Link>
           )}
-          <Link className="btn btn-primary" to='/rider'>Be a Rider</Link>
-        </div> */}
+          <Link className="btn btn-primary" to='/beAcreator'>Be a Creator</Link>
+        </div>
       </div>
     </>
   );
