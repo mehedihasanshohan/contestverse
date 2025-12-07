@@ -1,10 +1,10 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { Link, useLocation, useNavigate } from 'react-router';
-// import SocialLogin from './SocialLogin';
 import axios from 'axios';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
 import useAuth from '../../hooks/useAuth';
+import SocialLogin from './SocailLogin';
 
 const Register = () => {
   const {
@@ -107,7 +107,7 @@ const Register = () => {
           }
           <button className="btn btn-accent mt-4">Register</button>
         </fieldset>
-        {/* <SocialLogin></SocialLogin> */}
+        <SocialLogin></SocialLogin>
         <p>Already have an Account? <Link state={location.state} className='text-blue-400 underline' to='/login'>Login</Link></p>
       </form>
     </div>

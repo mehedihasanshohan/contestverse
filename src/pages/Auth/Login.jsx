@@ -1,8 +1,8 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import useAuth from '../../hooks/useAuth';
 import { Link, useLocation, useNavigate } from 'react-router';
-// import SocialLogin from './SocialLogin';
+import useAuth from '../../hooks/useAuth';
+import SocialLogin from './SocailLogin';
 
 const Login = () => {
   const {
@@ -62,7 +62,7 @@ const Login = () => {
           }
           <button className="btn btn-accent mt-4">Login</button>
         </fieldset>
-        {/* <SocialLogin></SocialLogin> */}
+        <SocialLogin></SocialLogin>
         <p>New to Motiar Store? <Link state={location.state} className='text-blue-400 underline' to='/register'>Register</Link></p>
       </form>
     </div>

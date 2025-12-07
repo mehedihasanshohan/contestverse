@@ -1,7 +1,6 @@
 import React from "react";
-import useAuth from "../../hooks/useAuth";
 import { useLocation, useNavigate } from "react-router";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useAuth from "../../hooks/useAuth";
 
 const SocialLogin = () => {
   const {signInGoogle} = useAuth();
