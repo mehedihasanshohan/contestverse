@@ -13,7 +13,7 @@ const AllContests = () => {
   const { data: contests = [], isLoading } = useQuery({
     queryKey: ["all-approved-contests"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/contests"); // Your endpoint
+      const res = await axiosSecure.get("/contests");
       return res.data.filter(item => item.approvalStatus === "approved");
     },
   });
