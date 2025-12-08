@@ -14,7 +14,7 @@ const DetailsContest = () => {
   const { data: contest, isLoading, isError } = useQuery({
     queryKey: ["contest-details", id],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/contests/${id}`);
+      const res = await axiosSecure.get(`/contest-details/${id}`);
       return res.data;
     }
   });
@@ -63,8 +63,8 @@ const DetailsContest = () => {
   return (
     <div className="max-w-4xl mx-auto mt-10 bg-white shadow-xl p-8 rounded-xl">
       <img
-        src={contest.image}
-        alt={contest.name}
+        src={contest?.image}
+        alt={contest?.name}
         className="w-full h-80 object-cover rounded-xl"
       />
 

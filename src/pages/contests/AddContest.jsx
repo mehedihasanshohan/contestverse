@@ -51,7 +51,7 @@ const AddContest = () => {
       creatorName: user?.displayName,
       creatorEmail: user?.email,
       deadline: data.deadline.toISOString(),
-      status: "pending",
+      approvalStatus: "pending",
       participants: 0,
       winner: null,
       submissionCount: 0,
@@ -78,7 +78,7 @@ const AddContest = () => {
               showConfirmButton: false,
               timer: 1500,
             });
-            navigate("/dashboard/my-contests");
+            navigate("/");
           }
         });
       }

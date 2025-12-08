@@ -8,11 +8,11 @@ const Navbar = () => {
 
   const handleLogout = () => {
     logOut()
-    .then(res => console.log(res))
-    .catch(error => {
-      console.log(error);
-    })
-  }
+      .then((res) => console.log(res))
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <>
@@ -52,6 +52,9 @@ const Navbar = () => {
               <li>
                 <Link to="/resources">Resources</Link>
               </li>
+              <li>
+                <Link to="/add-contest">Add Contest</Link>
+              </li>
             </ul>
           </div>
           <img src={logo} className="w-8 h-8" alt="" />
@@ -60,7 +63,9 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="text-xl text-teal-600 flex justify-center items-center gap-6 font-semibold px-1">
             <li>
-              <Link to="/" className="bg-[--color-brand]">Home</Link>
+              <Link to="/" className="bg-[--color-brand]">
+                Home
+              </Link>
             </li>
             <li>
               <Link to="/all-contests">All Contests</Link>
@@ -71,16 +76,29 @@ const Navbar = () => {
             <li>
               <Link to="/recources">Resources</Link>
             </li>
+            <li>
+              <Link to="/add-contest">Add Contest</Link>
+            </li>
           </ul>
         </div>
         <div className="navbar-end">
-          <img src={user?.photoURL} className="w-10 h-10 rounded-full mr-2" alt="" />
+          <img
+            src={user?.photoURL}
+            className="w-10 h-10 rounded-full mr-2"
+            alt=""
+          />
           {user ? (
-            <a onClick={handleLogout} className="btn btn-accent mr-2">Sign Out</a>
+            <a onClick={handleLogout} className="btn btn-accent mr-2">
+              Sign Out
+            </a>
           ) : (
-            <Link to='/login' className="btn btn-info ml-4">Login</Link>
+            <Link to="/login" className="btn btn-info ml-4">
+              Login
+            </Link>
           )}
-          <Link className="btn btn-primary" to='/beAcreator'>Be a Creator</Link>
+          <Link className="btn btn-primary" to="/beAcreator">
+            Be a Creator
+          </Link>
         </div>
       </div>
     </>

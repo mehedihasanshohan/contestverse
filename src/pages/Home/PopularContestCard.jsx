@@ -1,16 +1,16 @@
 import { Link } from "react-router";
 import { useContext } from "react";
-import { AuthContext } from './../../context/AuthContext';
+import { AuthContext } from "../../context/AuthContext";
 
 const PopularContestCard = ({ contest }) => {
   const { user } = useContext(AuthContext);
-  const { id, name, image, participants, description } = contest;
+  const { _id, name, image, participants, description } = contest;
 
   const handleDetails = () => {
     if (!user) {
       return "/login";
     }
-    return '/contest-details/:id';
+    return `/contest-details/${contest._id}`;
   };
 
   return (
