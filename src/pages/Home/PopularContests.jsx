@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import { popularContests } from "../../data/popularContests";
 import PopularContestCard from "./PopularContestCard";
 
@@ -13,9 +14,9 @@ const PopularContests = () => {
       </div>
 
       <div className="text-center mt-6">
-        <a href="/all-contests" className="btn btn-outline">
+        <Link to="/all-contests" className="btn btn-outline">
           Show All
-        </a>
+        </Link>
       </div>
     </div>
   );

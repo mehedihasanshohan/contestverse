@@ -7,6 +7,8 @@ import Register from "../pages/Auth/Register";
 import PrivateRoutes from "./PrivateRoutes";
 import BeAcontestCreator from "../pages/contestCreator/BeAcontestCreator";
 import AddContest from "../pages/contests/AddContest";
+import AllContests from "../pages/AllContests/AllContests";
+import DetailsContest from "../pages/contests/DetailsContest";
 
 export const router = createBrowserRouter([
   {
@@ -16,6 +18,14 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <Home></Home>
+      },
+      {
+        path:'all-contests',
+        element: <AllContests></AllContests>,
+      },
+      {
+        path:'contest-details/:id',
+        element: <DetailsContest></DetailsContest>
       },
       {
         path: '/beAcreator',

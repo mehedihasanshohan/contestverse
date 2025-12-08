@@ -5,7 +5,7 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useAuth from "../../hooks/useAuth";
 import { useNavigate } from "react-router";
 import DatePicker from "react-datepicker";
-// import "react-datepicker/dist/react-datepicker.css";
+import "react-datepicker/dist/react-datepicker.css";
 
 const AddContest = () => {
   const { register, handleSubmit, setValue, watch } = useForm();
@@ -16,14 +16,48 @@ const AddContest = () => {
   const deadline = watch("deadline");
 
   const handleAddContest = (data) => {
+    // VALIDATIONS
+    if (!data.deadline) {
+      return Swal.fire("Error!", "Deadline is required.", "error");
+    }
+
+    const today = new Date();
+    if (new Date(data.deadline) <= today) {
+      return Swal.fire(
+        "Invalid Deadline",
+        "Deadline must be a future date.",
+        "error"
+      );
+    }
+
+    if (data.price < 0) {
+      return Swal.fire(
+        "Invalid Price",
+        "Entry price cannot be negative.",
+        "error"
+      );
+    }
+
+    if (data.prize <= 0) {
+      return Swal.fire(
+        "Invalid Prize",
+        "Prize money must be greater than 0.",
+        "error"
+      );
+    }
+
     const contestInfo = {
       ...data,
       creatorName: user?.displayName,
       creatorEmail: user?.email,
       deadline: data.deadline.toISOString(),
-      status: "pending", // admin approval optional
+      status: "pending",
+      participants: 0,
+      winner: null,
+      submissionCount: 0,
       createdAt: new Date(),
     };
+    console.log(contestInfo);
 
     Swal.fire({
       title: "Confirm Contest Creation?",
@@ -53,9 +87,7 @@ const AddContest = () => {
 
   return (
     <div>
-      <h2 className="text-4xl font-bold text-center mb-10">
-        Add New Contest
-      </h2>
+      <h2 className="text-4xl font-bold text-center mb-10">Add New Contest</h2>
 
       <form
         className="grid grid-cols-1 md:grid-cols-2 gap-10 p-6"

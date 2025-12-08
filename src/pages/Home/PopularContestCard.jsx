@@ -10,7 +10,7 @@ const PopularContestCard = ({ contest }) => {
     if (!user) {
       return "/login";
     }
-    return `/contest/${id}`;
+    return '/contest-details/:id';
   };
 
   return (
@@ -24,7 +24,7 @@ const PopularContestCard = ({ contest }) => {
       <h2 className="text-xl font-bold mt-3">{name}</h2>
 
       <p className="text-gray-600 text-sm">
-        {description.slice(0, 80)}...
+        {description.slice(0, 60)}...
       </p>
 
       <p className="font-medium mt-2">
