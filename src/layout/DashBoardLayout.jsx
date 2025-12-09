@@ -1,18 +1,20 @@
 import React from "react";
 import { Link, NavLink, Outlet } from "react-router";
-import { CiDeliveryTruck } from "react-icons/ci";
-import { FaHistory, FaMotorcycle, FaUser } from "react-icons/fa";
-import useRole from "../hooks/useRole";
+import { BsFillTrophyFill } from "react-icons/bs";
+import { IoShieldCheckmarkSharp } from "react-icons/io5";
+import { FaHistory } from "react-icons/fa";
+import { MdOutlineSpaceDashboard } from "react-icons/md";
+// import useRole from "../hooks/useRole";
 
 const DashBoardLayout = () => {
-  const { role } = useRole();
+  // const { role } = useRole();
 
   return (
     <div className="drawer lg:drawer-open max-w-7xl mx-auto">
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content">
         {/* Navbar */}
-        <nav className="navbar w-full bg-base-300">
+        <nav className="navbar w-full bg-teal-600 text-white">
           <label
             htmlFor="my-drawer-4"
             aria-label="open sidebar"
@@ -27,14 +29,17 @@ const DashBoardLayout = () => {
               strokeWidth="2"
               fill="none"
               stroke="currentColor"
-              className="my-1.5 inline-block size-4"
+              className="my-1.5 inline-block size-6"
             >
               <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path>
               <path d="M9 4v16"></path>
               <path d="M14 10l2 2l-2 2"></path>
             </svg>
           </label>
-          <div className="px-4">Navbar Title</div>
+          <div className="px-4 text-xl flex justify-center items-center gap-4">
+            <h2>DashBoard Panel</h2>
+            <MdOutlineSpaceDashboard className="w-6 h-6 "></MdOutlineSpaceDashboard>
+          </div>
         </nav>
         {/* Page content here */}
         <Outlet></Outlet>
@@ -83,8 +88,8 @@ const DashBoardLayout = () => {
                 data-tip="MyParcels"
                 to="/dashboard/my-parcel"
               >
-                <CiDeliveryTruck className="w-6 h-6"></CiDeliveryTruck>
-                <span className="is-drawer-close:hidden">My Parcels</span>
+                <BsFillTrophyFill classNameh-6 w-6></BsFillTrophyFill>
+                <span className="is-drawer-close:hidden">My Contests</span>
               </NavLink>
             </li>
             <li>
@@ -98,7 +103,7 @@ const DashBoardLayout = () => {
                 <span className="is-drawer-close:hidden">History</span>
               </NavLink>
             </li>
-            {role === "admin" && (
+            {/* {role === "admin" && (
               <>
                 <li>
                   <NavLink
@@ -107,22 +112,9 @@ const DashBoardLayout = () => {
                     data-tip="Approve Riders"
                     to="/dashboard/approve-riders"
                   >
-                    <FaMotorcycle className="w-6 h-6"></FaMotorcycle>
+                    <IoShieldCheckmarkSharp className="w-6 h-6"></IoShieldCheckmarkSharp>
                     <span className="is-drawer-close:hidden">
-                      Approve Riders
-                    </span>
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    className="is-drawer-close:tooltip
-                    is-drawer-close:tooltip-right"
-                    data-tip="Assign Riders"
-                    to="/dashboard/assign-riders"
-                  >
-                    <FaMotorcycle className="w-6 h-6"></FaMotorcycle>
-                    <span className="is-drawer-close:hidden">
-                      Assign Riders
+                      Approve Contest
                     </span>
                   </NavLink>
                 </li>
@@ -140,7 +132,7 @@ const DashBoardLayout = () => {
                   </NavLink>
                 </li>
               </>
-            )}
+            )} */}
 
             {/* List item */}
             <li>

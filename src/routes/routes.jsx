@@ -9,6 +9,8 @@ import BeAcontestCreator from "../pages/contestCreator/BeAcontestCreator";
 import AddContest from "../pages/contests/AddContest";
 import AllContests from "../pages/AllContests/AllContests";
 import DetailsContest from "../pages/contests/DetailsContest";
+import DashBoardLayout from "../layout/DashBoardLayout";
+import MyContests from "../pages/dashboard/MyContests";
 
 export const router = createBrowserRouter([
   {
@@ -50,6 +52,18 @@ export const router = createBrowserRouter([
       {
         path: '/register',
         element: <Register></Register>
+      }
+    ]
+  },
+  {
+    path: 'dashboard',
+    element: <PrivateRoutes>
+      <DashBoardLayout></DashBoardLayout>
+    </PrivateRoutes>,
+    children: [
+      {
+        path: 'my-contests',
+        element: <MyContests></MyContests>
       }
     ]
   }

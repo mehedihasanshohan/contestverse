@@ -79,6 +79,15 @@ const Navbar = () => {
             <li>
               <Link to="/add-contest">Add Contest</Link>
             </li>
+            <li>
+              <Link to='/dashboard'>DashBoard</Link>
+            </li>
+            {
+              user &&
+              <li>
+                <Link to='dashboard/my-contests'>My Contests</Link>
+              </li>
+            }
           </ul>
         </div>
         <div className="navbar-end">
