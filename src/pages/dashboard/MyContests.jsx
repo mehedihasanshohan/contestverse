@@ -2,11 +2,12 @@ import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
-import { FaTrashCan } from "react-icons/fa6";
+import { FaMagnifyingGlass, FaTrashCan } from "react-icons/fa6";
 import Swal from "sweetalert2";
 import { Link } from "react-router";
 import { GiConfirmed } from "react-icons/gi";
 import { TiDeleteOutline } from "react-icons/ti";
+import { FiEdit } from "react-icons/fi";
 
 const MyContests = () => {
   const { user } = useAuth();
@@ -20,7 +21,7 @@ const MyContests = () => {
     },
   });
 
-  const handleParcelDelete = (id) => {
+  const handleContestDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -61,7 +62,7 @@ const MyContests = () => {
               <th>Type</th>
               <th>Payment</th>
               <th>Delivery Status</th>
-              <th>Approve/Reject/Delete</th>
+              <th>Details/Edit/Delete</th>
             </tr>
           </thead>
           <tbody>
@@ -80,17 +81,17 @@ const MyContests = () => {
                     </Link>
                   }
                 </td>
-                <table>{contest.approvalStatus}</table>
+                <td>{contest.approvalStatus}</td>
                 <td>
-                  <button className="btn btn-square hover:bg-primary">
-                    <GiConfirmed></GiConfirmed>
+                  <button className="btn btn-square hover:bg-green-400">
+                    <FaMagnifyingGlass></FaMagnifyingGlass>
                   </button>
-                  <button className="btn btn-square hover:bg-primary mx-2">
-                    <TiDeleteOutline></TiDeleteOutline>
+                  <button className="btn btn-square hover:bg-orange-400 mx-2">
+                    <FiEdit></FiEdit>
                   </button>
                   <button
-                    onClick={() => handleParcelDelete(contest._id)}
-                    className="btn btn-square hover:bg-primary"
+                    onClick={() => handleContestDelete(contest._id)}
+                    className="btn btn-square hover:bg-red-400"
                   >
                     <FaTrashCan></FaTrashCan>
                   </button>

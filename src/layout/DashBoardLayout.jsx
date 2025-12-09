@@ -37,8 +37,8 @@ const DashBoardLayout = () => {
             </svg>
           </label>
           <div className="px-4 text-xl flex justify-center items-center gap-4">
-            <h2>DashBoard Panel</h2>
-            <MdOutlineSpaceDashboard className="w-6 h-6 "></MdOutlineSpaceDashboard>
+            <h2 className="">DashBoard Panel</h2>
+            {/* <MdOutlineSpaceDashboard className="w-6 h-6 "></MdOutlineSpaceDashboard> */}
           </div>
         </nav>
         {/* Page content here */}
@@ -52,14 +52,14 @@ const DashBoardLayout = () => {
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <div className="flex min-h-full flex-col items-start bg-base-200 is-drawer-close:w-14 is-drawer-open:w-64">
+        <div className="flex min-h-full flex-col items-start bg-base-100 is-drawer-close:w-14 is-drawer-open:w-64">
           {/* Sidebar content here */}
           <ul className="menu w-full grow">
             {/* List item */}
             <li>
               <Link
                 to="/"
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right mt-12"
                 data-tip="Homepage"
               >
                 {/* Home icon */}
@@ -71,7 +71,7 @@ const DashBoardLayout = () => {
                   strokeWidth="2"
                   fill="none"
                   stroke="currentColor"
-                  className="my-1.5 inline-block size-4"
+                  className="my-1.5 inline-block size-6 mt-12"
                 >
                   <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path>
                   <path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
@@ -85,10 +85,10 @@ const DashBoardLayout = () => {
               <NavLink
                 className="is-drawer-close:tooltip
                     is-drawer-close:tooltip-right"
-                data-tip="MyParcels"
-                to="/dashboard/my-parcel"
+                data-tip="My Contests"
+                to="/dashboard/my-contests"
               >
-                <BsFillTrophyFill classNameh-6 w-6></BsFillTrophyFill>
+                <BsFillTrophyFill className="w-6 h-6 mt-4"></BsFillTrophyFill>
                 <span className="is-drawer-close:hidden">My Contests</span>
               </NavLink>
             </li>
@@ -99,7 +99,7 @@ const DashBoardLayout = () => {
                 data-tip="Payment History"
                 to="/dashboard/payment-history"
               >
-                <FaHistory className="w-4 h-4"></FaHistory>
+                <FaHistory className="w-6 h-6 mt-4"></FaHistory>
                 <span className="is-drawer-close:hidden">History</span>
               </NavLink>
             </li>
@@ -149,7 +149,7 @@ const DashBoardLayout = () => {
                   strokeWidth="2"
                   fill="none"
                   stroke="currentColor"
-                  className="my-1.5 inline-block size-4"
+                  className="my-1.5 inline-block size-6 mt-4"
                 >
                   <path d="M20 7h-9"></path>
                   <path d="M14 17H5"></path>
