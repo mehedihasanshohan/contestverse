@@ -13,6 +13,7 @@ import DashBoardLayout from "../layout/DashBoardLayout";
 import MyContests from "../pages/dashboard/MyContests";
 import Payment from "../pages/dashboard/Payment";
 import PaymentSuccess from "../pages/dashboard/PaymentSuccess";
+import PaymentCancelled from "../pages/dashboard/PaymentCancelled";
 
 export const router = createBrowserRouter([
   {
@@ -72,8 +73,12 @@ export const router = createBrowserRouter([
         element: <Payment></Payment>
       },
       {
-        path: '/dashboard/payment-success',
+        path: 'payment-success',
         element: <PaymentSuccess></PaymentSuccess>
+      },
+      {
+        path: 'payment-cancelled',
+        element: <PaymentCancelled></PaymentCancelled>
       }
     ]
   }

@@ -47,7 +47,7 @@ const Payment = () => {
     {/* Image */}
     <div className="h-60 w-full overflow-hidden p-4 ">
       <img
-        src={contest.image}
+        src={contest?.image}
         className="object-cover w-full h-full rounded-xl"
       />
     </div>
