@@ -17,15 +17,17 @@ const Payment = () => {
 
    const handlePayment = async () => {
     const paymentInfo = {
-      cost: contest.cost,
-      parcelId: contest._id,
-      senderEmail: contest.senderEmail,
-      parcelName: contest.parcelName
-    }
-    const res = await axiosSecure.post('/create-checkout-session', paymentInfo);
+      cost: contest.price,
+      contestId: contest._id,
+      name: contest.name,
+      creatorEmail: contest.creatorEmail,
+      creatorName: contest.creatorName
+    };
+
+    const res = await axiosSecure.post("/create-checkout-session", paymentInfo);
     console.log(res.data);
     window.location.assign(res.data.url);
-   }
+   };
 
    if(isLoading){
     return <div>

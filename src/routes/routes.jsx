@@ -12,6 +12,7 @@ import DetailsContest from "../pages/contests/DetailsContest";
 import DashBoardLayout from "../layout/DashBoardLayout";
 import MyContests from "../pages/dashboard/MyContests";
 import Payment from "../pages/dashboard/Payment";
+import PaymentSuccess from "../pages/dashboard/PaymentSuccess";
 
 export const router = createBrowserRouter([
   {
@@ -69,6 +70,10 @@ export const router = createBrowserRouter([
       {
         path: 'payment/:contestId',
         element: <Payment></Payment>
+      },
+      {
+        path: '/dashboard/payment-success',
+        element: <PaymentSuccess></PaymentSuccess>
       }
     ]
   }
