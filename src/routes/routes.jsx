@@ -11,6 +11,7 @@ import AllContests from "../pages/AllContests/AllContests";
 import DetailsContest from "../pages/contests/DetailsContest";
 import DashBoardLayout from "../layout/DashBoardLayout";
 import MyContests from "../pages/dashboard/MyContests";
+import Payment from "../pages/dashboard/Payment";
 
 export const router = createBrowserRouter([
   {
@@ -64,6 +65,10 @@ export const router = createBrowserRouter([
       {
         path: 'my-contests',
         element: <MyContests></MyContests>
+      },
+      {
+        path: 'payment/:contestId',
+        element: <Payment></Payment>
       }
     ]
   }
