@@ -15,6 +15,8 @@ import Payment from "../pages/dashboard/Payment";
 import PaymentSuccess from "../pages/dashboard/PaymentSuccess";
 import PaymentCancelled from "../pages/dashboard/PaymentCancelled";
 import PaymentHistory from "../pages/dashboard/PaymentHistory";
+import PackagesPage from "../pages/packages/PackagesPage";
+import ResourcesPage from "../pages/Resources/ResourcesPage";
 
 export const router = createBrowserRouter([
   {
@@ -42,6 +44,14 @@ export const router = createBrowserRouter([
       {
         path:'/add-contest',
         element: <AddContest></AddContest>
+      },
+      {
+        path:'/packages',
+        element: <PackagesPage></PackagesPage>
+      },
+      {
+        path: '/resources',
+        element: <ResourcesPage></ResourcesPage>
       }
     ]
   },
