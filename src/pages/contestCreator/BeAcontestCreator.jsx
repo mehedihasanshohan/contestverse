@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
-import { useNavigate } from "react-router";
+// import { useNavigate } from "react-router";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 
@@ -9,11 +9,11 @@ const BeAcontestCreator = () => {
   const { register, handleSubmit } = useForm();
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleContestCreatorApplication = (data) => {
     console.log(data);
-    axiosSecure.post("/contest-creator", data).then((res) => {
+    axiosSecure.post("/creators", data).then((res) => {
       if (res.data.insertedId) {
         Swal.fire({
           position: "top-end",
@@ -78,7 +78,7 @@ const BeAcontestCreator = () => {
               type="text"
               className="input w-full"
               placeholder="Your Address"
-              {...register("address")}
+              {...register("contestCreatorAddress")}
             />
           </div>
 
