@@ -17,20 +17,17 @@ const ApproveCreator = () => {
     }
   })
 
-  const handleApproval = creator => {
-     updateRiderStatus( creator, 'approved');
-  }
 
-  const updateRiderStatus = (creator, status) => {
+  const updateCreatorStatus = (creator, status) => {
       const updateInfo = {status: status, email: creator.contestCreatorEmail}
-      axiosSecure.patch(`/riders/${creator._id}`, updateInfo)
+      axiosSecure.patch(`/creators/${creator._id}`, updateInfo)
       .then(res => {
-        if(res.data.modifiedCount){
+        if(res.data.modifiedCount ){
           refetch();
           Swal.fire({
             position: "top-end",
             icon: "success",
-            title: `Rider status is set to ${status}`,
+            title: `Creator status is set to ${status}`,
             showConfirmButton: false,
             timer: 1500
           })
@@ -38,14 +35,22 @@ const ApproveCreator = () => {
       })
   }
 
+  const handleApproval = creator => {
+    updateCreatorStatus(creator, 'approved')
+  }
+
   const handleRejection = creator => {
-    updateRiderStatus(creator, 'rejected')
+    updateCreatorStatus(creator, 'rejected')
+  }
+
+  const handleDelete = creator => {
+    console.log(creator._id);
   }
 
 
   return (
     <div>
-      <h2>Riders Pending Approval: {creators.length}</h2>
+      <h2 className="text-xl font-medium text-center mt-6 mb-2 text-amber-700">Creators Pending for Approval: {creators.length}</h2>
     <div className="overflow-x-auto">
   <table className="table table-zebra">
     {/* head */}
@@ -56,12 +61,12 @@ const ApproveCreator = () => {
         <th>Email</th>
         <th>Address</th>
         <th>Status</th>
-        <th>Actions</th>
+        <th>Accept / Reject / Delete</th>
       </tr>
     </thead>
     <tbody>
       {
-        creators.map((creator, index) =>  <tr>
+        creators.map((creator, index) =>  <tr key={creator._id}>
         <th>{index+1}</th>
         <td>{creator.contestCreatorName}</td>
         <td>{creator.contestCreatorEmail}</td>
@@ -72,9 +77,6 @@ const ApproveCreator = () => {
           }`}>{creator.status}</p>
         </td>
         <td>
-          <button className='btn'>
-            <FaEye></FaEye>
-          </button>
           <button
             onClick={() => handleApproval(creator)}
             className='btn text-teal-600 '>
@@ -85,7 +87,9 @@ const ApproveCreator = () => {
             className='btn text-red-600 ml-2 mr-2'>
             <IoPersonRemoveSharp></IoPersonRemoveSharp>
           </button>
-          <button className='btn text-red-400'>
+          <button
+          onClick={() => handleDelete(creator)}
+          className='btn text-red-400'>
             <FaTrashCan></FaTrashCan>
           </button>
         </td>
