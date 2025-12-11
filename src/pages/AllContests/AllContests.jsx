@@ -26,7 +26,7 @@ const AllContests = () => {
       ? contests
       : contests.filter(item => item.type === activeTab);
 
-  const tabs = ["all", "gaming", "design", "article", "business", "writing"];
+  const tabs = ["all", "gaming", "design", "article", "idea", "photography", "writing"];
 
   return (
     <div className="max-w-6xl mx-auto mt-16 px-4">

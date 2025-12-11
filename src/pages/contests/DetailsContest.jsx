@@ -76,6 +76,10 @@ const DetailsContest = () => {
 
         <div className="p-4 border rounded-xl">
           <p className="text-xl font-semibold">
+            Participants: <span className="text-blue-600">${contest.participants}</span>
+          </p>
+
+          <p className="text-xl font-semibold mt-2">
             Entry Price: <span className="text-blue-600">${contest.price}</span>
           </p>
 
