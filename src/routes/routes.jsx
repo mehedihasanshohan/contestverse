@@ -17,6 +17,7 @@ import PaymentCancelled from "../pages/dashboard/PaymentCancelled";
 import PaymentHistory from "../pages/dashboard/PaymentHistory";
 import PackagesPage from "../pages/packages/PackagesPage";
 import ResourcesPage from "../pages/Resources/ResourcesPage";
+import ApproveCreator from "../layout/Creator/ApproveCreator";
 
 export const router = createBrowserRouter([
   {
@@ -94,6 +95,10 @@ export const router = createBrowserRouter([
       {
         path: 'payment-history',
         element: <PaymentHistory></PaymentHistory>
+      },
+      {
+        path: 'approve-creator',
+        element: <ApproveCreator></ApproveCreator>
       }
     ]
   }

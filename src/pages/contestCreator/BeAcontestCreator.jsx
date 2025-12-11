@@ -1,18 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
-// import { useNavigate } from "react-router";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 
 const BeAcontestCreator = () => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
-  // const navigate = useNavigate();
+
+  useEffect(() => {
+    reset({
+      contestCreatorName: user?.displayName || "",
+      contestCreatorEmail: user?.email || "",
+      contestCreatorPhoneNumber: "",
+      contestCreatorAddress: "",
+    });
+  }, [user, reset]);
 
   const handleContestCreatorApplication = (data) => {
-    console.log(data);
+    console.log("FORM DATA SENT:", data);
+
     axiosSecure.post("/creators", data).then((res) => {
       if (res.data.insertedId) {
         Swal.fire({
@@ -23,6 +31,8 @@ const BeAcontestCreator = () => {
           showConfirmButton: false,
           timer: 1500,
         });
+
+        reset();
       }
     });
   };
@@ -37,7 +47,6 @@ const BeAcontestCreator = () => {
           Contest Creator FORM
         </h4>
 
-        {/* SINGLE COLUMN */}
         <div className="space-y-4">
 
           <div className="space-y-2">
@@ -45,8 +54,6 @@ const BeAcontestCreator = () => {
             <input
               type="text"
               className="input w-full"
-              placeholder="Contest Creator Name"
-              defaultValue={user?.displayName}
               {...register("contestCreatorName")}
             />
           </div>
@@ -56,8 +63,6 @@ const BeAcontestCreator = () => {
             <input
               type="text"
               className="input w-full"
-              placeholder="Contest Creator Email"
-              defaultValue={user?.email}
               {...register("contestCreatorEmail")}
             />
           </div>
@@ -67,7 +72,6 @@ const BeAcontestCreator = () => {
             <input
               type="number"
               className="input w-full"
-              placeholder="Contest Creator Phone Number"
               {...register("contestCreatorPhoneNumber")}
             />
           </div>
@@ -77,7 +81,6 @@ const BeAcontestCreator = () => {
             <input
               type="text"
               className="input w-full"
-              placeholder="Your Address"
               {...register("contestCreatorAddress")}
             />
           </div>

@@ -4,6 +4,8 @@ import { BsFillTrophyFill } from "react-icons/bs";
 import { IoShieldCheckmarkSharp } from "react-icons/io5";
 import { FaHistory } from "react-icons/fa";
 import { MdOutlineSpaceDashboard } from "react-icons/md";
+import { MdAssignmentTurnedIn } from "react-icons/md";
+import { MdAssignmentAdd } from "react-icons/md";
 // import useRole from "../hooks/useRole";
 
 const DashBoardLayout = () => {
@@ -89,7 +91,7 @@ const DashBoardLayout = () => {
                 to="/dashboard/my-contests"
               >
                 <BsFillTrophyFill className="w-6 h-6 mt-4"></BsFillTrophyFill>
-                <span className="is-drawer-close:hidden">My Contests</span>
+                <span className="is-drawer-close:hidden mt-4">My Contests</span>
               </NavLink>
             </li>
             <li>
@@ -100,7 +102,18 @@ const DashBoardLayout = () => {
                 to="/dashboard/payment-history"
               >
                 <FaHistory className="w-6 h-6 mt-4"></FaHistory>
-                <span className="is-drawer-close:hidden">History</span>
+                <span className="is-drawer-close:hidden mt-4">History</span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                className="is-drawer-close:tooltip
+                    is-drawer-close:tooltip-right"
+                data-tip="PApprove Creator"
+                to="/dashboard/approve-creator"
+              >
+                <MdAssignmentAdd className="h-6 w-6 mt-4"></MdAssignmentAdd>
+                <span className="is-drawer-close:hidden mt-4">Approve Creator</span>
               </NavLink>
             </li>
             {/* {role === "admin" && (
