@@ -18,6 +18,7 @@ import PaymentHistory from "../pages/dashboard/PaymentHistory";
 import PackagesPage from "../pages/packages/PackagesPage";
 import ResourcesPage from "../pages/Resources/ResourcesPage";
 import ApproveCreator from "../layout/Creator/ApproveCreator";
+import UsersManagement from "../layout/UsersManagement/UsersManagement";
 
 export const router = createBrowserRouter([
   {
@@ -99,6 +100,10 @@ export const router = createBrowserRouter([
       {
         path: 'approve-creator',
         element: <ApproveCreator></ApproveCreator>
+      },
+      {
+        path: 'user-management',
+        element: <UsersManagement></UsersManagement>
       }
     ]
   }

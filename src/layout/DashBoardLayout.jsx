@@ -2,7 +2,7 @@ import React from "react";
 import { Link, NavLink, Outlet } from "react-router";
 import { BsFillTrophyFill } from "react-icons/bs";
 import { IoShieldCheckmarkSharp } from "react-icons/io5";
-import { FaHistory } from "react-icons/fa";
+import { FaHistory, FaUser } from "react-icons/fa";
 import { MdOutlineSpaceDashboard } from "react-icons/md";
 import { MdAssignmentTurnedIn } from "react-icons/md";
 import { MdAssignmentAdd } from "react-icons/md";
@@ -109,11 +109,22 @@ const DashBoardLayout = () => {
               <NavLink
                 className="is-drawer-close:tooltip
                     is-drawer-close:tooltip-right"
-                data-tip="PApprove Creator"
+                data-tip="Approve Creator"
                 to="/dashboard/approve-creator"
               >
                 <MdAssignmentAdd className="h-6 w-6 mt-4"></MdAssignmentAdd>
                 <span className="is-drawer-close:hidden mt-4">Approve Creator</span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                className="is-drawer-close:tooltip
+                    is-drawer-close:tooltip-right"
+                data-tip="User Management"
+                to="/dashboard/user-management"
+              >
+                <FaUser className="w-6 h-6"></FaUser>
+                <span className="is-drawer-close:hidden mt-4">User Management</span>
               </NavLink>
             </li>
             {/* {role === "admin" && (
