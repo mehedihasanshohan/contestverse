@@ -6,10 +6,10 @@ import { FaHistory, FaUser } from "react-icons/fa";
 import { MdOutlineSpaceDashboard } from "react-icons/md";
 import { MdAssignmentTurnedIn } from "react-icons/md";
 import { MdAssignmentAdd } from "react-icons/md";
-// import useRole from "../hooks/useRole";
+import useRole from "../hooks/useRole";
 
 const DashBoardLayout = () => {
-  // const { role } = useRole();
+  const { role } = useRole();
 
   return (
     <div className="drawer lg:drawer-open max-w-7xl mx-auto">
@@ -105,40 +105,18 @@ const DashBoardLayout = () => {
                 <span className="is-drawer-close:hidden mt-4">History</span>
               </NavLink>
             </li>
-            <li>
-              <NavLink
-                className="is-drawer-close:tooltip
-                    is-drawer-close:tooltip-right"
-                data-tip="Approve Creator"
-                to="/dashboard/approve-creator"
-              >
-                <MdAssignmentAdd className="h-6 w-6 mt-4"></MdAssignmentAdd>
-                <span className="is-drawer-close:hidden mt-4">Approve Creator</span>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                className="is-drawer-close:tooltip
-                    is-drawer-close:tooltip-right"
-                data-tip="User Management"
-                to="/dashboard/user-management"
-              >
-                <FaUser className="w-6 h-6"></FaUser>
-                <span className="is-drawer-close:hidden mt-4">User Management</span>
-              </NavLink>
-            </li>
-            {/* {role === "admin" && (
+            {  role === "admin"  && (
               <>
                 <li>
                   <NavLink
                     className="is-drawer-close:tooltip
                     is-drawer-close:tooltip-right"
-                    data-tip="Approve Riders"
-                    to="/dashboard/approve-riders"
+                    data-tip="Approve Creator"
+                    to="/dashboard/approve-creator"
                   >
-                    <IoShieldCheckmarkSharp className="w-6 h-6"></IoShieldCheckmarkSharp>
-                    <span className="is-drawer-close:hidden">
-                      Approve Contest
+                    <MdAssignmentAdd className="h-6 w-6 mt-4"></MdAssignmentAdd>
+                    <span className="is-drawer-close:hidden mt-4">
+                      Approve Creator
                     </span>
                   </NavLink>
                 </li>
@@ -146,17 +124,17 @@ const DashBoardLayout = () => {
                   <NavLink
                     className="is-drawer-close:tooltip
                     is-drawer-close:tooltip-right"
-                    data-tip="Users Management"
-                    to="/dashboard/users-management"
+                    data-tip="User Management"
+                    to="/dashboard/user-management"
                   >
-                    <FaUser className="w-4 h-4"></FaUser>
-                    <span className="is-drawer-close:hidden">
+                    <FaUser className="w-6 h-6"></FaUser>
+                    <span className="is-drawer-close:hidden mt-4">
                       User Management
                     </span>
                   </NavLink>
                 </li>
               </>
-            )} */}
+            )}
 
             {/* List item */}
             <li>
