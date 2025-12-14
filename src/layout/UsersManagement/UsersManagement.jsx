@@ -5,7 +5,7 @@ import { FaUserShield } from 'react-icons/fa';
 import { FaShield } from 'react-icons/fa6';
 import Swal from 'sweetalert2';
 
-const UserManagement = () => {
+const UsersManagement = () => {
   const axiosSecure = useAxiosSecure();
 
   const { refetch, data: users = [] } = useQuery({
@@ -16,9 +16,9 @@ const UserManagement = () => {
     }
   });
 
-  const handleMakeUser = user => {
+  const handleMakeAdmin = user => {
     const roleInfo = {role : 'admin'}
-    axiosSecure.patch(`/users/${user._id}`, roleInfo)
+    axiosSecure.patch(`/users/${user._id}/role`, roleInfo)
       .then(res => {
         console.log(res.data);
         if(res.data.modifiedCount){
@@ -35,7 +35,7 @@ const UserManagement = () => {
   }
   const handleRemoveAdmin = user => {
     const roleInfo = {role : 'user'}
-    axiosSecure.patch(`/users/${user._id}`, roleInfo)
+    axiosSecure.patch(`/users/${user._id}/role`, roleInfo)
       .then(res => {
         console.log(res.data);
         if(res.data.modifiedCount){
@@ -103,7 +103,7 @@ const UserManagement = () => {
                       Remove Admin
                     </button> :
                     <button
-                      onClick={ () => handleMakeUser(user)}
+                      onClick={ () => handleMakeAdmin(user)}
                       className='btn bg-green-500'>
                       Make Admin
                     </button>
@@ -119,4 +119,4 @@ const UserManagement = () => {
   )
 }
 
-export default UserManagement;
+export default UsersManagement;

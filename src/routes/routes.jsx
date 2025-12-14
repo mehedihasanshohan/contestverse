@@ -17,8 +17,10 @@ import PaymentCancelled from "../pages/dashboard/PaymentCancelled";
 import PaymentHistory from "../pages/dashboard/PaymentHistory";
 import PackagesPage from "../pages/packages/PackagesPage";
 import ResourcesPage from "../pages/Resources/ResourcesPage";
-import ApproveCreator from "../layout/Creator/ApproveCreator";
+import AdminRoute from "./AdminRoute";
 import UsersManagement from "../layout/UsersManagement/UsersManagement";
+import ApproveCreator from './../layout/Creator/ApproveCreator';
+import ManageContests from "../layout/manage-contests/ManageContests";
 
 export const router = createBrowserRouter([
   {
@@ -99,11 +101,21 @@ export const router = createBrowserRouter([
       },
       {
         path: 'approve-creator',
-        element: <ApproveCreator></ApproveCreator>
+        element: <AdminRoute>
+          <ApproveCreator></ApproveCreator>
+        </AdminRoute>
       },
       {
         path: 'user-management',
-        element: <UsersManagement></UsersManagement>
+        element: <AdminRoute>
+          <UsersManagement></UsersManagement>
+        </AdminRoute>
+      },
+      {
+        path: 'manage-contests',
+        element: <AdminRoute>
+          <ManageContests></ManageContests>
+        </AdminRoute>
       }
     ]
   }

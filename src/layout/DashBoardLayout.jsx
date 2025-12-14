@@ -7,6 +7,8 @@ import { MdOutlineSpaceDashboard } from "react-icons/md";
 import { MdAssignmentTurnedIn } from "react-icons/md";
 import { MdAssignmentAdd } from "react-icons/md";
 import useRole from "../hooks/useRole";
+import { TbDatabaseCog } from "react-icons/tb";
+
 
 const DashBoardLayout = () => {
   const { role } = useRole();
@@ -105,8 +107,51 @@ const DashBoardLayout = () => {
                 <span className="is-drawer-close:hidden mt-4">History</span>
               </NavLink>
             </li>
+
+            {
+              role === 'creator' && (
+                <>
+                   <li>
+              <NavLink
+                className="is-drawer-close:tooltip
+                    is-drawer-close:tooltip-right"
+                data-tip="Payment History"
+                to="/dashboard/payment-history"
+              >
+                <FaHistory className="w-6 h-6 mt-4"></FaHistory>
+                <span className="is-drawer-close:hidden mt-4">History</span>
+              </NavLink>
+            </li>
+             <li>
+              <NavLink
+                className="is-drawer-close:tooltip
+                    is-drawer-close:tooltip-right"
+                data-tip="Payment History"
+                to="/dashboard/payment-history"
+              >
+                <FaHistory className="w-6 h-6 mt-4"></FaHistory>
+                <span className="is-drawer-close:hidden mt-4">History</span>
+              </NavLink>
+            </li>
+                </>
+              )
+            }
+
             {  role === "admin"  && (
               <>
+                <li>
+                  <NavLink
+                    className="is-drawer-close:tooltip
+                    is-drawer-close:tooltip-right"
+                    data-tip="Manage Contests"
+                    to="/dashboard/manage-contests"
+                  >
+                    <TbDatabaseCog className="w-6 h-6 mt-4"></TbDatabaseCog>
+                    <span className="is-drawer-close:hidden mt-4">
+                      Manage Contests
+                    </span>
+                  </NavLink>
+                </li>
                 <li>
                   <NavLink
                     className="is-drawer-close:tooltip
@@ -136,31 +181,6 @@ const DashBoardLayout = () => {
               </>
             )}
 
-            {/* List item */}
-            <li>
-              <button
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="Settings"
-              >
-                {/* Settings icon */}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  strokeLinejoin="round"
-                  strokeLinecap="round"
-                  strokeWidth="2"
-                  fill="none"
-                  stroke="currentColor"
-                  className="my-1.5 inline-block size-6 mt-4"
-                >
-                  <path d="M20 7h-9"></path>
-                  <path d="M14 17H5"></path>
-                  <circle cx="17" cy="17" r="3"></circle>
-                  <circle cx="7" cy="7" r="3"></circle>
-                </svg>
-                <span className="is-drawer-close:hidden">Settings</span>
-              </button>
-            </li>
           </ul>
         </div>
       </div>
