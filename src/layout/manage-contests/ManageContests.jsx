@@ -5,6 +5,8 @@ import { FaEye, FaUserCheck } from "react-icons/fa";
 import { IoPersonRemoveSharp } from "react-icons/io5";
 import { FaTrashCan } from "react-icons/fa6";
 import Swal from "sweetalert2";
+import { GiConfirmed } from "react-icons/gi";
+import { ImCancelCircle } from "react-icons/im";
 
 const ApproveCreator = () => {
   const axiosSecure = useAxiosSecure();
@@ -18,14 +20,14 @@ const ApproveCreator = () => {
   });
 
   const updateCreatorStatus = (contest, status) => {
-    const updateInfo = { status: status, email: contest.contestCreatorEmail };
-    axiosSecure.patch(`/creators/${contest._id}`, updateInfo).then((res) => {
+    const updateInfo = { status: status, email: contest.email };
+    axiosSecure.patch(`/contests/${contest._id}`, updateInfo).then((res) => {
       if (res.data.modifiedCount) {
         refetch();
         Swal.fire({
           position: "top-end",
           icon: "success",
-          title: `Creator status is set to ${status}`,
+          title: `Contest status is set to ${status}`,
           showConfirmButton: false,
           timer: 1500,
         });
@@ -33,16 +35,38 @@ const ApproveCreator = () => {
     });
   };
 
-  const handleApproval = (contest) => {
+  const handleContestConfirm = (contest) => {
     updateCreatorStatus(contest, "approved");
   };
 
-  const handleRejection = (contest) => {
+  const handleContestRejection = (contest) => {
     updateCreatorStatus(contest, "rejected");
   };
 
-  const handleDelete = (contest) => {
-    console.log(contest._id);
+  const handleContestDelete = (contest) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "This contest will be deleted permanently!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.delete(`/contests/${contest._id}`).then((res) => {
+          if (res.data.deletedCount > 0) {
+            refetch();
+            Swal.fire({
+              icon: "success",
+              title: "Deleted!",
+              text: "Contest has been deleted.",
+              timer: 1500,
+              showConfirmButton: false,
+            });
+          }
+        });
+      }
+    });
   };
 
   return (
@@ -61,7 +85,8 @@ const ApproveCreator = () => {
               <th>Prize</th>
               <th>Type</th>
               <th>Deadline</th>
-              <th>Accept / Reject / Delete</th>
+              <th>Approved-Status</th>
+              <th>Confirm / Reject / Delete</th>
             </tr>
           </thead>
           <tbody>
@@ -76,29 +101,29 @@ const ApproveCreator = () => {
                 <td>
                   <p
                     className={`${
-                      contest.status === "approved"
+                      contest.approvalStatus === "approved"
                         ? "text-green-500"
                         : "text-orange-500"
                     }`}
                   >
-                    {contest.status}
+                    {contest.approvalStatus}
                   </p>
                 </td>
                 <td>
                   <button
-                    onClick={() => handleApproval(contest)}
+                    onClick={() => handleContestConfirm(contest)}
                     className="btn text-teal-600 "
                   >
-                    <FaUserCheck></FaUserCheck>
+                    <GiConfirmed></GiConfirmed>
                   </button>
                   <button
-                    onClick={() => handleRejection(contest)}
+                    onClick={() => handleContestRejection(contest)}
                     className="btn text-red-600 ml-2 mr-2"
                   >
-                    <IoPersonRemoveSharp></IoPersonRemoveSharp>
+                    <ImCancelCircle></ImCancelCircle>
                   </button>
                   <button
-                    onClick={() => handleDelete(contest)}
+                    onClick={() => handleContestDelete(contest)}
                     className="btn text-red-400"
                   >
                     <FaTrashCan></FaTrashCan>
