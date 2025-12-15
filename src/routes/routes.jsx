@@ -21,6 +21,9 @@ import AdminRoute from "./AdminRoute";
 import UsersManagement from "../layout/UsersManagement/UsersManagement";
 import ApproveCreator from './../layout/Creator/ApproveCreator';
 import ManageContests from "../layout/manage-contests/ManageContests";
+import MyParticipatedContests from "../pages/dashboard/Normal-User/MyParticipatedContests";
+import MyWinningContests from "../pages/dashboard/Normal-User/MyWinningContests";
+import MyProfile from "../pages/dashboard/Normal-User/MyProfile";
 
 export const router = createBrowserRouter([
   {
@@ -116,6 +119,18 @@ export const router = createBrowserRouter([
         element: <AdminRoute>
           <ManageContests></ManageContests>
         </AdminRoute>
+      },
+      {
+        path: 'my-participated-contests',
+        element: <MyParticipatedContests></MyParticipatedContests>
+      },
+      {
+        path: 'my-winning-contests',
+        element: <MyWinningContests></MyWinningContests>
+      },
+      {
+        path: 'my-profile',
+        element: <MyProfile></MyProfile>
       }
     ]
   }

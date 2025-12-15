@@ -8,15 +8,20 @@ const DetailsContest = () => {
   const { id } = useParams();
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
+  const [isEnded, setIsEnded] = useState(false);
 
   const [countdown, setCountdown] = useState("");
 
-  const { data: contest, isLoading, isError } = useQuery({
+  const {
+    data: contest,
+    isLoading,
+    isError,
+  } = useQuery({
     queryKey: ["contest-details", id],
     queryFn: async () => {
       const res = await axiosSecure.get(`/contest-details/${id}`);
       return res.data;
-    }
+    },
   });
 
   // Countdown Logic
@@ -29,7 +34,8 @@ const DetailsContest = () => {
       const diff = end - now;
 
       if (diff <= 0) {
-        setCountdown("Expired");
+        setCountdown("Contest Ended");
+        setIsEnded(true);
         clearInterval(interval);
         return;
       }
@@ -39,6 +45,7 @@ const DetailsContest = () => {
       const minutes = Math.floor((diff / (1000 * 60)) % 60);
 
       setCountdown(`${days}d ${hours}h ${minutes}m`);
+      setIsEnded(false);
     }, 1000);
 
     return () => clearInterval(interval);
@@ -73,10 +80,10 @@ const DetailsContest = () => {
       <p className="text-lg text-gray-700 mt-3">{contest.description}</p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-
         <div className="p-4 border rounded-xl">
           <p className="text-xl font-semibold">
-            Participants: <span className="text-blue-600">${contest.participants}</span>
+            Participants:{" "}
+            <span className="text-blue-600">{contest.participants}</span>
           </p>
 
           <p className="text-xl font-semibold mt-2">
@@ -84,15 +91,22 @@ const DetailsContest = () => {
           </p>
 
           <p className="text-xl font-semibold mt-2">
-            Prize Money: <span className="text-green-600">${contest.prize}</span>
+            Prize Money:{" "}
+            <span className="text-green-600">${contest.prize}</span>
           </p>
 
           <p className="text-xl font-semibold mt-2">
             Type: <span className="capitalize">{contest.type}</span>
           </p>
 
-          <p className="text-xl font-semibold mt-2">
+          {/* <p className="text-xl font-semibold mt-2">
             Deadline: <span className="text-red-500">{countdown}</span>
+          </p> */}
+          <p className="text-xl font-semibold mt-2">
+            Deadline:{" "}
+            <span className={isEnded ? "text-red-600" : "text-red-500"}>
+              {countdown}
+            </span>
           </p>
         </div>
 
@@ -103,7 +117,7 @@ const DetailsContest = () => {
       </div>
 
       {/* Apply Button */}
-      <div className="mt-10">
+      {/* <div className="mt-10">
         {user ? (
           <Link to={`/apply/${contest._id}`}>
             <button className="btn btn-primary w-full">Participate Now</button>
@@ -113,6 +127,25 @@ const DetailsContest = () => {
             <button className="btn btn-outline w-full">
               Login to Participate
             </button>
+          </Link>
+        )}
+      </div> */}
+      <div className="mt-10">
+        {!user && (
+          <Link to="/login">
+            <button className="btn btn-outline w-full">
+              Login to Participate
+            </button>
+          </Link>
+        )}
+
+        {user && isEnded && (
+          <button className="btn btn-disabled w-full">Contest Ended</button>
+        )}
+
+        {user && !isEnded && (
+          <Link to={`/apply/${contest._id}`}>
+            <button className="btn btn-primary w-full">Participate Now</button>
           </Link>
         )}
       </div>
