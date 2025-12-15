@@ -51,6 +51,20 @@ const DetailsContest = () => {
     return () => clearInterval(interval);
   }, [contest]);
 
+  const handlePayment = async () => {
+    const paymentInfo = {
+      price: contest.price,
+      contestId: contest._id,
+      contestName: contest.name,
+      // userEmail: contest.creatorEmail,
+      // userName: contest.creatorName
+    };
+
+    const res = await axiosSecure.post("/create-checkout-session", paymentInfo);
+    console.log(res.data);
+    window.location.assign(res.data.url);
+  };
+
   // Loading UI
   if (isLoading)
     return (
@@ -99,9 +113,6 @@ const DetailsContest = () => {
             Type: <span className="capitalize">{contest.type}</span>
           </p>
 
-          {/* <p className="text-xl font-semibold mt-2">
-            Deadline: <span className="text-red-500">{countdown}</span>
-          </p> */}
           <p className="text-xl font-semibold mt-2">
             Deadline:{" "}
             <span className={isEnded ? "text-red-600" : "text-red-500"}>
@@ -116,20 +127,6 @@ const DetailsContest = () => {
         </div>
       </div>
 
-      {/* Apply Button */}
-      {/* <div className="mt-10">
-        {user ? (
-          <Link to={`/apply/${contest._id}`}>
-            <button className="btn btn-primary w-full">Participate Now</button>
-          </Link>
-        ) : (
-          <Link to="/login">
-            <button className="btn btn-outline w-full">
-              Login to Participate
-            </button>
-          </Link>
-        )}
-      </div> */}
       <div className="mt-10">
         {!user && (
           <Link to="/login">
@@ -143,10 +140,10 @@ const DetailsContest = () => {
           <button className="btn btn-disabled w-full">Contest Ended</button>
         )}
 
-        {user && !isEnded && (
-          <Link to={`/apply/${contest._id}`}>
-            <button className="btn btn-primary w-full">Participate Now</button>
-          </Link>
+        {user && !isEnded  && (
+          <button onClick={handlePayment} className="btn btn-primary w-full">
+            Register & Pay
+          </button>
         )}
       </div>
     </div>
