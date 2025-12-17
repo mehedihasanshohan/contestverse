@@ -2,7 +2,7 @@ import React from "react";
 import { Link, NavLink, Outlet } from "react-router";
 // import { BsFillTrophyFill } from "react-icons/bs";
 // import { IoShieldCheckmarkSharp } from "react-icons/io5";
-import { FaHistory, FaUser, FaUserCircle } from "react-icons/fa";
+import { FaClipboardCheck, FaHistory, FaUser, FaUserCircle } from "react-icons/fa";
 // import { MdOutlineSpaceDashboard } from "react-icons/md";
 // import { MdAssignmentTurnedIn } from "react-icons/md";
 import { MdAssignmentAdd } from "react-icons/md";
@@ -10,6 +10,8 @@ import useRole from "../hooks/useRole";
 import { TbDatabaseCog } from "react-icons/tb";
 import { GiPodiumWinner } from "react-icons/gi";
 import { FaClipboardList } from "react-icons/fa6";
+import { BsClipboardPlusFill } from "react-icons/bs";
+import { LuClipboardPen } from "react-icons/lu";
 
 const DashBoardLayout = () => {
   const { role } = useRole();
@@ -159,22 +161,44 @@ const DashBoardLayout = () => {
                   <NavLink
                     className="is-drawer-close:tooltip
                     is-drawer-close:tooltip-right"
-                    data-tip="Payment History"
-                    to="/dashboard/payment-history"
+                    data-tip="Add Contest"
+                    to="/dashboard/add-contest"
                   >
-                    <FaHistory className="w-6 h-6 mt-4"></FaHistory>
-                    <span className="is-drawer-close:hidden mt-4">History</span>
+                    <BsClipboardPlusFill className="w-6 h-6 mt-4"></BsClipboardPlusFill>
+                    <span className="is-drawer-close:hidden mt-4">Add Contest</span>
                   </NavLink>
                 </li>
                 <li>
                   <NavLink
                     className="is-drawer-close:tooltip
                     is-drawer-close:tooltip-right"
-                    data-tip="Payment History"
-                    to="/dashboard/payment-history"
+                    data-tip="My Created Contest"
+                    to="/dashboard/my-created-contest"
                   >
-                    <FaHistory className="w-6 h-6 mt-4"></FaHistory>
-                    <span className="is-drawer-close:hidden mt-4">History</span>
+                    <FaClipboardList className="w-6 h-6 mt-4"></FaClipboardList>
+                    <span className="is-drawer-close:hidden mt-4">My Created Contest</span>
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    className="is-drawer-close:tooltip
+                    is-drawer-close:tooltip-right"
+                    data-tip="Submitted Task"
+                    to="/dashboard/submitted-task"
+                  >
+                    <FaClipboardCheck className="w-6 h-6 mt-4"></FaClipboardCheck>
+                    <span className="is-drawer-close:hidden mt-4">Submitted Task</span>
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    className="is-drawer-close:tooltip
+                    is-drawer-close:tooltip-right"
+                    data-tip="Edit Contest"
+                    to="/dashboard/edit-contest"
+                  >
+                    <LuClipboardPen className="w-6 h-6 mt-4"></LuClipboardPen>
+                    <span className="is-drawer-close:hidden mt-4">Edit Contest</span>
                   </NavLink>
                 </li>
               </>

@@ -24,6 +24,9 @@ import ManageContests from "../layout/manage-contests/ManageContests";
 import MyParticipatedContests from "../pages/dashboard/Normal-User/MyParticipatedContests";
 import MyWinningContests from "../pages/dashboard/Normal-User/MyWinningContests";
 import MyProfile from "../pages/dashboard/Normal-User/MyProfile";
+import MyCreatedContests from "../pages/dashboard/contestCreator/MyCreatedContests";
+import SubmittedTask from "../pages/dashboard/contestCreator/SubmittedTask";
+import EditContest from "../pages/dashboard/contestCreator/EditContest";
 
 export const router = createBrowserRouter([
   {
@@ -129,8 +132,24 @@ export const router = createBrowserRouter([
         element: <MyWinningContests></MyWinningContests>
       },
       {
+        path: 'add-contest',
+        element: <AddContest></AddContest>
+      },
+      {
         path: 'my-profile',
         element: <MyProfile></MyProfile>
+      },
+      {
+        path:'my-created-contest',
+        element: <MyCreatedContests></MyCreatedContests>
+      },
+      {
+        path: 'submitted-task',
+        element: <SubmittedTask></SubmittedTask>
+      },
+      {
+        path: 'edit-contest',
+        element: <EditContest></EditContest>
       }
     ]
   }
