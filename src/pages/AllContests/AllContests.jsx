@@ -14,7 +14,7 @@ const AllContests = () => {
     queryKey: ["all-approved-contests"],
     queryFn: async () => {
       const res = await axiosSecure.get("/contests");
-      return res.data.filter(item => item.approvalStatus === "pending");
+      return res.data.filter(item => item.approvalStatus === "approved");
     },
   });
 
