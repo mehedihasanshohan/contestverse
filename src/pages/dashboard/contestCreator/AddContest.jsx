@@ -145,11 +145,11 @@ const AddContest = () => {
             {...register("type", { required: true })}
           >
             <option value="">Pick a type</option>
-            <option value="design">Design Contest</option>
-            <option value="article">Article Writing</option>
-            <option value="idea">Business Ideas</option>
-            <option value="gaming">Gaming Review</option>
-            <option value="photography">Photography</option>
+            <option value="Design contest">Design Contest</option>
+            <option value="Article writing">Article Writing</option>
+            <option value="Business idea">Business Ideas</option>
+            <option value="Gaming review">Gaming Review</option>
+            <option value="Photography contest">Photography</option>
           </select>
         </div>
 

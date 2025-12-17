@@ -14,7 +14,7 @@ const AllContests = () => {
     queryKey: ["all-approved-contests"],
     queryFn: async () => {
       const res = await axiosSecure.get("/contests");
-      return res.data.filter(item => item.approvalStatus === "approved");
+      return res.data.filter(item => item.approvalStatus === "pending");
     },
   });
 
@@ -26,7 +26,7 @@ const AllContests = () => {
       ? contests
       : contests.filter(item => item.type === activeTab);
 
-  const tabs = ["all", "gaming", "design", "article", "idea", "photography", "writing"];
+  const tabs = ["all", "Gaming review", "Design contest", "Article writing", "Business idea", "Photography contest"];
 
   return (
     <div className="max-w-6xl mx-auto mt-16 px-4">
