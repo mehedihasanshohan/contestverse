@@ -20,28 +20,58 @@ const SubmittedTasks = () => {
   });
 
   // 2. Declare winner
+  // const handleDeclareWinner = (submissionId) => {
+  //   Swal.fire({
+  //     title: "Declare Winner?",
+  //     text: "Only one winner is allowed!",
+  //     icon: "warning",
+  //     showCancelButton: true,
+  //     confirmButtonText: "Yes, Declare!",
+  //   }).then((result) => {
+  //     if (result.isConfirmed) {
+  //       axiosSecure
+  //         .patch(`/submissions/declare-winner/${submissionId}`,{
+  //           contestId,
+  //         })
+  //         .then(() => {
+  //           Swal.fire("Success!", "Winner declared", "success");
+  //           refetch();
+  //         })
+  //         .catch((err) => {
+  //           Swal.fire(
+  //             "Error",
+  //             err.response?.data?.message || "Something went wrong",
+  //             "error"
+  //           );
+  //         });
+  //     }
+  //   });
+  // };
+
+  // 2. Declare winner
   const handleDeclareWinner = (submissionId) => {
+    // Confirm
     Swal.fire({
       title: "Declare Winner?",
-      text: "Only one winner is allowed!",
+      text: "Only one winner is allowed per contest!",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonText: "Yes",
-    }).then((result) => {
+      confirmButtonText: "Yes, declare",
+    }).then(async (result) => {
       if (result.isConfirmed) {
-        axiosSecure
-          .patch(`/submissions/declare-winner/${submissionId}`)
-          .then(() => {
-            Swal.fire("Success!", "Winner declared", "success");
-            refetch();
-          })
-          .catch((err) => {
-            Swal.fire(
-              "Error",
-              err.response?.data?.message || "Something went wrong",
-              "error"
-            );
-          });
+        try {
+          await axiosSecure.patch(
+            `/submissions/declare-winner/${submissionId}`
+          );
+          Swal.fire("Success!", "Winner declared", "success");
+          refetch();
+        } catch (err) {
+          Swal.fire(
+            "Error",
+            err.response?.data?.message || "Something went wrong",
+            "error"
+          );
+        }
       }
     });
   };
@@ -77,7 +107,7 @@ const SubmittedTasks = () => {
               <td>
                 <button
                   onClick={() => openSubmissionLinkModal(sub)}
-                  className="btn"
+                  className="btn btn-sm"
                 >
                   View
                 </button>
