@@ -61,7 +61,7 @@ const MyContests = () => {
               <th>Price</th>
               <th>Type</th>
               <th>Status</th>
-              <th className="">Edit / Delete / Submissions</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -90,11 +90,15 @@ const MyContests = () => {
                     </>
                   )}
 
-                  <Link to={`/dashboard/submissions/${contest._id}`}>
-                    <button className="btn btn-sm btn-info">
-                    Submissions
-                    </button>
-                  </Link>
+                  {contest.approvalStatus === "approved" && (
+                    <>
+                      <Link to={`/dashboard/submissions/${contest._id}`}>
+                        <button className="btn btn-sm btn-info">
+                          Submissions
+                        </button>
+                      </Link>
+                    </>
+                  )}
                 </td>
               </tr>
             ))}

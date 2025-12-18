@@ -103,7 +103,7 @@ const Navbar = () => {
 
             <ul
               tabIndex="-1"
-              className="dropdown-content menu bg-base-300 rounded-box z-1 w-52 p-2 shadow-sm"
+              className="dropdown-content menu bg-base-300 rounded-box z-1 w-52 p-2 right-0 shadow-sm"
             >
               <li>
                 <Link>{user?.displayName}</Link>
@@ -125,9 +125,13 @@ const Navbar = () => {
           </Link>
         )}
 
-        <Link className="btn btn-primary" to="/beAcreator">
-          Be a Creator
-        </Link>
+        {role !== "admin" && role !== "creator" && (
+          <>
+            <Link className="btn btn-primary" to="/beAcreator">
+              Be a Creator
+            </Link>
+          </>
+        )}
       </div>
     </div>
   );

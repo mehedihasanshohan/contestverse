@@ -145,6 +145,8 @@ const DetailsContest = () => {
             Register & Pay
           </button>
         )}
+
+        
       </div>
     </div>
   );

@@ -15,6 +15,7 @@ import { LuClipboardPen } from "react-icons/lu";
 
 const DashBoardLayout = () => {
   const { role } = useRole();
+  console.log(role);
 
   return (
     <div className="drawer lg:drawer-open max-w-7xl mx-auto">
@@ -177,28 +178,6 @@ const DashBoardLayout = () => {
                   >
                     <FaClipboardList className="w-6 h-6 mt-4"></FaClipboardList>
                     <span className="is-drawer-close:hidden mt-4">My Created Contest</span>
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    className="is-drawer-close:tooltip
-                    is-drawer-close:tooltip-right"
-                    data-tip="Submitted Task"
-                    to="/dashboard/submitted-task"
-                  >
-                    <FaClipboardCheck className="w-6 h-6 mt-4"></FaClipboardCheck>
-                    <span className="is-drawer-close:hidden mt-4">Submitted Task</span>
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    className="is-drawer-close:tooltip
-                    is-drawer-close:tooltip-right"
-                    data-tip="Edit Contest"
-                    to="/dashboard/edit-contest"
-                  >
-                    <LuClipboardPen className="w-6 h-6 mt-4"></LuClipboardPen>
-                    <span className="is-drawer-close:hidden mt-4">Edit Contest</span>
                   </NavLink>
                 </li>
               </>

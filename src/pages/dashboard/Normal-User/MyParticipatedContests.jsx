@@ -23,7 +23,7 @@ const MyParticipatedContests = () => {
 
     try {
       await axiosSecure.post("/submissions", {
-        contestId: selectedContest._id,
+        contestId: selectedContest.contestId,
         contestName: selectedContest.contestName,
         submissionText: data.taskLink,
       });

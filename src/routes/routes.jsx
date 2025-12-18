@@ -19,7 +19,7 @@ import PackagesPage from "../pages/packages/PackagesPage";
 import ResourcesPage from "../pages/Resources/ResourcesPage";
 import AdminRoute from "./AdminRoute";
 import UsersManagement from "../layout/UsersManagement/UsersManagement";
-import ApproveCreator from './../layout/Creator/ApproveCreator';
+import ApproveCreator from "./../layout/Creator/ApproveCreator";
 import ManageContests from "../layout/manage-contests/ManageContests";
 import MyParticipatedContests from "../pages/dashboard/Normal-User/MyParticipatedContests";
 import MyWinningContests from "../pages/dashboard/Normal-User/MyWinningContests";
@@ -27,6 +27,8 @@ import MyProfile from "../pages/dashboard/Normal-User/MyProfile";
 import MyCreatedContests from "../pages/dashboard/contestCreator/MyCreatedContests";
 import SubmittedTask from "../pages/dashboard/contestCreator/SubmittedTask";
 import EditContest from "../pages/dashboard/contestCreator/EditContest";
+import SubmittedTasks from "../pages/dashboard/contestCreator/SubmittedTask";
+import DashboardHome from "../layout/Dashboard/DashboardHome";
 
 export const router = createBrowserRouter([
   {
@@ -35,122 +37,140 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home></Home>
+        element: <Home></Home>,
       },
       {
-        path:'all-contests',
+        path: "all-contests",
         element: <AllContests></AllContests>,
       },
       {
-        path:'contest-details/:id',
-        element: <DetailsContest></DetailsContest>
+        path: "contest-details/:id",
+        element: <DetailsContest></DetailsContest>,
       },
       {
-        path: '/beAcreator',
-        element: <PrivateRoutes>
-          <BeAcontestCreator></BeAcontestCreator>
-        </PrivateRoutes>
+        path: "/beAcreator",
+        element: (
+          <PrivateRoutes>
+            <BeAcontestCreator></BeAcontestCreator>
+          </PrivateRoutes>
+        ),
       },
       {
-        path:'/add-contest',
-        element: <AddContest></AddContest>
+        path: "/add-contest",
+        element: <AddContest></AddContest>,
       },
       {
-        path:'/packages',
-        element: <PackagesPage></PackagesPage>
+        path: "/packages",
+        element: <PackagesPage></PackagesPage>,
       },
       {
-        path: '/resources',
-        element: <ResourcesPage></ResourcesPage>
-      }
-    ]
+        path: "/resources",
+        element: <ResourcesPage></ResourcesPage>,
+      },
+    ],
   },
   {
-    path: '/',
+    path: "/",
     element: <AuthLayout></AuthLayout>,
     children: [
       {
-        path: '/login',
-        element: <Login></Login>
+        path: "/login",
+        element: <Login></Login>,
       },
       {
-        path: '/register',
-        element: <Register></Register>
-      }
-    ]
+        path: "/register",
+        element: <Register></Register>,
+      },
+    ],
   },
   {
-    path: 'dashboard',
-    element: <PrivateRoutes>
-      <DashBoardLayout></DashBoardLayout>
-    </PrivateRoutes>,
+    path: "dashboard",
+    element: (
+      <PrivateRoutes>
+        <DashBoardLayout></DashBoardLayout>
+      </PrivateRoutes>
+    ),
     children: [
       {
-        path: 'my-contests',
-        element: <MyContests></MyContests>
+        path: '',
+        element:<DashboardHome></DashboardHome>
       },
       {
-        path: 'payment/:contestId',
-        element: <Payment></Payment>
+        path: "my-contests",
+        element: <MyContests></MyContests>,
       },
       {
-        path: 'payment-success',
-        element: <PaymentSuccess></PaymentSuccess>
+        path: "payment/:contestId",
+        element: <Payment></Payment>,
       },
       {
-        path: 'payment-cancelled',
-        element: <PaymentCancelled></PaymentCancelled>
+        path: "payment-success",
+        element: <PaymentSuccess></PaymentSuccess>,
       },
       {
-        path: 'payment-history',
-        element: <PaymentHistory></PaymentHistory>
+        path: "payment-cancelled",
+        element: <PaymentCancelled></PaymentCancelled>,
       },
       {
-        path: 'approve-creator',
-        element: <AdminRoute>
-          <ApproveCreator></ApproveCreator>
-        </AdminRoute>
+        path: "payment-history",
+        element: <PaymentHistory></PaymentHistory>,
       },
       {
-        path: 'user-management',
-        element: <AdminRoute>
-          <UsersManagement></UsersManagement>
-        </AdminRoute>
+        path: "approve-creator",
+        element: (
+          <AdminRoute>
+            <ApproveCreator></ApproveCreator>
+          </AdminRoute>
+        ),
       },
       {
-        path: 'manage-contests',
-        element: <AdminRoute>
-          <ManageContests></ManageContests>
-        </AdminRoute>
+        path: "user-management",
+        element: (
+          <AdminRoute>
+            <UsersManagement></UsersManagement>
+          </AdminRoute>
+        ),
       },
       {
-        path: 'my-participated-contests',
-        element: <MyParticipatedContests></MyParticipatedContests>
+        path: "manage-contests",
+        element: (
+          <AdminRoute>
+            <ManageContests></ManageContests>
+          </AdminRoute>
+        ),
       },
       {
-        path: 'my-winning-contests',
-        element: <MyWinningContests></MyWinningContests>
+        path: "my-participated-contests",
+        element: <MyParticipatedContests></MyParticipatedContests>,
       },
       {
-        path: 'add-contest',
-        element: <AddContest></AddContest>
+        path: "my-winning-contests",
+        element: <MyWinningContests></MyWinningContests>,
       },
       {
-        path: 'my-profile',
-        element: <MyProfile></MyProfile>
+        path: "add-contest",
+        element: <AddContest></AddContest>,
       },
       {
-        path:'my-created-contest',
-        element: <MyCreatedContests></MyCreatedContests>
+        path: "my-profile",
+        element: <MyProfile></MyProfile>,
       },
       {
-        path: 'submitted-task',
-        element: <SubmittedTask></SubmittedTask>
+        path: "my-created-contest",
+        element: <MyCreatedContests></MyCreatedContests>,
       },
       {
-        path: 'edit-contest/:id',
-        element: <EditContest></EditContest>
-      }
-    ]
-  }
-])
+        path: "submitted-task",
+        element: <SubmittedTask></SubmittedTask>,
+      },
+      {
+        path: "edit-contest/:id",
+        element: <EditContest></EditContest>,
+      },
+      {
+        path: "submissions/:contestId",
+        element: <SubmittedTasks></SubmittedTasks>
+      },
+    ],
+  },
+]);

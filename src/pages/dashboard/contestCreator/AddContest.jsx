@@ -87,7 +87,7 @@ const AddContest = () => {
 
   return (
     <div>
-      <h2 className="text-4xl font-bold text-center mb-10">Add New Contest</h2>
+      <h2 className="text-xl font-medium text-center mt-6 mb-2 text-amber-700">Add New Contest</h2>
 
       <form
         className="grid grid-cols-1 md:grid-cols-2 gap-10 p-6"

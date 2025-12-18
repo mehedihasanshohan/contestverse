@@ -75,7 +75,7 @@ const EditContest = () => {
 
   return (
     <div className="max-w-4xl mx-auto p-6 bg-base-100 shadow-lg rounded-lg">
-      <h2 className="text-3xl font-bold text-center mb-6 text-amber-700">
+      <h2 className="text-xl font-medium text-center mt-6 mb-2 text-amber-700">
         Edit Contest
       </h2>
 
