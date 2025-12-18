@@ -2,18 +2,19 @@ import { useParams } from "react-router";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { useRef, useState } from "react";
 
 const SubmittedTasks = () => {
   const { contestId } = useParams();
   const axiosSecure = useAxiosSecure();
+  const submissionModalRef = useRef();
+  const [selectedSubmission, setSelectedSubmission] = useState(null);
 
   // 1. Load submissions of this contest
   const { data: submissions = [], refetch } = useQuery({
     queryKey: ["submissions", contestId],
     queryFn: async () => {
-      const res = await axiosSecure.get(
-        `/submissions/contest/${contestId}`
-      );
+      const res = await axiosSecure.get(`/submissions/contest/${contestId}`);
       return res.data;
     },
   });
@@ -45,6 +46,11 @@ const SubmittedTasks = () => {
     });
   };
 
+  const openSubmissionLinkModal = (sub) => {
+    setSelectedSubmission(sub);
+    submissionModalRef.current.showModal();
+  };
+
   return (
     <div>
       <h2 className="text-xl font-medium text-center mt-6 mb-2 text-amber-700">
@@ -69,23 +75,19 @@ const SubmittedTasks = () => {
               <td>{sub.userName}</td>
               <td>{sub.userEmail}</td>
               <td>
-                <btn
-                  onClick={() => handleViewSubmissionLink()}
+                <button
+                  onClick={() => openSubmissionLinkModal(sub)}
                   className="btn"
                 >
                   View
-                </btn>
+                </button>
               </td>
               <td>
                 {sub.status === "winner" ? (
-                  <span className="badge badge-success">
-                    Winner 🏆
-                  </span>
+                  <span className="badge badge-success">Winner 🏆</span>
                 ) : (
                   <button
-                    onClick={() =>
-                      handleDeclareWinner(sub._id)
-                    }
+                    onClick={() => handleDeclareWinner(sub._id)}
                     className="btn btn-sm btn-warning"
                   >
                     Declare Winner
@@ -96,6 +98,25 @@ const SubmittedTasks = () => {
           ))}
         </tbody>
       </table>
+
+      {/* modal */}
+      <dialog
+        ref={submissionModalRef}
+        className="modal modal-bottom sm:modal-middle"
+      >
+        <div className="modal-box">
+          <h3 className="font-bold text-lg">
+            {selectedSubmission?.contestName}
+          </h3>
+          <p>Submission:</p>
+          <p className="py-4">{selectedSubmission?.submissionText}</p>
+          <div className="modal-action">
+            <form method="dialog">
+              <button className="btn">Close</button>
+            </form>
+          </div>
+        </div>
+      </dialog>
     </div>
   );
 };
