@@ -2,9 +2,12 @@ import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import PopularContestCard from "../Home/PopularContestCard";
+import { useSearchParams } from "react-router";
 
 const AllContests = () => {
   const axiosSecure = useAxiosSecure();
+  const [searchParams] = useSearchParams();
+const searchType = searchParams.get("type");
 
   // TAB State
   const [activeTab, setActiveTab] = useState("all");
@@ -21,10 +24,18 @@ const AllContests = () => {
   if (isLoading) return <p className="text-center">Loading...</p>;
 
   // FILTERING BASED ON TYPE
-  const filteredContests =
-    activeTab === "all"
-      ? contests
-      : contests.filter(item => item.type === activeTab);
+  // const filteredContests =
+  //   activeTab === "all"
+  //     ? contests
+  //     : contests.filter(item => item.type === activeTab);
+const filteredContests =
+  searchType
+    ? contests.filter(item =>
+        item.type.toLowerCase().includes(searchType.toLowerCase())
+      )
+    : activeTab === "all"
+    ? contests
+    : contests.filter(item => item.type === activeTab);
 
   const tabs = ["all", "Gaming review", "Design contest", "Article writing", "Business idea", "Photography contest"];
 
