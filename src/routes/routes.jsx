@@ -29,6 +29,7 @@ import SubmittedTask from "../pages/dashboard/contestCreator/SubmittedTask";
 import EditContest from "../pages/dashboard/contestCreator/EditContest";
 import SubmittedTasks from "../pages/dashboard/contestCreator/SubmittedTask";
 import DashboardHome from "../layout/Dashboard/DashboardHome";
+import Errorpage from "../pages/Errorpage/Errorpage";
 
 export const router = createBrowserRouter([
   {
@@ -173,4 +174,8 @@ export const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: "*",
+    element: <Errorpage></Errorpage>
+  }
 ]);
