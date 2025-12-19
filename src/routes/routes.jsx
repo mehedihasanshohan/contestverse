@@ -172,6 +172,10 @@ export const router = createBrowserRouter([
         path: "submissions/:contestId",
         element: <SubmittedTasks></SubmittedTasks>
       },
+      {
+        path: 'my-profile',
+        element: <MyProfile></MyProfile>
+      }
     ],
   },
   {

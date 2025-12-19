@@ -3,11 +3,13 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useAuth from "../../hooks/useAuth";
 import { useEffect, useState } from "react";
+import useRole from './../../hooks/useRole';
 
 const DetailsContest = () => {
   const { id } = useParams();
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
+  const { role } = useRole();
   const [isEnded, setIsEnded] = useState(false);
 
   const [countdown, setCountdown] = useState("");
@@ -140,13 +142,13 @@ const DetailsContest = () => {
           <button className="btn btn-disabled w-full">Contest Ended</button>
         )}
 
-        {user && !isEnded  && (
+        {user && !isEnded && role !== 'creator'  && (
           <button onClick={handlePayment} className="btn btn-primary w-full">
             Register & Pay
           </button>
         )}
 
-        
+
       </div>
     </div>
   );
