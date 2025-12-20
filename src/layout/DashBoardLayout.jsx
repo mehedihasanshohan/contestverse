@@ -157,7 +157,7 @@ const DashBoardLayout = () => {
             )}
 
             {role === "creator" && (
-              <>
+              <div className="text-gray-200">
                 <li>
                   <NavLink
                     className="is-drawer-close:tooltip
@@ -180,7 +180,7 @@ const DashBoardLayout = () => {
                     <span className="is-drawer-close:hidden mt-4">My Created Contest</span>
                   </NavLink>
                 </li>
-              </>
+              </div>
             )}
 
             {role === "admin" && (
