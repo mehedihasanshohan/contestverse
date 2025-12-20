@@ -10,18 +10,19 @@ const DashboardHome = () => {
   }
 
   return (
-    <div className="p-6">
+    <div className="p-6 min-h-screen">
       {role === "user" && (
-        <>
-          <h2 className="text-xl font-semibold">Hello! {user?.displayName}</h2>
+        <div className="flex flex-col justify-center items-center">
+          <h2 className="text-xl font-semibold text-rose-400">Hello! {user?.displayName}</h2>
           <p className="mt-2 font-semibold text-gray-600">
             You Can Register to multiple contest as u wish,
             <br /> Explore Your Participated Contests List in a tabular form
             <br /> And submit task to participated contest!!
+            <br /> And Get the special prizes!!
             <br />
             Thank You...
           </p>
-        </>
+        </div>
       )}
 
       {role === "creator" && (

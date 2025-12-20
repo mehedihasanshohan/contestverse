@@ -21,13 +21,9 @@ const searchType = searchParams.get("type");
     },
   });
 
-  if (isLoading) return <p className="text-center">Loading...</p>;
+  if (isLoading) return <span className="loading loading-spinner text-success min-h-screen"></span>
 
-  // FILTERING BASED ON TYPE
-  // const filteredContests =
-  //   activeTab === "all"
-  //     ? contests
-  //     : contests.filter(item => item.type === activeTab);
+
 const filteredContests =
   searchType
     ? contests.filter(item =>

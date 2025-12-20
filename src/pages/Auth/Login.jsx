@@ -63,7 +63,7 @@ const Login = () => {
           <button className="btn btn-accent mt-4">Login</button>
         </fieldset>
         <SocialLogin></SocialLogin>
-        <p>New to Motiar Store? <Link state={location.state} className='text-blue-400 underline' to='/register'>Register</Link></p>
+        <p>New to ConteseVerse? <Link state={location.state} className='text-blue-400 underline' to='/register'>Register</Link></p>
       </form>
     </div>
   )

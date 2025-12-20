@@ -18,7 +18,7 @@ const DashBoardLayout = () => {
   console.log(role);
 
   return (
-    <div className="drawer lg:drawer-open max-w-7xl mx-auto">
+    <div className="drawer lg:drawer-open max-w-7xl mx-auto bg-slate-50 ">
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content">
         {/* Navbar */}
@@ -62,7 +62,7 @@ const DashBoardLayout = () => {
         ></label>
         <div className="flex min-h-full flex-col items-start bg-base-100 is-drawer-close:w-14 is-drawer-open:w-64">
           {/* Sidebar content here */}
-          <ul className="menu w-full grow">
+          <ul className="menu w-full grow bg-[#0f172a] backdrop-blur-d">
             {/* List item */}
             <li>
               <Link
@@ -79,12 +79,12 @@ const DashBoardLayout = () => {
                   strokeWidth="2"
                   fill="none"
                   stroke="currentColor"
-                  className="my-1.5 inline-block size-6 mt-12"
+                  className="my-1.5 inline-block size-6 text-amber-300 mt-12"
                 >
                   <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path>
                   <path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                 </svg>
-                <span className="is-drawer-close:hidden mt-12">Homepage</span>
+                <span className="is-drawer-close:hidden mt-12 text-amber-300">Homepage</span>
               </Link>
             </li>
 
@@ -113,7 +113,7 @@ const DashBoardLayout = () => {
             </li> */}
 
             {role === "user" && (
-              <>
+              <div className="text-gray-200">
                 <li>
                   <NavLink
                     className="is-drawer-close:tooltip
@@ -153,7 +153,7 @@ const DashBoardLayout = () => {
                     </span>
                   </NavLink>
                 </li>
-              </>
+              </div>
             )}
 
             {role === "creator" && (
@@ -184,7 +184,7 @@ const DashBoardLayout = () => {
             )}
 
             {role === "admin" && (
-              <>
+              <div className="text-gray-200">
                 <li>
                   <NavLink
                     className="is-drawer-close:tooltip
@@ -224,7 +224,7 @@ const DashBoardLayout = () => {
                     </span>
                   </NavLink>
                 </li>
-              </>
+              </div>
             )}
           </ul>
         </div>
