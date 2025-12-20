@@ -5,19 +5,19 @@ import { useEffect } from "react";
 import axios from "axios";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
+import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts';
+
 
 const MyProfile = () => {
   const axiosSecure = useAxiosSecure();
   const { user, updateUserProfile } = useAuth();
 
-  // ImgBB API Key (from env)
   const image_hosting_key = import.meta.env.VITE_image_host;
   const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
   // eslint-disable-next-line no-unused-vars
   const { register, handleSubmit, reset, watch } = useForm();
 
-  // 1. Fetch current user data from DB
   const { data: profile = {}, refetch } = useQuery({
     queryKey: ["myProfile", user?.email],
     enabled: !!user?.email,
@@ -27,7 +27,21 @@ const MyProfile = () => {
     },
   });
 
-  // 2. Set default values when data is loaded
+const { data: stats = { participatedCount: 0, wonCount: 0 } } = useQuery({
+    queryKey: ['user-stats', user?.email],
+    queryFn: async () => {
+        const res = await axiosSecure.get(`/user-stats/${user?.email}`);
+        return res.data;
+    },
+    enabled: !!user?.email,
+});
+
+  const chartData = [
+  { name: 'Contests Won', value: stats.wonCount },
+  { name: 'Not Won Yet', value: stats.participatedCount - stats.wonCount },
+];
+const COLORS = ['#4ADE80', '#F87171'];
+
   useEffect(() => {
     if (profile?._id) {
       reset({
@@ -41,7 +55,6 @@ const MyProfile = () => {
     try {
       let newPhotoURL = profile?.photoURL || user?.photoURL;
 
-      // 3. Check if user selected a NEW image file
       if (data.image && data.image[0]) {
         const formData = new FormData();
         formData.append("image", data.image[0]);
@@ -59,7 +72,6 @@ const MyProfile = () => {
         bio: data.bio,
       };
 
-      // 5. Update in MongoDB
       const res = await axiosSecure.patch("/users/profile", updateData);
 
       if (res.data.modifiedCount > 0) {
@@ -80,68 +92,122 @@ const MyProfile = () => {
   };
 
   return (
-    <div className="max-w-xl mx-auto bg-base-100 shadow-lg p-6 rounded-xl mt-10">
-      <h2 className="text-2xl font-bold mb-6 text-center">My Profile</h2>
+<div className="container mx-auto py-10 px-4 max-w-7xl">
+    <h2 className="text-3xl font-bold mb-10 text-center text-gray-800">User Dashboard</h2>
 
-      {/* Show Current Image */}
-      <div className="flex justify-center mb-4">
-        <div className="avatar">
-          <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-            <img src={profile?.photoURL || user?.photoURL} alt="Profile" />
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+
+      <div className="bg-base-100 shadow-xl p-8 rounded-2xl border border-gray-100 flex flex-col justify-between">
+        <div>
+          <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
+             Edit Profile
+          </h3>
+
+          <div className="flex justify-center mb-6">
+            <div className="avatar">
+              <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 overflow-hidden">
+                <img src={profile?.photoURL || user?.photoURL} alt="Profile" />
+              </div>
+            </div>
           </div>
+
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+            <div className="form-control">
+              <label className="label"><span className="label-text font-semibold">Name</span></label>
+              <input type="text" {...register("name", { required: true })} className="input input-bordered w-full focus:input-primary" />
+            </div>
+
+            <div className="form-control">
+              <label className="label"><span className="label-text font-semibold">Update Photo</span></label>
+              <input type="file" {...register("image")} className="file-input file-input-bordered w-full" accept="image/*" />
+            </div>
+
+            <div className="form-control">
+              <label className="label"><span className="label-text font-semibold">Bio</span></label>
+              <textarea {...register("bio")} className="textarea textarea-bordered w-full h-24" placeholder="Briefly describe yourself..."></textarea>
+            </div>
+
+            <div className="form-control">
+              <label className="label"><span className="label-text font-semibold">Email</span></label>
+              <input type="text" value={user?.email} disabled className="input input-bordered w-full bg-gray-50 text-gray-500 cursor-not-allowed" />
+            </div>
+
+            <button type="submit" className="btn btn-primary w-full mt-4 text-white hover:shadow-lg transition-all">
+              Save Changes
+            </button>
+          </form>
         </div>
       </div>
 
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-        {/* Name Input */}
-        <div className="form-control">
-          <label className="label">
-            <span className="label-text">Name</span>
-          </label>
-          <input
-            type="text"
-            {...register("name", { required: true })}
-            className="input input-bordered w-full"
-          />
-        </div>
+      <div className="bg-base-100 shadow-xl p-8 rounded-2xl border border-gray-100 flex flex-col items-center justify-center min-h-[500px]">
+        <h3 className="text-xl font-bold mb-6 text-center flex items-center gap-2">
+           Winning Statistics
+        </h3>
 
-        {/* Image Input (File) */}
-        <div className="form-control">
-          <label className="label">
-            <span className="label-text">Update Photo (Optional)</span>
-          </label>
-          <input
-            type="file"
-            {...register("image")}
-            className="file-input file-input-bordered w-full"
-            accept="image/*"
-          />
-        </div>
+        {stats.participatedCount > 0 ? (
+          <div className="w-full h-full flex flex-col items-center">
+            <div className="w-full h-80">
+              <ResponsiveContainer width="100%" height="100%">
+                <PieChart>
+                  <Pie
+                    data={chartData}
+                    cx="50%" cy="50%"
+                    innerRadius={70}
+                    outerRadius={100}
+                    paddingAngle={8}
+                    dataKey="value"
+                    animationBegin={0}
+                    animationDuration={1500}
+                  >
+                    {chartData.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} strokeWidth={0} />
+                    ))}
+                  </Pie>
+                  <Tooltip
+                    contentStyle={{ borderRadius: '10px', border: 'none', boxShadow: '0 10px 15px -3px rgba(0,0,0,0.1)' }}
+                  />
+                  <Legend iconType="circle" />
+                </PieChart>
+              </ResponsiveContainer>
+            </div>
 
-        {/* Bio Input */}
-        <div className="form-control">
-          <label className="label">
-            <span className="label-text">Bio</span>
-          </label>
-          <textarea
-            {...register("bio")}
-            className="textarea textarea-bordered w-full h-24"
-            placeholder="Tell us about yourself..."
-          ></textarea>
-        </div>
+            <div className="grid grid-cols-2 gap-4 w-full mt-8">
+              <div className="bg-green-50 p-4 rounded-xl text-center border border-green-100">
+                <p className="text-xs text-green-600 uppercase tracking-wider font-bold mb-1">Won</p>
+                <p className="text-2xl font-black text-green-700">{stats.wonCount}</p>
+              </div>
+              <div className="bg-blue-50 p-4 rounded-xl text-center border border-blue-100">
+                <p className="text-xs text-blue-600 uppercase tracking-wider font-bold mb-1">Participated</p>
+                <p className="text-2xl font-black text-blue-700">{stats.participatedCount}</p>
+              </div>
+            </div>
 
-        {/* Read-only Email */}
-        <div className="form-control">
-            <label className="label"><span className="label-text">Email</span></label>
-            <input type="text" value={user?.email} disabled className="input input-bordered w-full bg-gray-100" />
-        </div>
+            <div className="mt-6 w-full">
+               <p className="text-center font-bold text-gray-600">
+                  Overall Win Rate:
+                  <span className="ml-2 text-primary text-xl">
+                    {((stats.wonCount / stats.participatedCount) * 100).toFixed(1)}%
+                  </span>
+               </p>
+               <progress
+                  className="progress progress-primary w-full mt-2 h-3"
+                  value={(stats.wonCount / stats.participatedCount) * 100}
+                  max="100">
+                </progress>
+            </div>
+          </div>
+        ) : (
+          <div className="flex flex-col items-center justify-center space-y-4 opacity-60 h-full">
+            <div className="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center text-4xl">📉</div>
+            <p className="text-gray-500 italic font-medium">No participation data to visualize yet.</p>
+            <button className="btn btn-sm btn-outline btn-primary">Participate Now</button>
+          </div>
+        )}
+      </div>
 
-        <button type="submit" className="btn btn-primary w-full mt-4">
-          Save Changes
-        </button>
-      </form>
     </div>
-  );
-};
+  </div>
 
+  )
+}
 export default MyProfile;
