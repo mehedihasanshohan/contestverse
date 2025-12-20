@@ -1,15 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
-import { FaEye, FaUserCheck } from "react-icons/fa";
-import { IoPersonRemoveSharp } from "react-icons/io5";
 import { FaTrashCan } from "react-icons/fa6";
 import Swal from "sweetalert2";
 import { GiConfirmed } from "react-icons/gi";
 import { ImCancelCircle } from "react-icons/im";
+import { useState } from "react";
 
 const ApproveCreator = () => {
   const axiosSecure = useAxiosSecure();
+
+  // pagination state
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
 
   const { refetch, data: contests = [] } = useQuery({
     queryKey: ["contests", "pending"],
@@ -18,6 +20,16 @@ const ApproveCreator = () => {
       return res.data;
     },
   });
+
+  // pagination logic
+  const totalPages = Math.ceil(contests.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const currentItems = contests.slice(startIndex, startIndex + itemsPerPage);
+
+  // Handle Page Change
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
 
   const updateCreatorStatus = (contest, status) => {
     const updateInfo = { status: status, email: contest.email };
@@ -90,9 +102,9 @@ const ApproveCreator = () => {
             </tr>
           </thead>
           <tbody>
-            {contests.map((contest, index) => (
+            {currentItems.map((contest, index) => (
               <tr key={contest._id}>
-                <th>{index + 1}</th>
+                <th>{startIndex + index + 1}</th>
                 <td>{contest.name}</td>
                 <td>{contest.price}</td>
                 <td>{contest.prize}</td>
@@ -118,13 +130,13 @@ const ApproveCreator = () => {
                   </button>
                   <button
                     onClick={() => handleContestRejection(contest)}
-                    className="btn text-red-600 ml-2 mr-2"
+                    className="btn text-red-500 ml-2 mr-2"
                   >
                     <ImCancelCircle></ImCancelCircle>
                   </button>
                   <button
                     onClick={() => handleContestDelete(contest)}
-                    className="btn text-red-400"
+                    className="btn text-red-500"
                   >
                     <FaTrashCan></FaTrashCan>
                   </button>
@@ -134,8 +146,45 @@ const ApproveCreator = () => {
           </tbody>
         </table>
       </div>
+
+      {/* --- Pagination Controls --- */}
+      {contests.length > itemsPerPage && (
+        <div className="flex justify-center my-8">
+          <div className="join">
+            <button
+              className="join-item btn"
+              onClick={() => handlePageChange(currentPage - 1)}
+              disabled={currentPage === 1}
+            >
+              «
+            </button>
+
+            {[...Array(totalPages)].map((_, index) => {
+                const pageNum = index + 1;
+                return (
+                    <button
+                        key={pageNum}
+                        onClick={() => handlePageChange(pageNum)}
+                        className={`join-item btn ${currentPage === pageNum ? 'btn-active btn-primary' : ''}`}
+                    >
+                        {pageNum}
+                    </button>
+                );
+            })}
+
+            <button
+              className="join-item btn"
+              onClick={() => handlePageChange(currentPage + 1)}
+              disabled={currentPage === totalPages}
+            >
+              »
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
 
 export default ApproveCreator;
+

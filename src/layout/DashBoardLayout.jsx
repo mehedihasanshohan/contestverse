@@ -218,7 +218,7 @@ const DashBoardLayout = () => {
                     data-tip="User Management"
                     to="/dashboard/user-management"
                   >
-                    <FaUser className="w-6 h-6"></FaUser>
+                    <FaUser className="w-6 h-6 mt-4"></FaUser>
                     <span className="is-drawer-close:hidden mt-4">
                       User Management
                     </span>

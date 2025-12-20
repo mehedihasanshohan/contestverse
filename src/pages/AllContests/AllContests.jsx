@@ -49,7 +49,7 @@ const filteredContests =
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
-            className={`px-4 py-2 rounded-lg border transition
+            className={`px-4 py-2 rounded-lg border transition cursor-pointer
               ${activeTab === tab ? "bg-blue-600 text-white" : "bg-white"}
             `}
           >

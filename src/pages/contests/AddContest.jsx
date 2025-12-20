@@ -78,7 +78,7 @@ const AddContest = () => {
               showConfirmButton: false,
               timer: 1500,
             });
-            navigate("/");
+            navigate("/dashboard/my-created-contest");
           }
         });
       }
@@ -145,11 +145,11 @@ const AddContest = () => {
             {...register("type", { required: true })}
           >
             <option value="">Pick a type</option>
-            <option value="design contest">Design Contest</option>
-            <option value="article writing">Article Writing</option>
-            <option value="business idea">Business Ideas</option>
-            <option value="gaming review">Gaming Review</option>
-            <option value="photography contest">Photography</option>
+            <option value="Design contest">Design Contest</option>
+            <option value="Article writing">Article Writing</option>
+            <option value="Business idea">Business Ideas</option>
+            <option value="Gaming review">Gaming Review</option>
+            <option value="Photography contest">Photography</option>
           </select>
         </div>
 

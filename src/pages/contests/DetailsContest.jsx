@@ -84,7 +84,7 @@ const DetailsContest = () => {
     );
 
   return (
-    <div className="max-w-4xl mx-auto mt-10 bg-white shadow-xl p-8 rounded-xl">
+    <div className="max-w-4xl mx-auto mt-10  bg-white shadow-xl p-8 rounded-xl">
       <img
         src={contest?.image}
         alt={contest?.name}
@@ -142,7 +142,7 @@ const DetailsContest = () => {
           <button className="btn btn-disabled w-full">Contest Ended</button>
         )}
 
-        {user && !isEnded && role !== 'creator'  && (
+        {user && !isEnded && role == 'user'  && (
           <button onClick={handlePayment} className="btn btn-primary w-full">
             Register & Pay
           </button>

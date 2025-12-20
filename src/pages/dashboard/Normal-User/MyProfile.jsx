@@ -14,6 +14,7 @@ const MyProfile = () => {
   const image_hosting_key = import.meta.env.VITE_image_host;
   const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
+  // eslint-disable-next-line no-unused-vars
   const { register, handleSubmit, reset, watch } = useForm();
 
   // 1. Fetch current user data from DB

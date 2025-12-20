@@ -19,7 +19,11 @@ const Navbar = () => {
       {/* LEFT */}
       <div className="navbar-start">
         <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+          <div
+            tabIndex={0}
+            role="button"
+            className="btn btn-ghost lg:hidden mr-2"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -62,9 +66,14 @@ const Navbar = () => {
             )}
           </ul>
         </div>
-
-        <img src={logo} className="w-8 h-8" alt="Logo" />
-        <p className="text-amber-500 ml-4 font-bold text-xl">Contest Verse</p>
+        <Link to="/">
+          <div className="flex justify-center items-center">
+            <img src={logo} className="w-8 h-8" alt="Logo" />
+            <p className="text-amber-500 ml-4 font-bold text-xl">
+              Contest Verse
+            </p>
+          </div>
+        </Link>
       </div>
 
       {/* CENTER MENU */}
