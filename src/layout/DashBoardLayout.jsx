@@ -2,7 +2,7 @@ import React from "react";
 import { Link, NavLink, Outlet } from "react-router";
 // import { BsFillTrophyFill } from "react-icons/bs";
 // import { IoShieldCheckmarkSharp } from "react-icons/io5";
-import { FaClipboardCheck, FaHistory, FaUser, FaUserCircle } from "react-icons/fa";
+import { FaClipboardCheck, FaHistory, FaTrophy, FaUser, FaUserCircle } from "react-icons/fa";
 // import { MdOutlineSpaceDashboard } from "react-icons/md";
 // import { MdAssignmentTurnedIn } from "react-icons/md";
 import { MdAssignmentAdd } from "react-icons/md";
@@ -12,6 +12,7 @@ import { GiPodiumWinner } from "react-icons/gi";
 import { FaClipboardList } from "react-icons/fa6";
 import { BsClipboardPlusFill } from "react-icons/bs";
 import { LuClipboardPen } from "react-icons/lu";
+import { HiOutlineTrophy } from "react-icons/hi2";
 
 const DashBoardLayout = () => {
   const { role } = useRole();
@@ -226,6 +227,20 @@ const DashBoardLayout = () => {
                 </li>
               </div>
             )}
+
+               <li>
+                  <NavLink
+                    className="is-drawer-close:tooltip
+                    is-drawer-close:tooltip-right"
+                    data-tip="User Management"
+                    to="/dashboard/leaderboard"
+                  >
+                    <HiOutlineTrophy className="w-6 h-6 mt-4 text-amber-400"></HiOutlineTrophy>
+                    <span className="is-drawer-close:hidden mt-4 text-amber-400">
+                      Leaderboard
+                    </span>
+                  </NavLink>
+                </li>
           </ul>
         </div>
       </div>

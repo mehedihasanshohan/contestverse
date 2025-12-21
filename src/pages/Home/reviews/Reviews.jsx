@@ -10,12 +10,12 @@ import "swiper/css/pagination";
 import { Autoplay, EffectCoverflow, Pagination } from "swiper/modules";
 
 const Reviews = ({ reviewsPromise }) => {
-  const reviews = use(reviewsPromise); // Suspense data
+  const reviews = use(reviewsPromise);
   console.log(reviews);
 
   return (
-    <div className="py-10">
-      <h2 className="text-2xl font-bold mb-6 text-center">User Reviews</h2>
+    <div className="py-10 bg-slate-100">
+      <h2 className="text-3xl font-bold mb-6 pt-8 text-center">User Reviews</h2>
 
       <Swiper
         loop = {true}
@@ -50,7 +50,7 @@ const Reviews = ({ reviewsPromise }) => {
                 />
                 <div>
                   <h3 className="font-semibold">{item.userName}</h3>
-                  <p className="text-sm text-gray-500">
+                  <p className="text-sm text-gray-800">
                     {new Date(item.date).toLocaleDateString()}
                   </p>
                 </div>
@@ -72,7 +72,7 @@ const Reviews = ({ reviewsPromise }) => {
                 ))}
               </div>
 
-              <p className="text-gray-700">{item.review}</p>
+              <p className="text-gray-800">{item.review}</p>
             </div>
           </SwiperSlide>
         ))}

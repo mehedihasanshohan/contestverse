@@ -30,6 +30,7 @@ import EditContest from "../pages/dashboard/contestCreator/EditContest";
 import SubmittedTasks from "../pages/dashboard/contestCreator/SubmittedTask";
 import DashboardHome from "../layout/Dashboard/DashboardHome";
 import Errorpage from "../pages/Errorpage/Errorpage";
+import Leaderboard from "../pages/dashboard/Leaderboard/Leaderboard";
 
 export const router = createBrowserRouter([
   {
@@ -95,6 +96,10 @@ export const router = createBrowserRouter([
       {
         path: '',
         element:<DashboardHome></DashboardHome>
+      },
+      {
+        path: 'leaderboard',
+        element: <Leaderboard></Leaderboard>
       },
       {
         path: "my-contests",

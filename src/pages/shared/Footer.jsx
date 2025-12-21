@@ -4,10 +4,11 @@ import github from '/github.png'
 import linkedin from '/linkedin.png'
 import gmail from '/gmail.png'
 import fb from '/facebook.png'
+import logo from '/trophy.png'
 
 const Footer = () => {
   return (
-      <footer className="footer footer-horizontal footer-center bg-base-200 text-base-content rounded p-10">
+      <footer className="footer footer-horizontal footer-center bg-slate-100 mt-6 text-base-content rounded p-10">
         <ul className="text-xl text-teal-600 flex justify-center items-center gap-6 font-semibold px-1">
           <li><Link to='/'>Home</Link></li>
           <li><Link to='/all-contests'>All Contests</Link></li>
@@ -23,7 +24,13 @@ const Footer = () => {
     </div>
   </nav>
   <aside>
-    <p className='font-semibold'>Copyright © {new Date().getFullYear()} - All right reserved by <span className='text-primary font-bold text-lg'>Contest Verse</span></p>
+    <p className='font-semibold'>Copyright © {new Date().getFullYear()} - All right reserved by <span className='text-primary font-bold text-lg'></span></p>
+     <div className="flex justify-center items-center">
+                <img src={logo} className="w-8 h-8" alt="Logo" />
+                <p className="text-amber-500 ml-4 font-bold text-xl">
+                  Contest Verse
+                </p>
+              </div>
   </aside>
 </footer>
   )
