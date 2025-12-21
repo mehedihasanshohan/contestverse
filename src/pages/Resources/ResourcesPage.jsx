@@ -31,7 +31,7 @@ const ResourcesPage = () => {
   ];
 
   return (
-    <div className="max-w-5xl mx-auto p-6">
+    <div className="max-w-7xl mx-auto bg-slate-100 p-6">
       <header className="mb-6">
         <div className="text-sm text-gray-500">Resources</div>
         <h1 className="text-3xl font-extrabold">Improve your contests with curated resources</h1>

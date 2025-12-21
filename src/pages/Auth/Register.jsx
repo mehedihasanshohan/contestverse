@@ -18,7 +18,6 @@ const Register = () => {
   const axiosSecure = useAxiosSecure();
 
   const handleRegistration = (data) => {
-    // console.log(data);
     const profileImg = data.photo[0];
 
     registerUser(data.email, data.password)
@@ -56,7 +55,6 @@ const Register = () => {
         }
         updateUserProfile(userProfile)
           .then( () => {
-            // console.log('user profile updated done')
             navigate(location.state || '/')
           })
           .catch(error => console.log(error))

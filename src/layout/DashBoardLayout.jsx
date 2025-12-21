@@ -1,22 +1,16 @@
 import React from "react";
 import { Link, NavLink, Outlet } from "react-router";
-// import { BsFillTrophyFill } from "react-icons/bs";
-// import { IoShieldCheckmarkSharp } from "react-icons/io5";
-import { FaClipboardCheck, FaHistory, FaTrophy, FaUser, FaUserCircle } from "react-icons/fa";
-// import { MdOutlineSpaceDashboard } from "react-icons/md";
-// import { MdAssignmentTurnedIn } from "react-icons/md";
+import {  FaUser, FaUserCircle } from "react-icons/fa";
 import { MdAssignmentAdd } from "react-icons/md";
 import useRole from "../hooks/useRole";
 import { TbDatabaseCog } from "react-icons/tb";
 import { GiPodiumWinner } from "react-icons/gi";
 import { FaClipboardList } from "react-icons/fa6";
 import { BsClipboardPlusFill } from "react-icons/bs";
-import { LuClipboardPen } from "react-icons/lu";
 import { HiOutlineTrophy } from "react-icons/hi2";
 
 const DashBoardLayout = () => {
   const { role } = useRole();
-  console.log(role);
 
   return (
     <div className="drawer lg:drawer-open max-w-7xl mx-auto bg-slate-50 ">
@@ -47,12 +41,10 @@ const DashBoardLayout = () => {
           </label>
           <div className="px-4 text-xl flex justify-center items-center gap-4">
             <h2 className="">DashBoard Panel</h2>
-            {/* <MdOutlineSpaceDashboard className="w-6 h-6 "></MdOutlineSpaceDashboard> */}
           </div>
         </nav>
         {/* Page content here */}
         <Outlet></Outlet>
-        {/* <div className="p-4">Page Content</div> */}
       </div>
 
       <div className="drawer-side is-drawer-close:overflow-visible">
@@ -68,7 +60,7 @@ const DashBoardLayout = () => {
             <li>
               <Link
                 to="/"
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right mt-12"
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right mt-16"
                 data-tip="Homepage"
               >
                 {/* Home icon */}
@@ -89,29 +81,7 @@ const DashBoardLayout = () => {
               </Link>
             </li>
 
-            {/* our dashboard links */}
-            {/* <li>
-              <NavLink
-                className="is-drawer-close:tooltip
-                    is-drawer-close:tooltip-right"
-                data-tip="My Contests"
-                to="/dashboard/my-contests"
-              >
-                <BsFillTrophyFill className="w-6 h-6 mt-4"></BsFillTrophyFill>
-                <span className="is-drawer-close:hidden mt-4">My Contests</span>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                className="is-drawer-close:tooltip
-                    is-drawer-close:tooltip-right"
-                data-tip="Payment History"
-                to="/dashboard/payment-history"
-              >
-                <FaHistory className="w-6 h-6 mt-4"></FaHistory>
-                <span className="is-drawer-close:hidden mt-4">History</span>
-              </NavLink>
-            </li> */}
+
 
             {role === "user" && (
               <div className="text-gray-200">
@@ -232,7 +202,7 @@ const DashBoardLayout = () => {
                   <NavLink
                     className="is-drawer-close:tooltip
                     is-drawer-close:tooltip-right"
-                    data-tip="User Management"
+                    data-tip="Leaderboard"
                     to="/dashboard/leaderboard"
                   >
                     <HiOutlineTrophy className="w-6 h-6 mt-4 text-amber-400"></HiOutlineTrophy>

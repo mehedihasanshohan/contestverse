@@ -2,8 +2,8 @@ import { Link } from "react-router";
 
 const WinnerAdvertisement = () => {
   return (
-    <div className="bg-gray-100 py-16 mt-12">
-      <h2 className="text-2xl font-bold text-center mb-6">Our Pride Winner </h2>
+    <div className="bg-slate-100 py-16 ">
+      <h2 className="text-3xl font-bold mb-6 text-center">Our Pride Winner </h2>
       <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         {/* LEFT SECTION */}
         <div>

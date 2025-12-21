@@ -1,8 +1,6 @@
 import React from "react";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
-import { FaUserShield } from "react-icons/fa";
-import { FaShield } from "react-icons/fa6";
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
 
@@ -21,6 +19,12 @@ const UsersManagement = () => {
   const handleMakeAdmin = (user) => {
 
     if (user.email === 'cr@gmail.com') {
+      return Swal.fire({
+        icon: "error",
+        title: "This action is restricted to test the ui as creator!",
+      });
+    }
+    if (user.email === 'w@gmail.com') {
       return Swal.fire({
         icon: "error",
         title: "This action is restricted to test the ui as creator!",

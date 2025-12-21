@@ -11,7 +11,6 @@ import { Autoplay, EffectCoverflow, Pagination } from "swiper/modules";
 
 const Reviews = ({ reviewsPromise }) => {
   const reviews = use(reviewsPromise);
-  console.log(reviews);
 
   return (
     <div className="py-10 bg-slate-100">

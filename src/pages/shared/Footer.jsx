@@ -8,7 +8,7 @@ import logo from '/trophy.png'
 
 const Footer = () => {
   return (
-      <footer className="footer footer-horizontal footer-center bg-slate-100 mt-6 text-base-content rounded p-10">
+      <footer className="footer footer-horizontal footer-center bg-slate-100 text-base-content rounded p-10">
         <ul className="text-xl text-teal-600 flex justify-center items-center gap-6 font-semibold px-1">
           <li><Link to='/'>Home</Link></li>
           <li><Link to='/all-contests'>All Contests</Link></li>

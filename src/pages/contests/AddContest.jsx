@@ -57,7 +57,7 @@ const AddContest = () => {
       submissionCount: 0,
       createdAt: new Date(),
     };
-    console.log(contestInfo);
+    // console.log(contestInfo);
 
     Swal.fire({
       title: "Confirm Contest Creation?",

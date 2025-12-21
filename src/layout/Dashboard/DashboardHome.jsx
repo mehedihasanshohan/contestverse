@@ -6,7 +6,7 @@ const DashboardHome = () => {
   const { role, isLoading } = useRole();
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <span className="loading loading-infinity loading-xl min-h-screen"></span>
   }
 
   return (

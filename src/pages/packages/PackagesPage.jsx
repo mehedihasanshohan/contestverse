@@ -93,7 +93,7 @@ const PackagesPage = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto p-6">
+    <div className="max-w-7xl bg-slate-100 mx-auto p-8">
       <header className="mb-6 flex items-center justify-between">
         <div>
           <h1 className="text-xl text-center font-extrabold">

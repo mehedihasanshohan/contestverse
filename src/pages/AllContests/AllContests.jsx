@@ -9,7 +9,6 @@ const AllContests = () => {
   const [searchParams] = useSearchParams();
 const searchType = searchParams.get("type");
 
-  // TAB State
   const [activeTab, setActiveTab] = useState("all");
 
   // Fetch approved contests only
