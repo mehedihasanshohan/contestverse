@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router';
 
 
 const axiosSecure = axios.create({
-  baseURL: 'https://contestverse-server.vercel.app'
+  baseURL: 'https://contestverse-server.vercel.app/'
 })
 
 const useAxiosSecure = () => {

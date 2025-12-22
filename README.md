@@ -1,16 +1,50 @@
-# React + Vite
+# ContestHub - Frontend (Client)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Live Site: [https://contestverse-shohan.netlify.app](#)
 
-Currently, two official plugins are available:
+ContestHub is a modern, user-friendly contest management platform frontend built with **React**, **TailwindCSS,DaisyUI** , and **TanStack Query** for data fetching. Users can browse, join, and participate in creative contests. This frontend works seamlessly with our Node.js backend and supports authentication, payments, and role-based dashboards.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## **Features**
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. Fully responsive UI (mobile, tablet, desktop)
+2. Role-based dashboards for **Admin**, **Contest Creator**, and **Normal User**
+3. Browse all contests and filter by type
+4. Private contest details pages with secure access
+5. Search contests by type with backend integration
+6. Payment integration for contest registration
+7. Submit tasks directly through the contest page
+8. Dashboard charts and statistics for win/participation percentage
+9. Dark/Light theme toggle saved in `localStorage`
+10. Sweet alerts & toasts for all CRUD operations
+11. Leaderboard page dynamically ranking users by contest wins
+12. Extra creative pages/routes (mention your custom ones)
+13. Clean, modular, and reusable React components
+14. JWT-based secure API access
+15. Pagination for tables (10 items per page)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## **Tech Stack**
+
+- **React** (frontend framework)
+- **TailwindCSS & DaisyUI** (UI/Styling)
+- **React Router DOM** (Routing)
+- **TanStack Query** (Data fetching & caching)
+- **React Hook Form** (Form handling)
+- **Axios** (API requests)
+- **JWT** (Authentication)
+- **Sweet Alert / Toast** (Notifications)
+- **LocalStorage** (Theme preference persistence)
+- **Vercel  & Netlify** (Hosting)
+
+---
+
+
+## **Setup & Installation**
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/mehedihasanshohan/contestverse.git

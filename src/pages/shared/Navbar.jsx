@@ -57,13 +57,6 @@ const Navbar = () => {
             <li>
               <Link to="/resources">Resources</Link>
             </li>
-            {role === "creator" && (
-              <>
-                <li>
-                  <Link to="/dashboard/add-contest">Add Contest</Link>
-                </li>
-              </>
-            )}
           </ul>
         </div>
         <Link to="/">
@@ -90,9 +83,6 @@ const Navbar = () => {
           </li>
           <li>
             <Link to="/resources">Resources</Link>
-          </li>
-          <li>
-            <Link to="/add-contest">Add Contest</Link>
           </li>
         </ul>
       </div>
