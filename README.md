@@ -41,6 +41,17 @@ ContestHub is a modern, user-friendly contest management platform frontend built
 
 ---
 
+## **Dependencies**
+- axios
+- react-router-dom
+- react-hook-form
+- sweetalert2
+- react-hot-toast
+- framer-motion
+- lucide-react
+- react-datepicker
+
+---
 
 ## **Setup & Installation**
 
@@ -48,3 +59,6 @@ ContestHub is a modern, user-friendly contest management platform frontend built
 
 ```bash
 git clone https://github.com/mehedihasanshohan/contestverse.git
+cd contestverse
+npm install
+npm run dev
