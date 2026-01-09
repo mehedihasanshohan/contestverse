@@ -1,11 +1,20 @@
+/* eslint-disable no-unused-vars */
 
 /* eslint-disable no-undef */
 import toast from "react-hot-toast";
 import { useForm } from "react-hook-form";
 import { User, MessageCircle, ShieldCheck, Mail } from "lucide-react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import Title from "../../components/Title";
 
 export default function Contact() {
-  const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm();
 
   const onSubmit = async (data) => {
     // Captcha Check
@@ -27,14 +36,14 @@ export default function Contact() {
   };
 
   return (
-    <section className="py-20 bg-base-200 text-base-content px-6 grid lg:grid-cols-2 gap-6">
+    <section className="py-12 bg-base-200 text-base-content px-6 grid lg:grid-cols-2 gap-6">
       {/* Left Side */}
       <div
-        className="space-y-6 rounded-md p-6 bg-base-100 shadow-md relative z-20 border border-white/20"
-        data-aos="fade-right"
-        data-aos-duration="1000"
+        className="space-y-6 rounded-md p-4 relative z-20 border border-white/20"
+        data-aos="fade-left"
+        data-aos-duration="2000"
       >
-        <h2 className="text-4xl font-bold text-center opacity-70 mb-4">Find Us</h2>
+        <Title>Find US</Title>
         <div className="mt-4">
           <iframe
             title="Google Map"
@@ -48,11 +57,9 @@ export default function Contact() {
 
       {/* Right Side Form */}
       <div
-        className="space-y-6 rounded-md p-6 bg-base-100 shadow-md relative z-20 border border-white/20"
-        data-aos="fade-left"
-        data-aos-duration="1000"
+        className="space-y-6 rounded-md p-6 relative z-20 border border-white/20"
       >
-        <h2 className="text-4xl font-bold text-center opacity-70 mb-4">Send Message</h2>
+        <Title>Send Us Message</Title>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div className="relative">
             <User className="absolute left-3 top-3 text-cyan-700" size={20} />
@@ -60,7 +67,9 @@ export default function Contact() {
               {...register("name", { required: true })}
               type="text"
               placeholder="Your Name"
-              className="w-full pl-10 p-3 rounded-md border focus:outline-none focus:ring-2 focus:ring-cyan-400"
+              data-aos="fade-left"
+              data-aos-duration="1000"
+              className="w-full pl-10 p-3 rounded-md border border-base-300 focus:outline-none"
             />
           </div>
 
@@ -70,34 +79,48 @@ export default function Contact() {
               {...register("email", { required: true })}
               type="email"
               placeholder="Your Email"
-              className="w-full pl-10 p-3 rounded-md border focus:outline-none focus:ring-2 focus:ring-cyan-400"
+              data-aos="fade-left"
+              data-aos-duration="1300"
+              className="w-full pl-10 p-3 rounded-md border border-base-300 focus:outline-none"
             />
           </div>
 
           <div className="relative">
-            <ShieldCheck className="absolute left-3 top-3 text-cyan-700" size={20} />
+            <ShieldCheck
+              className="absolute left-3 top-3 text-cyan-700"
+              size={20}
+            />
             <input
               {...register("captcha", { required: true })}
               type="text"
-              placeholder="Type 'human'"
-              className="w-full pl-10 p-3 rounded-md border focus:outline-none focus:ring-2 focus:ring-cyan-400"
+              placeholder="Type 'human' "
+              data-aos="fade-left"
+        data-aos-duration="1600"
+              className="w-full pl-10 p-3 rounded-md border border-base-300 focus:outline-none "
             />
           </div>
 
           <div className="relative">
-            <MessageCircle className="absolute left-3 top-3 text-cyan-700" size={20} />
+            <MessageCircle
+              className="absolute left-3 top-3 text-cyan-700"
+              size={20}
+            />
             <textarea
               {...register("message", { required: true })}
               placeholder="Your Message"
               rows="4"
-              className="w-full pl-10 p-3 rounded-md border focus:outline-none focus:ring-2 focus:ring-cyan-400"
+              data-aos="fade-left"
+        data-aos-duration="1900"
+              className="w-full pl-10 p-3 rounded-md border border-base-300 focus:outline-none"
             ></textarea>
           </div>
 
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full bg-base-300 text-base-content cursor-pointer mt-4 outline-1 font-semibold py-3 px-4 rounded-lg transition duration-300 disabled:opacity-50"
+            className="w-full bg-base-300  cursor-pointer mt-4
+
+            border-base-300 font-semibold py-3 px-4 rounded-lg transition duration-300 disabled:opacity-50"
           >
             {isSubmitting ? "Sending..." : "Send Message"}
           </button>

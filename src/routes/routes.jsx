@@ -32,6 +32,7 @@ import DashboardHome from "../layout/Dashboard/DashboardHome";
 import Errorpage from "../pages/Errorpage/Errorpage";
 import Leaderboard from "../pages/dashboard/Leaderboard/Leaderboard";
 import ContactUs from "../pages/ContactUs/ContactUs";
+import Guidelines from "../pages/Guidlines/Guidelines";
 
 export const router = createBrowserRouter([
   {
@@ -73,6 +74,10 @@ export const router = createBrowserRouter([
       {
         path: "/contact-us",
         element: <ContactUs></ContactUs>
+      },
+      {
+        path: '/guidelines',
+        element: <Guidelines></Guidelines>
       }
     ],
   },

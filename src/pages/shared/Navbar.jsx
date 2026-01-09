@@ -3,6 +3,8 @@ import { Link } from "react-router";
 import logo from "/trophy.png";
 import useAuth from "../../hooks/useAuth";
 import useRole from "../../hooks/useRole";
+import { TextAnimate } from "../../components/text-animate";
+import { motion } from "framer-motion";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
@@ -15,7 +17,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar max-w-7xl mx-auto bg-base-100">
+    <div className="navbar max-w-7xl mx-auto bg-base-200 w-full backdrop-blur-md z-50 sticky top-0">
       {/* LEFT */}
       <div className="navbar-start">
         <div className="dropdown">
@@ -61,10 +63,25 @@ const Navbar = () => {
         </div>
         <Link to="/">
           <div className="flex justify-center items-center">
-            <img src={logo} className="w-8 h-8" alt="Logo" />
-            <p className="text-amber-500 ml-4 font-bold text-xl">
-              Contest Verse
-            </p>
+            <Link to="/">
+              <div className="flex justify-center items-center">
+                <motion.img
+                  src={logo}
+                  className="w-8 h-8"
+                  alt="Logo"
+                  initial={{ opacity: 0, y: 15, filter: "blur(8px)" }}
+                  whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                  transition={{ duration: 0.6 }}
+                />
+                <TextAnimate
+                  animation="blurInUp"
+                  by="word"
+                  className="text-amber-500 ml-4 font-bold text-xl"
+                >
+                  Contest Verse
+                </TextAnimate>
+              </div>
+            </Link>
           </div>
         </Link>
       </div>
@@ -73,19 +90,46 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="text-md text-teal-600 flex justify-center items-center gap-6 font-semibold px-1">
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/">
+              <TextAnimate animation="blurInUp" by="word">
+                Home
+              </TextAnimate>
+            </Link>
           </li>
           <li>
-            <Link to="/all-contests">All Contests</Link>
+            <Link to="/all-contests">
+              <TextAnimate animation="blurInUp" by="word">
+                All Contests
+              </TextAnimate>
+            </Link>
           </li>
           <li>
-            <Link to="/packages">Packages</Link>
+            <Link to="/packages">
+              <TextAnimate animation="blurInUp" by="word">
+                Packages
+              </TextAnimate>
+            </Link>
           </li>
           <li>
-            <Link to="/resources">Resources</Link>
+            <Link to="/resources">
+              <TextAnimate animation="blurInUp" by="word">
+                Resources
+              </TextAnimate>
+            </Link>
           </li>
           <li>
-            <Link to="/contact-us">About Us</Link>
+            <Link to="/contact-us">
+              <TextAnimate animation="blurInUp" by="word">
+                Contact US
+              </TextAnimate>
+            </Link>
+          </li>
+          <li>
+            <Link to="/guidelines">
+              <TextAnimate animation="blurInUp" by="word">
+                GuideLines
+              </TextAnimate>
+            </Link>
           </li>
         </ul>
       </div>
@@ -96,11 +140,19 @@ const Navbar = () => {
         {user && (
           <div className="dropdown">
             <div tabIndex={0} role="button" className="cursor-pointer m-1">
-              <img
+              <motion.img
+                src={user?.photoURL || "https://i.ibb.co/4pDNDk1/avatar.png"}
+                className="w-10 h-10 rounded-full mr-2"
+                alt="Logo"
+                initial={{ opacity: 0, y: 15, filter: "blur(8px)" }}
+                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                transition={{ duration: 0.6 }}
+              />
+              {/* <img
                 src={user?.photoURL || "https://i.ibb.co/4pDNDk1/avatar.png"}
                 className="w-10 h-10 rounded-full mr-2"
                 alt="User"
-              />
+              /> */}
             </div>
 
             <ul
@@ -108,10 +160,18 @@ const Navbar = () => {
               className="dropdown-content menu bg-base-300 rounded-box z-1 w-52 p-2 right-0 shadow-sm"
             >
               <li>
-                <Link>{user?.displayName}</Link>
+                <Link>
+                  <TextAnimate animation="blurInUp" by="word">
+                    {user?.displayName}
+                  </TextAnimate>
+                </Link>
               </li>
               <li>
-                <Link to="/dashboard">Dashboard</Link>
+                <Link to="/dashboard">
+                  <TextAnimate animation="blurInUp" by="word">
+                    Dashboard
+                  </TextAnimate>
+                </Link>
               </li>
               <li>
                 <button onClick={handleLogout}>Sign Out</button>
