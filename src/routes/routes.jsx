@@ -31,6 +31,7 @@ import SubmittedTasks from "../pages/dashboard/contestCreator/SubmittedTask";
 import DashboardHome from "../layout/Dashboard/DashboardHome";
 import Errorpage from "../pages/Errorpage/Errorpage";
 import Leaderboard from "../pages/dashboard/Leaderboard/Leaderboard";
+import ContactUs from "../pages/ContactUs/ContactUs";
 
 export const router = createBrowserRouter([
   {
@@ -69,6 +70,10 @@ export const router = createBrowserRouter([
         path: "/resources",
         element: <ResourcesPage></ResourcesPage>,
       },
+      {
+        path: "/contact-us",
+        element: <ContactUs></ContactUs>
+      }
     ],
   },
   {
