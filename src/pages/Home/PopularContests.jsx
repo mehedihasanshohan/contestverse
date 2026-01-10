@@ -2,6 +2,7 @@ import { Link } from "react-router";
 import PopularContestCard from "./PopularContestCard";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
+import Title from "../../components/Title";
 
 const PopularContests = () => {
   const axiosSecure = useAxiosSecure();
@@ -19,10 +20,9 @@ const PopularContests = () => {
 
 
   return (
-    <div className="max-w-7xl mx-auto pt-8 py-10 px-6 bg-slate-100">
-      <h2 className="text-3xl font-bold mb-6 text-center">Popular Contests</h2>
-
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className="max-w-7xl mx-auto pt-8 py-12 px-6 bg-base-200">
+      <Title>Popular Contests</Title>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {popular.map((item) => (
           <PopularContestCard key={item._id} contest={item} ></PopularContestCard>
         ))}

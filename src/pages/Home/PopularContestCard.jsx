@@ -14,25 +14,25 @@ const PopularContestCard = ({ contest }) => {
   };
 
   return (
-    <div className="rounded-xl shadow-lg bg-white p-4 hover:shadow-2xl transition border">
+    <div className="rounded-md shadow-lg mt-4 p-4 hover:shadow-xl transition border border-base-300">
       <img
         src={image}
         alt={name}
-        className="w-full h-48 object-cover rounded-lg"
+        className="w-full h-48 object-cover rounded-md"
       />
 
-      <h2 className="text-xl font-bold mt-3">{name}</h2>
+      <h2 className="text-md font-semibold">{name}</h2>
 
-      <p className="text-gray-600 text-sm">
-        {description.slice(0, 60)}...
+      <p className="opacity-80 italic text-sm">
+        {description.slice(0, 35)}...
       </p>
 
-      <p className="font-medium mt-2">
+      <p className="font-medium text-sm opacity-70 mt-2">
         Participants: <span className="font-bold">{participants}</span>
       </p>
 
       <Link to={handleDetails()}>
-        <button className="btn btn-primary w-full mt-3">Details</button>
+        <button className="btn text-base-content w-full mt-3">Details</button>
       </Link>
     </div>
   );
