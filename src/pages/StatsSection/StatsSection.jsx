@@ -33,14 +33,14 @@ const StatsSection = () => {
   ];
 
   return (
-    <section className="py-12 max-w-7xl mx-auto pt-4 bg-base-200 overflow-hidden pb-24">
+    <section className="py-12 max-w-7xl mx-auto pt-24 bg-base-200 overflow-hidden pb-24">
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        <Title>More Stats</Title>
+        <Title> <span className="text-cyan-500">Contetsverse</span> by the Numbers</Title>
       </motion.div>
 
       <motion.div

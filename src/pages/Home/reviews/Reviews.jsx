@@ -13,7 +13,7 @@ const Reviews = ({ reviewsPromise }) => {
   const reviews = use(reviewsPromise);
 
   return (
-    <div className="py-12 bg-base-200 pt-24 pb-24">
+    <div className="max-w-7xl mx-auto px-6 py-12 bg-base-200 pt-24 pb-24">
       <Title>User Reviews</Title>
       <Swiper
         loop = {true}

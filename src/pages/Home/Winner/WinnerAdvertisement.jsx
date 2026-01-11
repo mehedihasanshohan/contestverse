@@ -35,8 +35,7 @@ const WinnerAdvertisement = () => {
   ];
 
   return (
-    <div className="bg-base-200 py-12 pb-24 px-6 overflow-hidden">
-      <div className="max-w-7xl mx-auto">
+    <div className="bg-base-200 max-w-7xl mx-auto py-12 pb-24 px-6 overflow-hidden">
         <div className="mb-16">
           <Title>
             Our Pride <span className="text-cyan-600">Winners</span>
@@ -176,7 +175,6 @@ const WinnerAdvertisement = () => {
             ))}
           </div>
         </div>
-      </div>
     </div>
   );
 };

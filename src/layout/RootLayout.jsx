@@ -4,6 +4,7 @@ import Footer from '../pages/shared/Footer'
 import Navbar from '../pages/shared/Navbar'
 import AOS from "aos";
 import "aos/dist/aos.css";
+import AnnouncementBar from '../pages/shared/AbbouncementBar';
 
 
 const RootLayout = () => {
@@ -16,7 +17,8 @@ const RootLayout = () => {
   }, []);
 
   return (
-    <div className='max-w-7xl mx-auto'>
+    <div className=''>
+      {/* <AnnouncementBar></AnnouncementBar> */}
       <Navbar></Navbar>
       <Outlet></Outlet>
       <Footer></Footer>

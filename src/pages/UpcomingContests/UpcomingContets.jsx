@@ -16,6 +16,7 @@ const UpcomingContests = () => {
       type: "Image Design",
       targetDate: new Date("2026-02-20T10:00:00").getTime(),
       prize: "$500",
+      image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=500&auto=format&fit=crop"
     },
     {
       id: "2",
@@ -23,6 +24,7 @@ const UpcomingContests = () => {
       type: "Article Writing",
       targetDate: new Date("2026-02-15T15:30:00").getTime(),
       prize: "$300",
+      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=500&auto=format&fit=crop"
     },
     {
       id: "3",
@@ -30,6 +32,7 @@ const UpcomingContests = () => {
       type: "Gaming",
       targetDate: new Date("2026-02-12T12:00:00").getTime(),
       prize: "$1000",
+      image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=500&auto=format&fit=crop"
     },
     {
       id: "4",
@@ -37,6 +40,7 @@ const UpcomingContests = () => {
       type: "Tech Blog",
       targetDate: new Date("2026-02-25T09:00:00").getTime(),
       prize: "$450",
+      image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=500&auto=format&fit=crop"
     },
   ];
 
@@ -56,8 +60,7 @@ const UpcomingContests = () => {
   };
 
   return (
-    <section className="py-20 bg-base-200 pb-24">
-      <div className="container mx-auto px-4">
+    <section className="max-w-7xl mx-auto px-6 py-20 bg-base-200 pb-24">
         <div className="text-center mb-16">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -72,17 +75,16 @@ const UpcomingContests = () => {
           </motion.div>
         </div>
 
-        {/* 4 Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {upcomingData.map((contest) => (
             <motion.div
+              key={contest.id}
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: false }}
               transition={{ duration: 0.8 }}
             >
               <ContestCard
-                key={contest.id}
                 contest={contest}
                 isPlanned={remindedIds.includes(contest.id)}
                 onReminder={() => handleReminder(contest.id, contest.title)}
@@ -90,7 +92,6 @@ const UpcomingContests = () => {
             </motion.div>
           ))}
         </div>
-      </div>
     </section>
   );
 };
@@ -118,66 +119,64 @@ const ContestCard = ({ contest, onReminder, isPlanned }) => {
 
   return (
     <div
-      className={`group p-6 rounded-md border transition-all duration-300 ${
-        isPlanned ? "bg-base-300/30" : "bg-base-200  border-base-300"
+      className={`group rounded-md overflow-hidden border transition-all duration-300 p-4 ${
+        isPlanned ? "bg-base-300/30 shadow-none" : "bg-base-200 border-base-300 shadow-lg hover:shadow-cyan-500/10"
       }`}
     >
-      <div className="flex justify-between items-start mb-4">
-        <span className="text-[10px] font-bold px-2 py-1 bg-primary/10
-        text-primary rounded uppercase tracking-widest">
+      {/* Image Header */}
+      <div className="relative h-40 w-full overflow-hidden">
+        <img
+          src={contest.image}
+          alt={contest.title}
+          className="w-full h-full object-cover rounded-md
+          transition-transform duration-500 group-hover:scale-110"
+        />
+        <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent"></div>
+        <span className="absolute top-3 left-3 text-[10px] font-bold px-2 py-1 bg-cyan-500 text-white rounded uppercase tracking-widest">
           {contest.type}
         </span>
         {!isPlanned && (
-          <div className="w-2 h-2 rounded-full bg-error animate-ping"></div>
+          <div className="absolute top-3 right-3 w-2.5 h-2.5 rounded-full bg-error animate-ping"></div>
         )}
       </div>
 
-      <h3 className="text-xl font-bold mb-1 truncate">{contest.title}</h3>
-      <p className="text-success font-semibold text-sm mt-2 mb-4 flex items-center gap-1">
-        <Trophy size={14} /> Prize: {contest.prize}
-      </p>
+      <div className="p-5">
+        <h3 className="text-lg font-bold mb-1 truncate">{contest.title}</h3>
+        <p className="text-success font-semibold text-sm mb-4 flex items-center gap-1">
+          <Trophy size={14} /> Prize: {contest.prize}
+        </p>
 
-      {/* Mini Timer */}
-      <div
-        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3
-        lg:grid-cols-4 gap-1 text-center mb-6 bg-base-100 p-2
-       rounded-lg border border-base-300"
-      >
-        {timeLeft ? (
-          Object.entries(timeLeft).map(([label, val]) => (
-            <div key={label}>
-              <p className="text-lg font-mono font-bold leading-none">{val}</p>
-              <p className="text-[8px] uppercase">{label}</p>
-            </div>
-          ))
-        ) : (
-          <p className="col-span-4 text-xs font-bold text-primary">LIVE NOW</p>
-        )}
+        {/* Mini Timer */}
+        <div className="grid grid-cols-4 gap-1 text-center mb-6 bg-base-100 p-2 rounded-lg border border-base-300">
+          {timeLeft ? (
+            Object.entries(timeLeft).map(([label, val]) => (
+              <div key={label}>
+                <p className="text-base font-mono font-bold leading-none">{val}</p>
+                <p className="text-[7px] uppercase opacity-60">{label}</p>
+              </div>
+            ))
+          ) : (
+            <p className="col-span-4 text-xs font-bold text-primary animate-pulse uppercase">LIVE NOW</p>
+          )}
+        </div>
+
+        <button
+          onClick={onReminder}
+          disabled={isPlanned}
+          className={`w-full py-2.5 rounded-lg font-bold flex items-center justify-center gap-2 transition-all
+            ${
+              isPlanned
+                ? "bg-success/10 text-success cursor-not-allowed border border-success/20"
+                : "bg-neutral text-neutral-content hover:bg-cyan-600 hover:text-white cursor-pointer"
+            }`}
+        >
+          {isPlanned ? (
+            <><CheckCircle2 size={18} /> Planned</>
+          ) : (
+            <><BellRing size={18} /> Remind Me</>
+          )}
+        </button>
       </div>
-
-      <button
-        onClick={onReminder}
-        disabled={isPlanned}
-        className={`w-full btn py-3 rounded-md border bg-base-300 hover:bg-base-100 text-base-content
-          font-bold flex items-center justify-center gap-2 transition-all
-          ${
-            isPlanned
-              ? "bg-success/10 text-success cursor-not-allowed border border-success/20"
-              : "bg-base-300 hover:scale-102  cursor-pointer "
-          }`}
-      >
-        {isPlanned ? (
-          <>
-            <CheckCircle2 size={18} />
-            Planned
-          </>
-        ) : (
-          <>
-            <BellRing size={18} />
-            Remind Me
-          </>
-        )}
-      </button>
     </div>
   );
 };

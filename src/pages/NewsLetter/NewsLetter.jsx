@@ -18,8 +18,8 @@ const NewsLetter = () => {
   };
 
   return (
-    <section className="py-12 px-4 bg-base-200 pb-24">
-      <div className="max-w-7xl mx-auto relative overflow-hidden bg-base-100
+    <section className="max-w-7xl mx-auto px-6 py-12 bg-base-200 pb-24">
+      <div className="relative overflow-hidden bg-base-100
       rounded-[3rem] p-8 md:p-16 shadow-sm border border-base-300">
 
         {/* Abstract Background Decoration */}

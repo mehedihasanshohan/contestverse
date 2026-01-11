@@ -4,6 +4,7 @@ import logo from "/trophy.png";
 import useAuth from "../../hooks/useAuth";
 import useRole from "../../hooks/useRole";
 import { TextAnimate } from "../../components/text-animate";
+// eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 
 const Navbar = () => {
@@ -17,7 +18,10 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar max-w-7xl mx-auto bg-base-200 w-full backdrop-blur-md z-50 sticky top-0">
+    <div
+      className="navbar bg-base-100/80 backdrop-blur-lg z-100 sticky top-0 border-b
+    border-base-300 px-4 md:px-8 transition-all py-2 w-full"
+    >
       {/* LEFT */}
       <div className="navbar-start">
         <div className="dropdown">
@@ -78,7 +82,7 @@ const Navbar = () => {
                   by="word"
                   className="text-amber-500 ml-4 font-bold text-xl"
                 >
-                  Contest Verse
+                  CONTESTVERSE
                 </TextAnimate>
               </div>
             </Link>

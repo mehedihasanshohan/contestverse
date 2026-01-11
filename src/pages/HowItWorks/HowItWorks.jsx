@@ -29,8 +29,7 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section className="py-20 bg-base-200 text-base-content pt-16 pb-24 overflow-hidden">
-      <div className="container mx-auto px-6">
+    <section className="max-w-7xl mx-auto px-6 py-20 bg-base-200 text-base-content pt-16 pb-24 overflow-hidden">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -55,7 +54,7 @@ const HowItWorks = () => {
                 type: "spring",
                 stiffness: 120,
               }}
-              className="relative group p-10 rounded-3xl bg-base-100 shadow-xl
+              className="relative group p-10 rounded-md bg-base-100 shadow-sm
               border border-base-300 transition-all duration-500"
             >
               <div
@@ -112,7 +111,6 @@ const HowItWorks = () => {
             </motion.div>
           ))}
         </div>
-      </div>
     </section>
   );
 };
