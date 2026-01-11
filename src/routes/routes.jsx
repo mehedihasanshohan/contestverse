@@ -54,9 +54,7 @@ export const router = createBrowserRouter([
       {
         path: "/beAcreator",
         element: (
-          <PrivateRoutes>
             <BeAcontestCreator></BeAcontestCreator>
-          </PrivateRoutes>
         ),
       },
       {

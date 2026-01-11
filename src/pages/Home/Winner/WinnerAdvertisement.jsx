@@ -35,8 +35,8 @@ const WinnerAdvertisement = () => {
   ];
 
   return (
-    <div className="bg-base-200 py-12 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6">
+    <div className="bg-base-200 py-12 pb-24 px-6 overflow-hidden">
+      <div className="max-w-7xl mx-auto">
         <div className="mb-16">
           <Title>
             Our Pride <span className="text-cyan-600">Winners</span>
@@ -86,7 +86,7 @@ const WinnerAdvertisement = () => {
               ].map((stat, i) => (
                 <div
                   key={i}
-                  className="bg-base-100 border border-base-300 p-4 rounded-md shadow-xl"
+                  className="bg-base-100 border border-base-300 p-4 rounded-md shadow-sm"
                 >
                   <div className="text-cyan-600 mb-1">{stat.icon}</div>
                   <h3 className="text-2xl font-title font-black text-base-content">
@@ -124,9 +124,9 @@ const WinnerAdvertisement = () => {
                 whileHover={{ x: 20 }}
                 data-aos="fade-left"
                 data-aos-delay={index * 200}
-                className="group bg-base-100 rounded-3xl p-1 shadow-2xl border border-base-300/50"
+                className="group bg-base-100 rounded-3xl p-1 shadow-sm border border-base-300/50"
               >
-                <div className="bg-base-100 rounded-[1.4rem] p-5 flex items-center gap-6">
+                <div className="bg-base-100 rounded-md p-5 flex items-center gap-6">
                   <div className="relative">
                     <div
                       className={`absolute inset-0 bg-linear-to-tr ${winner.color}

@@ -8,6 +8,8 @@ import HowItWorks from "../../HowItWorks/HowItWorks";
 import CallToAction from "../../CallToAction/CallToAction";
 import StatsSection from "../../StatsSection/StatsSection";
 import UpcomingContests from "../../UpcomingContests/UpcomingContets";
+import NewsLetter from "../../NewsLetter/NewsLetter";
+import PerformanceMetrics from "../../PerformanceMetrics/PerformanceMetrics";
 
 const reviewsPromise = fetch('/data/reviews.json').then(res => res.json());
 
@@ -20,7 +22,8 @@ const Home = () => {
       <WinnerAdvertisement></WinnerAdvertisement>
       <HowItWorks></HowItWorks>
       <UpcomingContests></UpcomingContests>
-      <CallToAction></CallToAction>
+      <NewsLetter></NewsLetter>
+      <PerformanceMetrics></PerformanceMetrics>
       <StatsSection></StatsSection>
 
     </>

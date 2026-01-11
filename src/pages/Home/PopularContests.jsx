@@ -12,24 +12,31 @@ const PopularContests = () => {
     queryFn: async () => {
       const res = await axiosSecure.get("/contests/popular");
       return res.data;
-    }
+    },
   });
 
-  if (isLoading) return <span className="loading loading-infinity loading-xl min-h-screen"></span>
-;
-
+  if (isLoading)
+    return (
+      <span className="loading loading-infinity loading-xl min-h-screen"></span>
+    );
 
   return (
-    <div className="max-w-7xl mx-auto pt-8 py-12 px-6 bg-base-200">
+    <div className="max-w-7xl mx-auto pt-8 pb-24 py-12 px-6 bg-base-200">
       <Title>Popular Contests</Title>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {popular.map((item) => (
-          <PopularContestCard key={item._id} contest={item} ></PopularContestCard>
+          <PopularContestCard
+            key={item._id}
+            contest={item}
+          ></PopularContestCard>
         ))}
       </div>
 
       <div className="text-center mt-6">
-        <Link to="/all-contests" className="btn btn-outline">
+        <Link
+          to="/all-contests"
+          className="btn bg-base-300 hover:bg-base-100 text-base-content mt-3"
+        >
           Show All
         </Link>
       </div>

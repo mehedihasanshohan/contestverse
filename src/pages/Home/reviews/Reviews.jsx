@@ -2,20 +2,19 @@
 import React, { use } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-// Swiper styles
 import "swiper/css";
 import 'swiper/css/effect-coverflow';
 import "swiper/css/pagination";
 
 import { Autoplay, EffectCoverflow, Pagination } from "swiper/modules";
+import Title from "../../../components/Title";
 
 const Reviews = ({ reviewsPromise }) => {
   const reviews = use(reviewsPromise);
 
   return (
-    <div className="py-10 bg-slate-100">
-      <h2 className="text-3xl font-bold mb-6 pt-8 text-center">User Reviews</h2>
-
+    <div className="py-12 bg-base-200 pt-24 pb-24">
+      <Title>User Reviews</Title>
       <Swiper
         loop = {true}
         effect = {'coverflow'}
@@ -40,7 +39,7 @@ const Reviews = ({ reviewsPromise }) => {
       >
         {reviews.map((item) => (
           <SwiperSlide key={item.id}>
-            <div className="bg-white shadow-md rounded-xl p-5 border">
+            <div className="bg-base-100 shadow-md mt-4 rounded-xl p-6 border">
               <div className="flex items-center gap-3 mb-3">
                 <img
                   src={item.user_photoURL}
@@ -49,7 +48,7 @@ const Reviews = ({ reviewsPromise }) => {
                 />
                 <div>
                   <h3 className="font-semibold">{item.userName}</h3>
-                  <p className="text-sm text-gray-800">
+                  <p className="text-sm">
                     {new Date(item.date).toLocaleDateString()}
                   </p>
                 </div>
@@ -71,7 +70,7 @@ const Reviews = ({ reviewsPromise }) => {
                 ))}
               </div>
 
-              <p className="text-gray-800">{item.review}</p>
+              <p className="opacity-80">{item.review}</p>
             </div>
           </SwiperSlide>
         ))}

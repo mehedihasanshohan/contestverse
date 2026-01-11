@@ -29,7 +29,7 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section className="py-20 bg-base-200 text-base-content pt-16 overflow-hidden">
+    <section className="py-20 bg-base-200 text-base-content pt-16 pb-24 overflow-hidden">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
@@ -58,7 +58,6 @@ const HowItWorks = () => {
               className="relative group p-10 rounded-3xl bg-base-100 shadow-xl
               border border-base-300 transition-all duration-500"
             >
-              {/* Decorative Background Glow */}
               <div
                 className="absolute inset-0 bg-cyan-500/5 opacity-0
               group-hover:opacity-100 blur-3xl transition-opacity rounded-full"

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { AlarmClock, Trophy, BellRing, CheckCircle2 } from "lucide-react";
+import { Trophy, BellRing, CheckCircle2 } from "lucide-react";
 import Swal from "sweetalert2";
 import Subtitle from "../../components/Subtitle";
+// eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import Title from "../../components/Title";
 
 const UpcomingContests = () => {
-  // Track reminded contests by their ID
   const [remindedIds, setRemindedIds] = useState([]);
 
   const upcomingData = [
@@ -41,10 +41,8 @@ const UpcomingContests = () => {
   ];
 
   const handleReminder = (id, title) => {
-    // UI update logic
     setRemindedIds((prev) => [...prev, id]);
 
-    // Professional Toast
     Swal.fire({
       title: "Reminder Planned!",
       text: `We'll notify you when ${title} begins.`,
@@ -58,7 +56,7 @@ const UpcomingContests = () => {
   };
 
   return (
-    <section className="py-20 bg-base-100">
+    <section className="py-20 bg-base-200 pb-24">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <motion.div
@@ -68,12 +66,9 @@ const UpcomingContests = () => {
             transition={{ duration: 0.8 }}
           >
             <Title>
-              Upcoming <span className="text-primary italic">Drops</span>
+              Upcoming <span className="text-cyan-500">Drops</span>
             </Title>
-            <Subtitle>
-
-              Get ready for the next wave of creativity.
-            </Subtitle>
+            <Subtitle>Get ready for the next wave of creativity.</Subtitle>
           </motion.div>
         </div>
 
@@ -81,19 +76,18 @@ const UpcomingContests = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {upcomingData.map((contest) => (
             <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false }}
-            transition={{ duration: 0.8 }}
-          >
-
-            <ContestCard
-              key={contest.id}
-              contest={contest}
-              isPlanned={remindedIds.includes(contest.id)}
-              onReminder={() => handleReminder(contest.id, contest.title)}
-            />
-          </motion.div>
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: false }}
+              transition={{ duration: 0.8 }}
+            >
+              <ContestCard
+                key={contest.id}
+                contest={contest}
+                isPlanned={remindedIds.includes(contest.id)}
+                onReminder={() => handleReminder(contest.id, contest.title)}
+              />
+            </motion.div>
           ))}
         </div>
       </div>
@@ -125,13 +119,12 @@ const ContestCard = ({ contest, onReminder, isPlanned }) => {
   return (
     <div
       className={`group p-6 rounded-md border transition-all duration-300 ${
-        isPlanned
-          ? "bg-base-300/30"
-          : "bg-base-200 border-transparent hover:border-base-300"
+        isPlanned ? "bg-base-300/30" : "bg-base-200  border-base-300"
       }`}
     >
       <div className="flex justify-between items-start mb-4">
-        <span className="text-[10px] font-bold px-2 py-1 bg-primary/10 text-primary rounded uppercase tracking-widest">
+        <span className="text-[10px] font-bold px-2 py-1 bg-primary/10
+        text-primary rounded uppercase tracking-widest">
           {contest.type}
         </span>
         {!isPlanned && (
@@ -140,13 +133,16 @@ const ContestCard = ({ contest, onReminder, isPlanned }) => {
       </div>
 
       <h3 className="text-xl font-bold mb-1 truncate">{contest.title}</h3>
-      <p className="text-success font-semibold text-sm mb-4 flex items-center gap-1">
+      <p className="text-success font-semibold text-sm mt-2 mb-4 flex items-center gap-1">
         <Trophy size={14} /> Prize: {contest.prize}
       </p>
 
       {/* Mini Timer */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  lg:grid-cols-4 gap-1 text-center mb-6 bg-base-100 p-2
-       rounded-lg border border-base-300">
+      <div
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3
+        lg:grid-cols-4 gap-1 text-center mb-6 bg-base-100 p-2
+       rounded-lg border border-base-300"
+      >
         {timeLeft ? (
           Object.entries(timeLeft).map(([label, val]) => (
             <div key={label}>
@@ -159,11 +155,11 @@ const ContestCard = ({ contest, onReminder, isPlanned }) => {
         )}
       </div>
 
-      {/* Functional Button */}
       <button
         onClick={onReminder}
         disabled={isPlanned}
-        className={`w-full py-3 rounded-md border border-base-100 font-bold flex items-center justify-center gap-2 transition-all
+        className={`w-full btn py-3 rounded-md border bg-base-300 hover:bg-base-100 text-base-content
+          font-bold flex items-center justify-center gap-2 transition-all
           ${
             isPlanned
               ? "bg-success/10 text-success cursor-not-allowed border border-success/20"
