@@ -15,7 +15,7 @@ const PopularContestCard = ({ contest }) => {
   };
 
   return (
-    <div className="rounded-md shadow-lg mt-4 p-4 hover:shadow-xl transition border border-base-300">
+    <div className="rounded-md shadow-sm mt-4 p-4 hover:shadow-xl transition border border-base-100">
       <img
         src={image}
         alt={name}
@@ -32,6 +32,16 @@ const PopularContestCard = ({ contest }) => {
           <CountUp
             end={participants}
             duration={5}
+            enableScrollSpy={true}
+            scrollSpyOnce={false}
+          />
+        </span>
+      </p>
+      <p className="font-medium text-md opacity-80 mt-2">Price:
+        <span className="font-bold"> $
+          <CountUp
+            end={contest.price}
+            duration={4}
             enableScrollSpy={true}
             scrollSpyOnce={false}
           />

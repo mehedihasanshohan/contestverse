@@ -5,6 +5,7 @@ import useAuth from "../../hooks/useAuth";
 import { useEffect, useState } from "react";
 import useRole from './../../hooks/useRole';
 
+
 const DetailsContest = () => {
   const { id } = useParams();
   const axiosSecure = useAxiosSecure();
@@ -62,7 +63,7 @@ const DetailsContest = () => {
       // userName: contest.creatorName
     };
 
-    const res = await axiosSecure.post("/create-checkout-session", paymentInfo);
+    const res = await useAxiosSecure.post("/create-checkout-session", paymentInfo);
     console.log(res.data);
     window.location.assign(res.data.url);
   };
