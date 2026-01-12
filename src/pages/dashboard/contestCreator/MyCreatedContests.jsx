@@ -5,12 +5,17 @@ import { Link } from "react-router";
 import { FiEdit } from "react-icons/fi";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import Title from "../../../components/Title";
 
 const MyContests = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
 
-  const { data: contests = [], refetch } = useQuery({
+  const {
+    data: contests = [],
+    refetch,
+    isLoading,
+  } = useQuery({
     queryKey: ["myContests", user?.email],
     enabled: !!user?.email,
     queryFn: async () => {
@@ -46,11 +51,17 @@ const MyContests = () => {
     });
   };
 
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center min-h-screen bg-base-200">
+        <span className="loading loading-infinity loading-lg text-primary"></span>
+      </div>
+    );
+  }
+
   return (
-    <div>
-      <h2 className="text-xl font-medium text-center mt-6 mb-2 text-amber-700">
-        All of my contests: {contests.length}
-      </h2>
+    <div className="max-w-7xl mx-auto py-12 px-6 bg-base-200">
+      <Title>All of my contests: {contests.length}</Title>
       <div className="overflow-x-auto">
         <table className="table table-zebra">
           {/* head */}
@@ -93,7 +104,7 @@ const MyContests = () => {
                   {contest.approvalStatus === "approved" && (
                     <>
                       <Link to={`/dashboard/submissions/${contest._id}`}>
-                        <button className="btn btn-sm btn-info">
+                        <button className="btn btn-sm bg-cyan-600">
                           Submissions
                         </button>
                       </Link>

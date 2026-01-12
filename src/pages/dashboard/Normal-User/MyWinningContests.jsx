@@ -28,7 +28,6 @@ const MyWinningContests = () => {
 
     return (
         <div className="max-w-7xl mx-auto p-6 md:p-8 bg-base-200 text-base-content">
-            {/* Header Section */}
             <div className="mb-10">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-base-300 p-8 rounded-md shadow-sm">
                     <div>
@@ -61,32 +60,32 @@ const MyWinningContests = () => {
                             <div key={contest._id} className="group bg-base-300 rounded-md overflow-hidden shadow-sm hover:shadow-md
                              transition-all duration-300 border border-base-100 flex flex-col">
                                 {/* Card Header with Badge */}
-                                <div className="relative h-24 p-6 flex items-start justify-between">
-                                    <Star className=" absolute -right-2 -top-2 w-20 h-20 rotate-12" />
-                                    <div className=" backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-white uppercase">
+                                <div className="relative h-24 p-6 bg-base-100 flex items-start justify-between">
+                                    <Star className="text-cyan-500 absolute -right-2 -top-2 w-20 h-20 rotate-12" />
+                                    <div className=" backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold uppercase">
                                         Champion
                                     </div>
-                                    <Medal className="w-8 h-8" />
+                                    <Medal className="w-8 h-8 text-cyan-500" />
                                 </div>
 
                                 {/* Card Body */}
                                 <div className="p-6 grow">
-                                    <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-orange-600 transition-colors">
+                                    <h3 className="text-xl font-bold mb-2 group-hover:text-cyan-600 transition-colors">
                                         {contest.contestName}
                                     </h3>
 
                                     <div className="relative mt-4 mb-6">
-                                        <Quote className="text-gray-100 absolute -top-4 -left-2 w-10 h-10" />
-                                        <p className="text-gray-600 italic text-sm line-clamp-3 relative z-10 pl-4 border-l-2 border-orange-200">
+                                        <Quote className=" absolute -top-4 -left-2 w-10 h-10" />
+                                        <p className="ml-4 italic text-sm line-clamp-3 relative z-10 pl-4 border-l-2 border-orange-200">
                                             {contest.submissionText}
                                         </p>
                                     </div>
 
                                     {/* Prize Section */}
-                                    <div className="bg-gray-50 rounded-2xl p-4 flex items-center justify-between">
+                                    <div className=" rounded-md p-4 bg-base-100 flex items-center justify-between">
                                         <div>
-                                            <p className="text-[10px] uppercase font-bold text-gray-400 tracking-tighter">Prize Money</p>
-                                            <p className="text-2xl font-black text-gray-800">
+                                            <p className="text-[10px] uppercase font-bold">Prize Money</p>
+                                            <p className="text-2xl font-black">
                                                 ${contest.prize || '50000'}
                                             </p>
                                         </div>
@@ -101,8 +100,8 @@ const MyWinningContests = () => {
                                 </div>
 
                                 {/* Card Footer */}
-                                <div className="p-4 bg-gray-50 border-t border-gray-100 text-center">
-                                    <button className="text-xs font-bold text-orange-600 hover:text-orange-700 uppercase tracking-widest transition-all">
+                                <div className="p-4 bg-gray-50 border-t border-base-100 text-center">
+                                    <button className="text-xs font-bold text-cyan-600 hover:text-orange-700 uppercase tracking-widest transition-all">
                                         Download Certificate
                                     </button>
                                 </div>

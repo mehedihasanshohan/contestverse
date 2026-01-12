@@ -15,22 +15,36 @@ const AllContests = () => {
   const itemsPerPage = 8;
 
   // Tabs for Categories
-  const tabs = ["all", "Gaming review", "Design contest", "Article writing", "Business idea", "Photography contest"];
+  const tabs = [
+    "all",
+    "Gaming review",
+    "Design contest",
+    "Article writing",
+    "Business idea",
+    "Photography contest",
+  ];
 
   // Fetch data using React Query
   const { data: contests = [], isLoading } = useQuery({
     queryKey: ["all-approved-contests"],
     queryFn: async () => {
       const res = await axiosPublic.get("/contests");
-      return res.data.filter(item => item.approvalStatus === "approved");
+      return res.data.filter((item) => item.approvalStatus === "approved");
     },
   });
 
-  if (isLoading) return <div className="flex justify-center mt-20"><span className="loading loading-spinner text-success loading-lg"></span></div>;
+  if (isLoading)
+    return (
+      <div className="flex justify-center mt-20">
+        <span className="loading loading-spinner text-success loading-lg"></span>
+      </div>
+    );
 
   // --- Filtering Logic (Requirement: At least 2 fields)
-  let filtered = contests.filter(item => {
-    const matchesSearch = item.name.toLowerCase().includes(search.toLowerCase());
+  let filtered = contests.filter((item) => {
+    const matchesSearch = item.name
+      .toLowerCase()
+      .includes(search.toLowerCase());
     const matchesCategory = category === "all" || item.type === category;
     return matchesSearch && matchesCategory; // Field 1: Name/Search, Field 2: Category
   });
@@ -45,21 +59,29 @@ const AllContests = () => {
   // --- Pagination Logic ---
   const totalPages = Math.ceil(filtered.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
-  const paginatedContests = filtered.slice(startIndex, startIndex + itemsPerPage);
+  const paginatedContests = filtered.slice(
+    startIndex,
+    startIndex + itemsPerPage
+  );
 
   return (
-    <div className="max-w-7xl mx-auto py-1w px-6 bg-base-200  pb-24">
+    <div className="max-w-7xl mx-auto py-12 px-6 bg-base-200  pb-24">
       <Title>Explore All Contests</Title>
 
       {/* Search and Sort Section */}
-      <div className="flex flex-col md:flex-row gap-4 justify-between items-center
-      mb-10 bg-base-100 p-6 rounded-md shadow-sm">
+      <div
+        className="flex flex-col md:flex-row gap-4 justify-between items-center
+      mb-10 p-6 rounded-md shadow-sm bg-base-300"
+      >
         <div className="w-full md:w-1/2">
           <input
             type="text"
             placeholder="Search by contest name..."
             className="input input-bordered w-full shadow-inner"
-            onChange={(e) => {setSearch(e.target.value); setCurrentPage(1);}}
+            onChange={(e) => {
+              setSearch(e.target.value);
+              setCurrentPage(1);
+            }}
           />
         </div>
 
@@ -80,9 +102,16 @@ const AllContests = () => {
         {tabs.map((tab) => (
           <button
             key={tab}
-            onClick={() => {setCategory(tab); setCurrentPage(1);}}
+            onClick={() => {
+              setCategory(tab);
+              setCurrentPage(1);
+            }}
             className={`px-5 py-2 rounded-full border-2 transition-all font-medium
-              ${category === tab ? "bg-emerald-600 shadow-md hover:bg-emerald-800 cursor-pointer" : "cursor-pointer hover:bg-base-100"}
+              ${
+                category === tab
+                  ? "bg-emerald-600 shadow-md hover:bg-emerald-800 cursor-pointer"
+                  : "cursor-pointer hover:bg-base-100"
+              }
             `}
           >
             {tab === "all" ? "All Categories" : tab}
@@ -98,7 +127,9 @@ const AllContests = () => {
           ))
         ) : (
           <div className="col-span-full text-center py-20">
-             <p className="text-2xl text-gray-400">No contests found matching your criteria.</p>
+            <p className="text-2xl text-gray-400">
+              No contests found matching your criteria.
+            </p>
           </div>
         )}
       </div>
@@ -106,14 +137,16 @@ const AllContests = () => {
       {/* Pagination Controls */}
       {totalPages > 1 && (
         <div className="flex justify-center mt-16 gap-2">
-          {[...Array(totalPages).keys()].map(number => (
+          {[...Array(totalPages).keys()].map((number) => (
             <button
               key={number + 1}
               onClick={() => {
                 setCurrentPage(number + 1);
-                window.scrollTo({top: 200, behavior: 'smooth'});
+                window.scrollTo({ top: 200, behavior: "smooth" });
               }}
-              className={`btn btn-md ${currentPage === number + 1 ? "btn-primary" : "btn-outline"}`}
+              className={`btn btn-md ${
+                currentPage === number + 1 ? "btn-primary" : "btn-outline"
+              }`}
             >
               {number + 1}
             </button>

@@ -3,12 +3,13 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
+import Title from "../../components/Title";
 
 const UsersManagement = () => {
   const axiosSecure = useAxiosSecure();
   const { user: currentUser } = useAuth();
 
-  const { refetch, data: users = [] } = useQuery({
+  const { refetch, data: users = [], isLoading } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
       const res = await axiosSecure.get("/users");
@@ -17,14 +18,13 @@ const UsersManagement = () => {
   });
 
   const handleMakeAdmin = (user) => {
-
-    if (user.email === 'cr@gmail.com') {
+    if (user.email === "cr@gmail.com") {
       return Swal.fire({
         icon: "error",
         title: "This action is restricted to test the ui as creator!",
       });
     }
-    if (user.email === 'w@gmail.com') {
+    if (user.email === "w@gmail.com") {
       return Swal.fire({
         icon: "error",
         title: "This action is restricted to test the ui as creator!",
@@ -70,12 +70,17 @@ const UsersManagement = () => {
     });
   };
 
-  return (
-    <div>
-      <h2 className="text-xl font-medium text-center mt-6 mb-2 text-amber-700">
-        Manage Users: {users.length}
-      </h2>
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center min-h-screen bg-base-200">
+        <span className="loading loading-infinity loading-lg text-primary"></span>
+      </div>
+    );
+  }
 
+  return (
+    <div className="max-w-7xl mx-auto py-12 px-6 bg-base-200">
+      <Title>Manage Users: {users.length}</Title>
       <div className="overflow-x-auto">
         <table className="table">
           {/* head */}

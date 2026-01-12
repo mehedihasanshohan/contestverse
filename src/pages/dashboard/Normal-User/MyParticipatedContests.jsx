@@ -3,6 +3,7 @@ import useAxiosSecure from "./../../../hooks/useAxiosSecure";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import Title from "../../../components/Title";
 
 const MyParticipatedContests = () => {
   const axiosSecure = useAxiosSecure();
@@ -10,7 +11,11 @@ const MyParticipatedContests = () => {
 
   const { register, handleSubmit, reset } = useForm();
 
-  const { data: payments = [], isLoading, refetch } = useQuery({
+  const {
+    data: payments = [],
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["my-participated-contests"],
     queryFn: async () => {
       const res = await axiosSecure.get("/my-participated-contests");
@@ -41,15 +46,18 @@ const MyParticipatedContests = () => {
     }
   };
 
-  if (isLoading) return <p className="text-center mt-6">Loading...</p>;
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center min-h-screen bg-base-200">
+        <span className="loading loading-infinity loading-lg text-primary"></span>
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-7xl mx-auto py-12 px-4 text-base-content bg-base-200">
-      <h2 className="text-xl font-medium text-center mt-6 mb-6">
-        My Participated Contests: {payments.length}
-      </h2>
-
-      <div className="overflow-x-auto">
+      <Title>My Participated Contests: {payments.length}</Title>
+      <div className="overflow-x-auto pb-6 pt-6">
         <table className="table table-zebra w-full">
           <thead>
             <tr>
@@ -68,7 +76,9 @@ const MyParticipatedContests = () => {
               <tr key={pay._id}>
                 <th>{index + 1}</th>
                 <td>{pay.contestName}</td>
-                <td className="text-green-600 font-semibold">{pay.paymentStatus}</td>
+                <td className="text-green-600 font-semibold">
+                  {pay.paymentStatus}
+                </td>
                 <td>{new Date(pay.paidAt).toLocaleDateString()}</td>
                 <td className="text-sm">{pay.trackingId}</td>
                 <td>{new Date(pay.deadline).toLocaleDateString()}</td>
@@ -83,7 +93,9 @@ const MyParticipatedContests = () => {
                       Submit
                     </button>
                   ) : (
-                    <span className="text-red-500 font-semibold">Contest Ended</span>
+                    <span className="text-red-500 font-semibold">
+                      Contest Ended
+                    </span>
                   )}
                 </td>
               </tr>

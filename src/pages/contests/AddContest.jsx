@@ -6,6 +6,7 @@ import useAuth from "../../hooks/useAuth";
 import { useNavigate } from "react-router";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import Title from "../../components/Title";
 
 const AddContest = () => {
   const { register, handleSubmit, setValue, watch } = useForm();
@@ -86,16 +87,15 @@ const AddContest = () => {
   };
 
   return (
-    <div>
-      <h2 className="text-xl font-medium text-center mt-6 mb-2 text-amber-700">Add New Contest</h2>
-
+    <div className="max-w-7xl mx-auto py-12 px-6 bg-base-200">
+      <Title>Add New Contest</Title>
       <form
         className="grid grid-cols-1 md:grid-cols-2 gap-10 p-6"
         onSubmit={handleSubmit(handleAddContest)}
       >
         {/* Name */}
         <div>
-          <label className="label">Contest Name</label>
+          <label className="label mb-2">Contest Name</label>
           <input
             type="text"
             className="input w-full"
@@ -106,7 +106,7 @@ const AddContest = () => {
 
         {/* Image URL */}
         <div>
-          <label className="label">Contest Image URL</label>
+          <label className="label mb-2">Contest Image URL</label>
           <input
             type="text"
             className="input w-full"
@@ -117,7 +117,7 @@ const AddContest = () => {
 
         {/* Price */}
         <div>
-          <label className="label">Entry Price</label>
+          <label className="label mb-2">Entry Price</label>
           <input
             type="number"
             className="input w-full"
@@ -128,7 +128,7 @@ const AddContest = () => {
 
         {/* Prize Money */}
         <div>
-          <label className="label">Prize Money</label>
+          <label className="label mb-2">Prize Money</label>
           <input
             type="number"
             className="input w-full"
@@ -139,7 +139,7 @@ const AddContest = () => {
 
         {/* Contest Type */}
         <div>
-          <label className="label">Contest Type</label>
+          <label className="label mb-2">Contest Type</label>
           <select
             className="select w-full"
             {...register("type", { required: true })}
@@ -155,7 +155,7 @@ const AddContest = () => {
 
         {/* Deadline */}
         <div>
-          <label className="label">Deadline</label>
+          <label className="label mr-2">Deadline:</label>
           <DatePicker
             selected={deadline}
             onChange={(date) => setValue("deadline", date)}
@@ -166,7 +166,7 @@ const AddContest = () => {
 
         {/* Description (full width) */}
         <div className="md:col-span-2">
-          <label className="label">Description</label>
+          <label className="label mb-2">Description</label>
           <textarea
             className="textarea w-full h-28"
             placeholder="Contest Description"
@@ -176,7 +176,7 @@ const AddContest = () => {
 
         {/* Task Instruction (full width) */}
         <div className="md:col-span-2">
-          <label className="label">Task Instruction</label>
+          <label className="label mb-2">Task Instruction</label>
           <textarea
             className="textarea w-full h-32"
             placeholder="Task Instruction for participants"
@@ -186,7 +186,7 @@ const AddContest = () => {
 
         <input
           type="submit"
-          className="btn btn-primary w-full md:col-span-2"
+          className="btn bg-base-300 w-full md:col-span-2"
           value="Create Contest"
         />
       </form>

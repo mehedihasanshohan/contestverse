@@ -1,107 +1,112 @@
-import { useQuery } from '@tanstack/react-query'
-import React from 'react'
-import useAxiosSecure from '../../hooks/useAxiosSecure'
-import { FaEye, FaUserCheck } from 'react-icons/fa';
-import { IoPersonRemoveSharp } from 'react-icons/io5';
-import { FaTrashCan } from 'react-icons/fa6';
-import Swal from 'sweetalert2';
+import { useQuery } from "@tanstack/react-query";
+import React from "react";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { FaEye, FaUserCheck } from "react-icons/fa";
+import { IoPersonRemoveSharp } from "react-icons/io5";
+import { FaTrashCan } from "react-icons/fa6";
+import Swal from "sweetalert2";
+import Title from "../../components/Title";
 
 const ApproveCreator = () => {
   const axiosSecure = useAxiosSecure();
 
   const { refetch, data: creators = [] } = useQuery({
-    queryKey: ['creators', 'pending'],
+    queryKey: ["creators", "pending"],
     queryFn: async () => {
-      const res = await axiosSecure.get('/creators');
+      const res = await axiosSecure.get("/creators");
       return res.data;
-    }
-  })
-
+    },
+  });
 
   const updateCreatorStatus = (creator, status) => {
-      const updateInfo = {status: status, email: creator.contestCreatorEmail}
-      axiosSecure.patch(`/creators/${creator._id}`, updateInfo)
-      .then(res => {
-        if(res.data.modifiedCount ){
-          refetch();
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: `Creator status is set to ${status}`,
-            showConfirmButton: false,
-            timer: 1500
-          })
-        }
-      })
-  }
+    const updateInfo = { status: status, email: creator.contestCreatorEmail };
+    axiosSecure.patch(`/creators/${creator._id}`, updateInfo).then((res) => {
+      if (res.data.modifiedCount) {
+        refetch();
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: `Creator status is set to ${status}`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    });
+  };
 
-  const handleApproval = creator => {
-    updateCreatorStatus(creator, 'approved')
-  }
+  const handleApproval = (creator) => {
+    updateCreatorStatus(creator, "approved");
+  };
 
-  const handleRejection = creator => {
-    updateCreatorStatus(creator, 'rejected')
-  }
+  const handleRejection = (creator) => {
+    updateCreatorStatus(creator, "rejected");
+  };
 
-  const handleDelete = creator => {
+  const handleDelete = (creator) => {
     console.log(creator._id);
-  }
-
+  };
 
   return (
-    <div>
-      <h2 className="text-xl font-medium text-center mt-6 mb-2 text-amber-700">Creators Pending for Approval: {creators.length}</h2>
-    <div className="overflow-x-auto">
-  <table className="table table-zebra">
-    {/* head */}
-    <thead>
-      <tr>
-        <th></th>
-        <th>Creator Name</th>
-        <th>Email</th>
-        <th>Address</th>
-        <th>Status</th>
-        <th>Accept / Reject / Delete</th>
-      </tr>
-    </thead>
-    <tbody>
-      {
-        creators.map((creator, index) =>  <tr key={creator._id}>
-        <th>{index+1}</th>
-        <td>{creator.contestCreatorName}</td>
-        <td>{creator.contestCreatorEmail}</td>
-        <td>{creator.contestCreatorAddress}</td>
-        <td>
-          <p className={`${creator.status === 'approved' ?
-            'text-green-500' : 'text-orange-500'
-          }`}>{creator.status}</p>
-        </td>
-        <td>
-          <button
-            onClick={() => handleApproval(creator)}
-            className='btn text-teal-600 '>
-            <FaUserCheck></FaUserCheck>
-          </button>
-          <button
-            onClick={() => handleRejection(creator)}
-            className='btn text-red-600 ml-2 mr-2'>
-            <IoPersonRemoveSharp></IoPersonRemoveSharp>
-          </button>
-          <button
-          onClick={() => handleDelete(creator)}
-          className='btn text-red-400'>
-            <FaTrashCan></FaTrashCan>
-          </button>
-        </td>
-      </tr>)
-      }
-
-
-    </tbody>
-  </table>
-</div>
+    <div className="max-w-7xl mx-auto py-12 px-6 bg-base-200">
+      <Title>Creators Pending for Approval: {creators.length}</Title>
+      <div className="overflow-x-auto">
+        <table className="table table-zebra">
+          {/* head */}
+          <thead>
+            <tr>
+              <th></th>
+              <th>Creator Name</th>
+              <th>Email</th>
+              <th>Address</th>
+              <th>Status</th>
+              <th>Accept / Reject / Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            {creators.map((creator, index) => (
+              <tr key={creator._id}>
+                <th>{index + 1}</th>
+                <td>{creator.contestCreatorName}</td>
+                <td>{creator.contestCreatorEmail}</td>
+                <td>{creator.contestCreatorAddress}</td>
+                <td>
+                  <p
+                    className={`${
+                      creator.status === "approved"
+                        ? "text-green-500"
+                        : "text-orange-500"
+                    }`}
+                  >
+                    {creator.status}
+                  </p>
+                </td>
+                <td>
+                  <button
+                    onClick={() => handleApproval(creator)}
+                    className="btn text-teal-600 "
+                  >
+                    <FaUserCheck></FaUserCheck>
+                  </button>
+                  <button
+                    onClick={() => handleRejection(creator)}
+                    className="btn text-red-600 ml-2 mr-2"
+                  >
+                    <IoPersonRemoveSharp></IoPersonRemoveSharp>
+                  </button>
+                  <button
+                    onClick={() => handleDelete(creator)}
+                    className="btn text-red-400"
+                  >
+                    <FaTrashCan></FaTrashCan>
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default ApproveCreator
+export default ApproveCreator;

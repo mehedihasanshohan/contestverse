@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import { GiConfirmed } from "react-icons/gi";
 import { ImCancelCircle } from "react-icons/im";
 import { useState } from "react";
+import Title from "../../components/Title";
 
 const ApproveCreator = () => {
   const axiosSecure = useAxiosSecure();
@@ -13,7 +14,11 @@ const ApproveCreator = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
 
-  const { refetch, data: contests = [] } = useQuery({
+  const {
+    refetch,
+    data: contests = [],
+    isLoading,
+  } = useQuery({
     queryKey: ["contests", "pending"],
     queryFn: async () => {
       const res = await axiosSecure.get("/contests");
@@ -81,11 +86,17 @@ const ApproveCreator = () => {
     });
   };
 
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center min-h-screen bg-base-200">
+        <span className="loading loading-infinity loading-lg text-cyan-600"></span>
+      </div>
+    );
+  }
+
   return (
-    <div>
-      <h2 className="text-xl font-medium text-center mt-6 mb-2 text-amber-700">
-        ALL Contests: {contests.length}
-      </h2>
+    <div className="max-w-7xl mx-auto py-12 px-6 bg-base-200">
+      <Title>ALL Contests: {contests.length}</Title>
       <div className="overflow-x-auto">
         <table className="table table-zebra">
           {/* head */}
@@ -160,16 +171,18 @@ const ApproveCreator = () => {
             </button>
 
             {[...Array(totalPages)].map((_, index) => {
-                const pageNum = index + 1;
-                return (
-                    <button
-                        key={pageNum}
-                        onClick={() => handlePageChange(pageNum)}
-                        className={`join-item btn ${currentPage === pageNum ? 'btn-active btn-primary' : ''}`}
-                    >
-                        {pageNum}
-                    </button>
-                );
+              const pageNum = index + 1;
+              return (
+                <button
+                  key={pageNum}
+                  onClick={() => handlePageChange(pageNum)}
+                  className={`join-item btn ${
+                    currentPage === pageNum ? "btn-active btn-primary" : ""
+                  }`}
+                >
+                  {pageNum}
+                </button>
+              );
             })}
 
             <button
@@ -187,4 +200,3 @@ const ApproveCreator = () => {
 };
 
 export default ApproveCreator;
-
