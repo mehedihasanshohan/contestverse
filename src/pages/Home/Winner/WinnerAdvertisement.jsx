@@ -40,7 +40,7 @@ const WinnerAdvertisement = () => {
     <div className="bg-base-200 max-w-7xl mx-auto py-12 pb-24 px-6 overflow-hidden">
         <div className="mb-16">
           <Title>
-            Our Pride <span className="">Winners</span>
+            Our Pride Winners
           </Title>
           <Subtitle>
             Celebrating the brilliant minds who conquered our challenges this

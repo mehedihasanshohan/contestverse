@@ -37,7 +37,7 @@ const HowItWorks = () => {
           transition={{ duration: 0.8 }}
         >
           <Title>
-            How It <span className="text-cyan-500">Works</span>
+            How It Works
           </Title>
         </motion.div>
 

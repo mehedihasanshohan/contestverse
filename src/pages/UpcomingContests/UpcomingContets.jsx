@@ -78,7 +78,7 @@ const UpcomingContests = () => {
           transition={{ duration: 0.8 }}
         >
           <Title>
-            Upcoming <span className="text-cyan-500">Drops</span>
+            Upcoming Drops
           </Title>
           <Subtitle>Get ready for the next wave of creativity.</Subtitle>
         </motion.div>

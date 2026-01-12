@@ -40,7 +40,7 @@ const StatsSection = () => {
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        <Title> <span className="text-cyan-500">Contetsverse</span> by the Numbers</Title>
+        <Title> Contetsverse by the Numbers</Title>
       </motion.div>
 
       <motion.div
