@@ -27,45 +27,46 @@ const MyWinningContests = () => {
     }
 
     return (
-        <div className="p-4 md:p-8 bg-base-100 min-h-screen">
+        <div className="max-w-7xl mx-auto p-6 md:p-8 bg-base-200 text-base-content">
             {/* Header Section */}
-            <div className="max-w-6xl mx-auto mb-10">
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-linear-to-r from-gray-900 to-gray-800 p-8 rounded-3xl shadow-2xl text-white">
+            <div className="mb-10">
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-base-300 p-8 rounded-md shadow-sm">
                     <div>
-                        <h2 className="text-4xl font-black flex items-center gap-3">
-                            <Crown className="text-yellow-400 w-10 h-10" />
+                        <h2 className="text-4xl font-bold flex items-center gap-3">
+                            <Crown className="text-amber-500 w-10 h-10" />
                             Hall of Fame
                         </h2>
-                        <p className="text-gray-400 mt-2 uppercase tracking-widest text-sm font-bold">
+                        <p className="opacity-80 mt-2 uppercase tracking-widest text-sm font-bold">
                             Your Personal Victory Gallery
                         </p>
                     </div>
                     <div className="flex items-center gap-6">
                         <div className="text-center">
-                            <p className="text-3xl font-bold text-yellow-400">{winningContests.length}</p>
+                            <p className="text-3xl font-bold text-amber-500">{winningContests.length}</p>
                             <p className="text-xs uppercase text-gray-400">Wins</p>
                         </div>
                         <div className="h-10 w-px bg-gray-700"></div>
-                        <div className="bg-yellow-400/10 p-4 rounded-2xl">
-                            <Trophy className="text-yellow-400 w-8 h-8" />
+                        <div className="bg-amber-500/10 p-4 rounded-2xl">
+                            <Trophy className="text-amber-500 w-8 h-8" />
                         </div>
                     </div>
                 </div>
             </div>
 
             {/* Content Section */}
-            <div className="max-w-6xl mx-auto">
+            <div className="max-w-7xl mx-auto">
                 {winningContests.length > 0 ? (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {winningContests.map((contest) => (
-                            <div key={contest._id} className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 flex flex-col">
+                            <div key={contest._id} className="group bg-base-300 rounded-md overflow-hidden shadow-sm hover:shadow-md
+                             transition-all duration-300 border border-base-100 flex flex-col">
                                 {/* Card Header with Badge */}
-                                <div className="relative h-24 bg-linear-to-br from-yellow-500 to-orange-600 p-6 flex items-start justify-between">
-                                    <Star className="text-white/30 absolute -right-2 -top-2 w-20 h-20 rotate-12" />
-                                    <div className="bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-white uppercase">
+                                <div className="relative h-24 p-6 flex items-start justify-between">
+                                    <Star className=" absolute -right-2 -top-2 w-20 h-20 rotate-12" />
+                                    <div className=" backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-white uppercase">
                                         Champion
                                     </div>
-                                    <Medal className="text-white w-8 h-8" />
+                                    <Medal className="w-8 h-8" />
                                 </div>
 
                                 {/* Card Body */}

@@ -1,64 +1,33 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+/* 1. Import Font */
 @import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
-body {
-  font-family: "Urbanist", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
+/* 2. Register with Tailwind v4 Theme */
+@theme {
+  --font-sans: "Urbanist", sans-serif;
+  --font-urbanist: "Urbanist", sans-serif;
 }
 
-
-@layer theme {
-  :root {
-    /* Backgrounds */
-    --color-bg: #ffffff;
-    --color-bg-secondary: #f7f7f8;
-    --color-card: #ffffff;
-
-    /* Text */
-    --color-text: #0a0a0a;
-    --color-text-secondary: #4b5563;
-
-    /* Border */
-    --color-border: #e5e7eb;
-
-    /* Brand (Indigo) */
-    --color-brand: #6366f1;
-    --color-brand-hover: #4f46e5;
-
-    /* Accents */
-    --color-success: #16a34a;
-    --color-warning: #f59e0b;
-    --color-danger: #dc2626;
-
-    /* Radius */
-    --radius-card: 16px;
-    --radius-button: 10px;
+/* 3. Global Reset & DaisyUI Specific Overrides */
+@layer base {
+  :root, body {
+    font-family: "Urbanist", sans-serif !important;
   }
 
-  /* DARK THEME */
-  .dark {
-    --color-bg: #0a0a0a;
-    --color-bg-secondary: #18181b;
-    --color-card: #1f1f23;
-
-    --color-text: #fafafa;
-    --color-text-secondary: #9ca3af;
-
-    --color-border: #27272a;
-
-    --color-brand: #818cf8;
-    --color-brand-hover: #a5b4fc;
-
-    --color-success: #22c55e;
-    --color-warning: #fbbf24;
-    --color-danger: #ef4444;
+  /* Specific fix for Navbar, Menu, and Buttons */
+  .navbar,
+  .menu,
+  .menu *,
+  .btn,
+  .dropdown-content,
+  h1, h2, h3, h4, p, span, a {
+    font-family: "Urbanist", sans-serif !important;
   }
 }
 
+/* 4. Transitions */
 * {
   transition: background-color 0.25s, color 0.25s, border-color 0.25s;
 }

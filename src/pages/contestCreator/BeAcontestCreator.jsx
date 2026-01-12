@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
+import Title from "../../components/Title";
 
 const BeAcontestCreator = () => {
   const { register, handleSubmit, reset } = useForm();
@@ -38,17 +39,14 @@ const BeAcontestCreator = () => {
   };
 
   return (
-    <div className="flex justify-center">
+    <div className="max-w-7xl mx-auto pb-24 px-6 text-base-content flex justify-center">
       <form
-        className="mt-12 text-black p-4 w-full max-w-xl"
+        className="mt-8 p-4 w-full max-w-xl"
         onSubmit={handleSubmit(handleContestCreatorApplication)}
       >
-        <h4 className="text-2xl font-semibold mb-6 text-center">
-          Contest Creator FORM
-        </h4>
+        <Title>Contest Creator Form</Title>
 
-        <div className="space-y-4">
-
+        <div className="space-y-4 ">
           <div className="space-y-2">
             <label className="label">Contest Creator Name</label>
             <input
@@ -84,12 +82,11 @@ const BeAcontestCreator = () => {
               {...register("contestCreatorAddress")}
             />
           </div>
-
         </div>
 
         <input
           type="submit"
-          className="btn btn-accent text-white mt-8 w-full"
+          className="btn mt-8 w-full"
           value="Apply As a Contest Creator"
         />
       </form>

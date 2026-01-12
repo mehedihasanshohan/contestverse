@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router";
 import logo from "/trophy.png";
 import useAuth from "../../hooks/useAuth";
@@ -6,10 +6,23 @@ import useRole from "../../hooks/useRole";
 import { TextAnimate } from "../../components/text-animate";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
+import { PiSunBold } from "react-icons/pi";
+import { FaRegMoon } from "react-icons/fa";
+
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
   const { role } = useRole();
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+
+  useEffect(() => {
+    document.querySelector("html").setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const handleTheme = () => {
+    setTheme(theme === "light" ? "dark" : "light");
+  };
 
   const handleLogout = () => {
     logOut()
@@ -92,7 +105,7 @@ const Navbar = () => {
 
       {/* CENTER MENU */}
       <div className="navbar-center hidden lg:flex">
-        <ul className="text-md text-teal-600 flex justify-center items-center gap-6 font-semibold px-1">
+        <ul className="text-lg flex justify-center items-center gap-6 font-semibold px-1">
           <li>
             <Link to="/">
               <TextAnimate animation="blurInUp" by="word">
@@ -141,6 +154,17 @@ const Navbar = () => {
       {/* RIGHT */}
       <div className="navbar-end">
         {/* Only show when user is logged in */}
+        <button
+          onClick={handleTheme}
+          className="btn btn-ghost mr-2 btn-circle text-xl"
+        >
+          {theme === "light" ? (
+            <FaRegMoon />
+          ) : (
+            <PiSunBold className="" />
+          )}
+        </button>
+
         {user && (
           <div className="dropdown">
             <div tabIndex={0} role="button" className="cursor-pointer m-1">
@@ -186,14 +210,14 @@ const Navbar = () => {
 
         {/* Show LOGIN only when user is NOT logged in */}
         {!user && (
-          <Link to="/login" className="btn btn-info mr-2">
+          <Link to="/login" className="btn mr-2">
             Login
           </Link>
         )}
 
         {role !== "admin" && role !== "creator" && (
           <>
-            <Link className="btn btn-primary" to="/beAcreator">
+            <Link className="btn" to="/beAcreator">
               Be a Creator
             </Link>
           </>

@@ -9,19 +9,19 @@ const StatsSection = () => {
       label: "Contests Created",
       value: 1200,
       suffix: "+",
-      color: "text-blue-500",
+      color: "text-cyan-500",
     },
     {
       label: "Contests Completed",
       value: 950,
       suffix: "",
-      color: "text-green-500",
+      color: "text-amber-500",
     },
     {
       label: "Active Participants",
       value: 156,
       suffix: "K+",
-      color: "text-purple-500",
+      color: "text-cyan-500",
     },
     {
       label: "Prize Pool",
@@ -61,7 +61,7 @@ const StatsSection = () => {
               {stat.prefix && <span>{stat.prefix}</span>}
               <CountUp
                 end={stat.value}
-                duration={3}
+                duration={5}
                 enableScrollSpy={true}
                 scrollSpyOnce={false}
               />

@@ -27,7 +27,7 @@ const Login = () => {
   }
 
   return (
-    <div className='w-full mx-auto'>
+    <div className='w-full bg-base-100'>
       <form onSubmit={handleSubmit(handleLogin)}>
         <fieldset className="fieldset">
            {/* name */}
@@ -53,17 +53,17 @@ const Login = () => {
           }
           {
             errors.password?.type === "minLength" &&
-            <p className='text-red-400 font-semibold'>Password must be 6 correcter or longer</p>
+            <p className='text-red-500 font-semibold'>Password must be 6 correcter or longer</p>
           }
           {
             errors.password?.type === "pattern" &&
             <p className='text-red-500'>Password must be at least one
             uppercase, at least one lowercase, at least one number and at least one special characters</p>
           }
-          <button className="btn btn-accent mt-4">Login</button>
+          <button className="btn bg-base-300 mt-4">Login</button>
         </fieldset>
         <SocialLogin></SocialLogin>
-        <p>New to ConteseVerse? <Link state={location.state} className='text-blue-400 underline' to='/register'>Register</Link></p>
+        <p>New to ConteseVerse? <Link state={location.state} className='underline' to='/register'>Register</Link></p>
       </form>
     </div>
   )

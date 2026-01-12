@@ -96,9 +96,7 @@ export const router = createBrowserRouter([
   {
     path: "dashboard",
     element: (
-      <PrivateRoutes>
         <DashBoardLayout></DashBoardLayout>
-      </PrivateRoutes>
     ),
     children: [
       {

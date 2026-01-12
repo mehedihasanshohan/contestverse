@@ -6,6 +6,7 @@ import axios from "axios";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts';
+import Title from "../../../components/Title";
 
 
 const MyProfile = () => {
@@ -92,20 +93,20 @@ const COLORS = ['#4ADE80', '#F87171'];
   };
 
   return (
-<div className="container mx-auto py-10 px-4 max-w-7xl">
-    <h2 className="text-3xl font-bold mb-10 text-center text-gray-800">User Dashboard</h2>
+<div className="max-w-7xl mx-auto py-12 px-6  bg-base-200 text-base-content">
 
+    <Title>User Dashboards</Title>
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
 
-      <div className="bg-base-100 shadow-xl p-8 rounded-2xl border border-gray-100 flex flex-col justify-between">
+      <div className="bg-base-100 shadow-sm p-8 rounded-md border border-base-100 flex flex-col justify-between">
         <div>
-          <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
+          <h3 className="text-xl text-center font-bold mb-6 flex items-center gap-2">
              Edit Profile
           </h3>
 
           <div className="flex justify-center mb-6">
             <div className="avatar">
-              <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 overflow-hidden">
+              <div className="w-24 rounded-full ring ring-offset-base-100 ring-offset-2 overflow-hidden">
                 <img src={profile?.photoURL || user?.photoURL} alt="Profile" />
               </div>
             </div>
@@ -113,33 +114,33 @@ const COLORS = ['#4ADE80', '#F87171'];
 
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <div className="form-control">
-              <label className="label"><span className="label-text font-semibold">Name</span></label>
+              <label className="label"><span className="text-base-content opacity-80 font-semibold mb-2">Name</span></label>
               <input type="text" {...register("name", { required: true })} className="input input-bordered w-full focus:input-primary" />
             </div>
 
             <div className="form-control">
-              <label className="label"><span className="label-text font-semibold">Update Photo</span></label>
+              <label className="label"><span className="text-base-content opacity-80 font-semibold mb-2">Update Photo</span></label>
               <input type="file" {...register("image")} className="file-input file-input-bordered w-full" accept="image/*" />
             </div>
 
             <div className="form-control">
-              <label className="label"><span className="label-text font-semibold">Bio</span></label>
+              <label className="label"><span className="text-base-content opacity-80 font-semibold mb-2">Bio</span></label>
               <textarea {...register("bio")} className="textarea textarea-bordered w-full h-24" placeholder="Briefly describe yourself..."></textarea>
             </div>
 
             <div className="form-control">
-              <label className="label"><span className="label-text font-semibold">Email</span></label>
-              <input type="text" value={user?.email} disabled className="input input-bordered w-full bg-gray-50 text-gray-500 cursor-not-allowed" />
+              <label className="label"><span className="text-base-content opacity-80 font-semibold mb-2">Email</span></label>
+              <input type="text" value={user?.email} disabled className="input input-bordered w-full bg-base-300 cursor-not-allowed" />
             </div>
 
-            <button type="submit" className="btn btn-primary w-full mt-4 text-white hover:shadow-lg transition-all">
+            <button type="submit" className="btn bg-base-300 w-full mt-4 hover:shadow-sm transition-all">
               Save Changes
             </button>
           </form>
         </div>
       </div>
 
-      <div className="bg-base-100 shadow-xl p-8 rounded-2xl border border-gray-100 flex flex-col items-center justify-center min-h-[500px]">
+      <div className="bg-base-100 shadow-sm p-8 rounded-sm border border-base-100 flex flex-col items-center justify-center min-h-[500px]">
         <h3 className="text-xl font-bold mb-6 text-center flex items-center gap-2">
            Winning Statistics
         </h3>
@@ -172,25 +173,25 @@ const COLORS = ['#4ADE80', '#F87171'];
             </div>
 
             <div className="grid grid-cols-2 gap-4 w-full mt-8">
-              <div className="bg-green-50 p-4 rounded-xl text-center border border-green-100">
-                <p className="text-xs text-green-600 uppercase tracking-wider font-bold mb-1">Won</p>
-                <p className="text-2xl font-black text-green-700">{stats.wonCount}</p>
+              <div className="bg-base-300 p-4 rounded-xl text-center border border-base-100">
+                <p className="text-xs uppercase tracking-wider font-bold mb-1">Won</p>
+                <p className="text-2xl font-black">{stats.wonCount}</p>
               </div>
-              <div className="bg-blue-50 p-4 rounded-xl text-center border border-blue-100">
-                <p className="text-xs text-blue-600 uppercase tracking-wider font-bold mb-1">Participated</p>
-                <p className="text-2xl font-black text-blue-700">{stats.participatedCount}</p>
+              <div className="bg-base-300 p-4 rounded-xl text-center border border-base-100">
+                <p className="text-xs uppercase tracking-wider font-bold mb-1">Participated</p>
+                <p className="text-2xl font-black">{stats.participatedCount}</p>
               </div>
             </div>
 
             <div className="mt-6 w-full">
-               <p className="text-center font-bold text-gray-600">
+               <p className="text-center font-bold">
                   Overall Win Rate:
-                  <span className="ml-2 text-primary text-xl">
+                  <span className="ml-2 text-xl">
                     {((stats.wonCount / stats.participatedCount) * 100).toFixed(1)}%
                   </span>
                </p>
                <progress
-                  className="progress progress-primary w-full mt-2 h-3"
+                  className="progress w-full mt-2 h-3"
                   value={(stats.wonCount / stats.participatedCount) * 100}
                   max="100">
                 </progress>

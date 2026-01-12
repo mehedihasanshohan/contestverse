@@ -44,8 +44,8 @@ const MyParticipatedContests = () => {
   if (isLoading) return <p className="text-center mt-6">Loading...</p>;
 
   return (
-    <div className="px-4 pb-8">
-      <h2 className="text-xl font-medium text-center mt-6 mb-6 text-amber-700">
+    <div className="max-w-7xl mx-auto py-12 px-4 text-base-content bg-base-200">
+      <h2 className="text-xl font-medium text-center mt-6 mb-6">
         My Participated Contests: {payments.length}
       </h2>
 

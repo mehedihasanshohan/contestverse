@@ -37,7 +37,7 @@ const HowItWorks = () => {
           transition={{ duration: 0.8 }}
         >
           <Title>
-            How It <span className="text-cyan-600">Works</span>
+            How It <span className="text-cyan-500">Works</span>
           </Title>
         </motion.div>
 
@@ -59,7 +59,7 @@ const HowItWorks = () => {
             >
               <div
                 className="absolute inset-0 bg-cyan-500/5 opacity-0
-              group-hover:opacity-100 blur-3xl transition-opacity rounded-full"
+              group-hover:opacity-100 blur-xl transition-opacity rounded-full"
               />
 
               <div className="relative z-10 flex flex-col h-full">
@@ -83,7 +83,7 @@ const HowItWorks = () => {
                   {step.title}
                 </h3>
 
-                <p className="opacity-75 text-base leading-relaxed mb-8 grow">
+                <p className="opacity-80 text-base leading-relaxed mb-8 grow">
                   {step.desc}
                 </p>
 
@@ -93,7 +93,7 @@ const HowItWorks = () => {
                     <span
                       key={i}
                       className="text-[10px] uppercase font-bold px-3 py-1
-                       bg-cyan-500/10 text-cyan-600 rounded-full border border-cyan-500/20"
+                       bg-cyan-500/10 text-cyan-500 rounded-full border border-cyan-500/20"
                     >
                       {tag}
                     </span>
@@ -102,7 +102,7 @@ const HowItWorks = () => {
 
                 {/* Step Number Badge */}
                 <div className="absolute -top-6 -right-4 w-16 h-16
-                 bg-cyan-600 text-white flex items-center justify-center
+                 bg-cyan-500  flex items-center justify-center
                  font-black text-2xl rounded-2xl rotate-12 group-hover:rotate-0
                   transition-all duration-500 shadow-lg border-4 border-base-100">
                   0{index + 1}

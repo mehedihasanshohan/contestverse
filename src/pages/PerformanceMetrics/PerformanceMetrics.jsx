@@ -100,13 +100,13 @@ const PerformanceMetrics = () => {
                   type="monotone"
                   dataKey="goal"
                   fill="#8884d8"
-                  stroke="#8884d8"
+                  stroke="#fff"
                   fillOpacity={0.1}
                 />
                 <Bar
                   dataKey="revenue"
                   barSize={30}
-                  fill="#413ea0"
+                  fill="#06b6d4"
                   radius={[10, 10, 0, 0]}
                 />
                 <Line
@@ -115,7 +115,7 @@ const PerformanceMetrics = () => {
                   stroke="#ff7300"
                   strokeWidth={3}
                 />
-                <Scatter dataKey="newUsers" fill="red" />
+                <Scatter dataKey="newUsers" fill="gold" />
               </ComposedChart>
             </ResponsiveContainer>
           </div>
@@ -130,7 +130,7 @@ const PerformanceMetrics = () => {
              flex flex-col items-center"
         >
           <h3 className="text-xl font-bold mb-2">Market Share</h3>
-          <p className="text-xs opacity-50 mb-4 text-center">
+          <p className="text-xs opacity-80 mb-4 text-center">
             Inner: Major Categories | Outer: Sub-Niches
           </p>
           <div className="h-[400px] w-full">
@@ -142,7 +142,7 @@ const PerformanceMetrics = () => {
                   cx="50%"
                   cy="50%"
                   outerRadius="45%"
-                  fill="#8884d8"
+                  fill="#f59e0b"
                   isAnimationActive={true}
                 />
                 <Pie
@@ -152,7 +152,7 @@ const PerformanceMetrics = () => {
                   cy="50%"
                   innerRadius="55%"
                   outerRadius="75%"
-                  fill="#82ca9d"
+                  fill="#06b6d4"
                   label
                   isAnimationActive={true}
                 />

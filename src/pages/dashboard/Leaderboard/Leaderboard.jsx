@@ -15,16 +15,16 @@ const Leaderboard = () => {
     if (isLoading) return <div className="text-center py-20 text-3xl">Loading Rankings...</div>;
 
     return (
-        <div className="max-w-4xl mx-auto my-16 px-4">
+        <div className="max-w-7xl mx-auto py-16 px-6 text-base-content bg-base-200 min-h-screen">
             <div className="text-center mb-12">
-                <h2 className="text-4xl font-bold text-gray-800 mb-2">Hall of Fame</h2>
-                <p className="text-gray-500 italic">Celebrating our top contest winners</p>
+                <h2 className="text-4xl font-bold mb-4">Hall of Fame</h2>
+                <p className="opacity-80 italic">Celebrating our top contest winners</p>
             </div>
 
-            <div className="overflow-x-auto bg-base-100 shadow-2xl rounded-2xl border">
+            <div className="overflow-x-auto bg-base-100 shadow-sm rounded-md">
                 <table className="table w-full">
                     {/* head */}
-                    <thead className="bg-primary text-white text-lg">
+                    <thead className="text-lg">
                         <tr>
                             <th className="rounded-tl-2xl">Rank</th>
                             <th>User</th>
@@ -34,8 +34,8 @@ const Leaderboard = () => {
                     </thead>
                     <tbody>
                         {winners.map((winner, index) => (
-                            <tr key={winner._id} className="hover:bg-gray-50 transition-colors">
-                                <td className="font-bold text-xl text-gray-600">
+                            <tr key={winner._id} className="transition-colors">
+                                <td className="font-bold text-xl">
                                     #{index + 1}
                                 </td>
                                 <td>
@@ -46,7 +46,7 @@ const Leaderboard = () => {
                                         </div>
                                     </div>
                                 </td>
-                                <td className="font-black text-2xl text-primary">
+                                <td className="font-black text-2xl">
                                     {winner.totalWins}
                                 </td>
                                 <td>
@@ -60,7 +60,7 @@ const Leaderboard = () => {
                     </tbody>
                 </table>
                 {winners.length === 0 && (
-                    <p className="text-center py-10 text-gray-400 font-semibold">No winners declared yet!</p>
+                    <p className="text-center py-10 font-semibold">No winners declared yet!</p>
                 )}
             </div>
         </div>

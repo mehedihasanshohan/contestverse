@@ -14,7 +14,8 @@ const WinnerAdvertisement = () => {
       prize: "900",
       prefix: "$",
       img: "https://i.ibb.co.com/prLfHpCM/received-2073722346231746.jpg",
-      color: "from-orange-500 to-red-500",
+            color: "from-emerald-500 to-teal-600",
+
     },
     {
       name: "Mehedi Hassan",
@@ -22,7 +23,8 @@ const WinnerAdvertisement = () => {
       prize: "500",
       prefix: "$",
       img: "https://i.ibb.co.com/RTH96Jbd/IMG-20210123-132734-1.jpg",
-      color: "from-blue-500 to-indigo-600",
+            color: "from-emerald-500 to-teal-600",
+
     },
     {
       name: "Abu Hurayra",
@@ -38,7 +40,7 @@ const WinnerAdvertisement = () => {
     <div className="bg-base-200 max-w-7xl mx-auto py-12 pb-24 px-6 overflow-hidden">
         <div className="mb-16">
           <Title>
-            Our Pride <span className="text-cyan-600">Winners</span>
+            Our Pride <span className="">Winners</span>
           </Title>
           <Subtitle>
             Celebrating the brilliant minds who conquered our challenges this
@@ -54,7 +56,7 @@ const WinnerAdvertisement = () => {
                 Starts Right Here!
               </span>
             </h2>
-            <p className="mt-6 text-lg font-body text-base-content/70 leading-relaxed">
+            <p className="mt-6 text-lg font-body opacity-80 leading-relaxed">
               Every month thousands of creative users participate, compete, and
               win exciting prizes. Your talent deserves a stage, and we provide
               exactly that.
@@ -88,7 +90,7 @@ const WinnerAdvertisement = () => {
                   className="bg-base-100 border border-base-300 p-4 rounded-md shadow-sm"
                 >
                   <div className="text-cyan-600 mb-1">{stat.icon}</div>
-                  <h3 className="text-2xl font-title font-black text-base-content">
+                  <h3 className="text-2xl text-base-content font-title font-black">
                     <CountUp
                       end={stat.val}
                       duration={8}
@@ -107,7 +109,7 @@ const WinnerAdvertisement = () => {
             </div>
 
             <Link to="/all-contests">
-              <button className="group btn btn-lg mt-10 bg-cyan-600 hover:bg-cyan-700 border-none text-white rounded-2xl px-8 font-title shadow-lg shadow-cyan-600/20">
+              <button className="group btn btn-lg mt-10 border-none  rounded-md px-8 font-title shadow-sm bg-base-300">
                 Participate Now{" "}
                 <ArrowRight className="ml-2 group-hover:translate-x-2 transition-transform" />
               </button>
@@ -168,7 +170,7 @@ const WinnerAdvertisement = () => {
                   </div>
 
                   <div className="hidden md:block opacity-0 group-hover:opacity-100 transition-opacity mr-4">
-                    <ArrowRight className="text-cyan-600" />
+                    <ArrowRight className="text-emerald-400" />
                   </div>
                 </div>
               </motion.div>
