@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, NavLink, Outlet } from "react-router";
-import {  FaUser, FaUserCircle } from "react-icons/fa";
+import { FaUser, FaUserCircle } from "react-icons/fa";
 import { MdAssignmentAdd } from "react-icons/md";
 import useRole from "../hooks/useRole";
 import { TbDatabaseCog } from "react-icons/tb";
@@ -13,11 +13,11 @@ const DashBoardLayout = () => {
   const { role } = useRole();
 
   return (
-    <div className="drawer lg:drawer-open max-w-7xl mx-auto bg-slate-50 ">
+    <div className="drawer lg:drawer-open max-w-7xl mx-auto bg-base-200 ">
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content">
         {/* Navbar */}
-        <nav className="navbar w-full bg-teal-600 text-white">
+        <nav className="navbar w-full bg-cyan-600 text-base-content">
           <label
             htmlFor="my-drawer-4"
             aria-label="open sidebar"
@@ -55,7 +55,7 @@ const DashBoardLayout = () => {
         ></label>
         <div className="flex min-h-full flex-col items-start bg-base-100 is-drawer-close:w-14 is-drawer-open:w-64">
           {/* Sidebar content here */}
-          <ul className="menu w-full grow bg-[#0f172a] backdrop-blur-d">
+          <ul className="menu w-full grow bg-base-300 backdrop-blur-d">
             {/* List item */}
             <li>
               <Link
@@ -72,19 +72,19 @@ const DashBoardLayout = () => {
                   strokeWidth="2"
                   fill="none"
                   stroke="currentColor"
-                  className="my-1.5 inline-block size-6 text-amber-300 mt-12"
+                  className="my-1.5 inline-block size-6 mt-12"
                 >
                   <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path>
                   <path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                 </svg>
-                <span className="is-drawer-close:hidden mt-12 text-amber-300">Homepage</span>
+                <span className="is-drawer-close:hidden mt-12 ">
+                  Homepage
+                </span>
               </Link>
             </li>
 
-
-
             {role === "user" && (
-              <div className="text-gray-200">
+              <div className="">
                 <li>
                   <NavLink
                     className="is-drawer-close:tooltip
@@ -92,7 +92,7 @@ const DashBoardLayout = () => {
                     data-tip="My Participated Contests"
                     to="/dashboard/my-participated-contests"
                   >
-                    <FaClipboardList className="w-6 h-6 mt-4 text-teal-500"></FaClipboardList>
+                    <FaClipboardList className="w-6 h-6 mt-4 text-cyan-500"></FaClipboardList>
                     <span className="is-drawer-close:hidden mt-4">
                       My Participated Contests
                     </span>
@@ -105,7 +105,7 @@ const DashBoardLayout = () => {
                     data-tip="My Winning Contests"
                     to="/dashboard/my-winning-contests"
                   >
-                    <GiPodiumWinner className="w-6 h-6 mt-4 text-teal-500"></GiPodiumWinner>
+                    <GiPodiumWinner className="w-6 h-6 mt-4 text-cyan-500"></GiPodiumWinner>
                     <span className="is-drawer-close:hidden mt-4">
                       My Winning Contests
                     </span>
@@ -118,7 +118,7 @@ const DashBoardLayout = () => {
                     data-tip="My Profile"
                     to="/dashboard/my-profile"
                   >
-                    <FaUserCircle className="w-6 h-6 mt-4 text-teal-500"></FaUserCircle>
+                    <FaUserCircle className="w-6 h-6 mt-4 text-cyan-500"></FaUserCircle>
                     <span className="is-drawer-close:hidden mt-4">
                       My Profile
                     </span>
@@ -128,7 +128,7 @@ const DashBoardLayout = () => {
             )}
 
             {role === "creator" && (
-              <div className="text-gray-200">
+              <div className="">
                 <li>
                   <NavLink
                     className="is-drawer-close:tooltip
@@ -137,7 +137,9 @@ const DashBoardLayout = () => {
                     to="/dashboard/add-contest"
                   >
                     <BsClipboardPlusFill className="w-6 h-6 mt-4"></BsClipboardPlusFill>
-                    <span className="is-drawer-close:hidden mt-4">Add Contest</span>
+                    <span className="is-drawer-close:hidden mt-4">
+                      Add Contest
+                    </span>
                   </NavLink>
                 </li>
                 <li>
@@ -148,14 +150,16 @@ const DashBoardLayout = () => {
                     to="/dashboard/my-created-contest"
                   >
                     <FaClipboardList className="w-6 h-6 mt-4"></FaClipboardList>
-                    <span className="is-drawer-close:hidden mt-4">My Created Contest</span>
+                    <span className="is-drawer-close:hidden mt-4">
+                      My Created Contest
+                    </span>
                   </NavLink>
                 </li>
               </div>
             )}
 
             {role === "admin" && (
-              <div className="text-gray-200">
+              <div className="">
                 <li>
                   <NavLink
                     className="is-drawer-close:tooltip
@@ -198,19 +202,19 @@ const DashBoardLayout = () => {
               </div>
             )}
 
-               <li>
-                  <NavLink
-                    className="is-drawer-close:tooltip
+            <li>
+              <NavLink
+                className="is-drawer-close:tooltip
                     is-drawer-close:tooltip-right"
-                    data-tip="Leaderboard"
-                    to="/dashboard/leaderboard"
-                  >
-                    <HiOutlineTrophy className="w-6 h-6 mt-4 text-amber-400"></HiOutlineTrophy>
-                    <span className="is-drawer-close:hidden mt-4 text-amber-400">
-                      Leaderboard
-                    </span>
-                  </NavLink>
-                </li>
+                data-tip="Leaderboard"
+                to="/dashboard/leaderboard"
+              >
+                <HiOutlineTrophy className="w-6 h-6 mt-4 "></HiOutlineTrophy>
+                <span className="is-drawer-close:hidden mt-4 ">
+                  Leaderboard
+                </span>
+              </NavLink>
+            </li>
           </ul>
         </div>
       </div>
